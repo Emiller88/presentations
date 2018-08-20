@@ -1,0 +1,11 @@
+#+TITLE: GroSeq
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_HLEVEL: 2
+* What I've been working on
+**
+* Reproducibility
+** JupyterHub
+* Emacs Reading
+* Mendeley
