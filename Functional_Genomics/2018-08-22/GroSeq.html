@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>GroSeq Analysis</title>
+<meta name="author" content="(Edmund Miller)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<section id="slide-org8098d8d">
+<h2 id="org8098d8d">GRO-Seq Analysis</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgc58533b">
+<h2 id="orgc58533b">What I've been working on</h2>
+<div class="outline-text-2" id="text-orgc58533b">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgfdf8c0f">
+<h3 id="orgfdf8c0f">IMR90</h3>
+<div class="outline-text-3" id="text-orgfdf8c0f">
+</div>
+</section>
+<section id="slide-orge6040ad">
+<h4 id="orge6040ad">Overview of Project for new Members</h4>
+<ul>
+<li>Compared IMR90 Predicted Enhancers to GM</li>
+<li>Ran GREAT Analysis on them</li>
+<li>Began working to find coverage of eRNAs in Samples</li>
+
+</ul>
+</section>
+<section id="slide-orga9bbb4d">
+<h4 id="orga9bbb4d">Compared IMR90 Predicted Enhancers to GM</h4>
+<div class="outline-text-4" id="text-orga9bbb4d">
+</div>
+<ul class="org-ul">
+<li><a id="orgadcc4c3"></a>Venn Diagram<br />
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #b294bb;">import</span> pylab <span style="color: #b294bb;">as</span> plt
+<span style="color: #b294bb;">from</span> matplotlib_venn <span style="color: #b294bb;">import</span> venn2
+venn2(subsets = (6259, 10051, 1108), set_labels = (<span style="color: #b5bd68;">'IMR90'</span>, <span style="color: #b5bd68;">'GM'</span>))
+plt.title(<span style="color: #b5bd68;">"IMR90 vs GM eRNAs"</span>)
+plt.show()
+</pre>
+</div>
+</li>
+</ul>
+</section>
+<section id="slide-orgb018299" data-background="img/Venn.png" data-background-size="800px" data-background-transition="slide">
+<h4 id="orgb018299">\</h4>
+</section>
+<section id="slide-orgad81090">
+<h4 id="orgad81090">GREAT IMR90 Unique</h4>
+<ul>
+<li>lung vasculature development</li>
+<li>growth factor receptor binding</li>
+<li>tissue remodeling</li>
+<li>positive regulation of endothelial cell migration</li>
+<li>embryonic skeletal joint development</li>
+
+</ul>
+</section>
+<section id="slide-orgc1f5d54">
+<h4 id="orgc1f5d54">GREAT IMR90 and GM Overlap</h4>
+<ul>
+<li>643(~30%) Transcripts were -500 to -50 from TSS</li>
+<li>1002(80%) Were Associated with 2 genes per region</li>
+<li>104(10%) were associated with 1 gene</li>
+<li>Notable Biological processes:
+<ul>
+<li>cytokine secretion</li>
+<li>cytokine production</li>
+<li>regulation of immune response</li>
+<li>immune effector process</li>
+<li>regulation of transcription from RNA polymerase II promoter in response to stress</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgeb1dd43">
+<h4 id="orgeb1dd43">Coverage of eRNAs in Samples</h4>
+<ul>
+<li>Issue with lack of output</li>
+<li>Cause is most likely file types</li>
+
+</ul>
+</section>
+<section id="slide-org584c0bc">
+<h4 id="org584c0bc">Snakemake IMR90</h4>
+</section>
+<section id="slide-org87d6b5a" data-background="img/dag.png" data-background-size="400px" data-background-transition="slide">
+<h4 id="org87d6b5a">__</h4>
+</section>
+<section id="slide-org440b609">
+<h4 id="org440b609">Trying to Reproduce GM</h4>
+<div class="outline-text-4" id="text-org440b609">
+</div>
+<ul class="org-ul">
+<li><a id="org079c718"></a>hg18 vs hg19<br /></li>
+<li><a id="org6f347b9"></a>Overpredicting eRNA transcripts<br /></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org53887cf">
+<h3 id="org53887cf">List of Super Enhancers</h3>
+<div class="outline-text-3" id="text-org53887cf">
+</div>
+</section>
+<section id="slide-org7b6cca5">
+<h4 id="org7b6cca5">dbSuper</h4>
+<p>
+<a href="http://asntech.org/dbsuper/ses.php?genome=hg19&amp;cell_type=C_058">http://asntech.org/dbsuper/ses.php?genome=hg19&amp;cell_type=C_058</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orga920ea0">
+<h3 id="orga920ea0"><a href="https://github.com/r-bioinformatics/edgePy">edgePy</a></h3>
+<div class="outline-text-3" id="text-orga920ea0">
+</div>
+</section>
+<section id="slide-org328f83a">
+<h4 id="org328f83a">What is edgeR</h4>
+<div class="outline-text-4" id="text-org328f83a">
+</div>
+<ul class="org-ul">
+<li><a id="org78760cf"></a>Written in 2009<br /></li>
+<li><a id="org29768a3"></a>digital gene expression (DGE)<br /></li>
+<li><a id="org91723c4"></a>Package<br />
+<ul>
+<li>For examining differential expression of replicated count data</li>
+
+</ul>
+</li>
+</ul>
+</section>
+<section id="slide-orgbe4582d">
+<h4 id="orgbe4582d">Contributions</h4>
+<div class="outline-text-4" id="text-orgbe4582d">
+</div>
+<ul class="org-ul">
+<li><a id="orgc17c080"></a>Updating Documentation<br /></li>
+<li><a id="org1515fba"></a>Added black formater<br /></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgd49a385">
+<h2 id="orgd49a385">Reproducibility</h2>
+<div class="outline-text-2" id="text-orgd49a385">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8c59980">
+<h3 id="org8c59980">Copy .bash _history</h3>
+<div class="outline-text-3" id="text-org8c59980">
+</div>
+</section>
+<section id="slide-org24f101a">
+<h4 id="org24f101a">All the commands for GroSeq</h4>
+<div class="org-src-container">
+
+<pre  class="src src-shell">fastqc *.fastq -o=/media/enhancer/IMR90/fastqc -t=<span style="color: #de935f; font-weight: bold;">6</span>
+<span style="color: #b294bb;">for</span> i<span style="color: #b294bb;"> in</span> <span style="color: #c5c8c6; font-weight: bold;">`</span><span style="color: #c5c8c6; font-weight: bold;">ls</span><span style="color: #c5c8c6; font-weight: bold;"> *.fastq | cut -d "_" -f 1`</span> ;
+    <span style="color: #b294bb;">do</span> bowtie2 -t -p <span style="color: #de935f; font-weight: bold;">4 -x ../2018-06-24/genome $i -S $i.sam</span> ;
+<span style="color: #b294bb;">done</span> ;
+<span style="color: #f0c674;">mv</span> data/2018-06-23/*.sam results/2018-07-10/
+makeTagDirectory results/2018-07-11/All_together/ -genome hg19 -checkGC results/2018-07-10/*.sam
+findPeaks results/2018-07-11/All_together/ -o results/2018-07-12/IMRpeak.gtf -style groseq
+pos2bed.pl results/2018-07-12/GMpeak.gtf &gt; results/2018-07-12/GMpeak.bed
+slopBed -i refseqhg19.bed -g Homo_sapiens/ucsc/hg19/Seqence/WholeGenomeFasta/genome.fa.fai -l <span style="color: #de935f; font-weight: bold;">1000 -r 10000 &gt; slop-refseqhq19.bed</span>
+bedtools intersect -a GM/GMGRO-Seq/IMR90tsspeak.bed -b slop-refseqhg19.bed -v &gt; noGenesIMR90tss.bed
+intersectBed -wo -a IMR90/BED/sorted_GroseqIMR90nogenes.bed -b /media/enhancer/eRNA_GM_hg19.bed &gt; eRNA_IMR90_GM_hg19_Overlap.bed
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org27af2f9">
+<h3 id="org27af2f9">Jupyter</h3>
+<p>
+<a href="https://mybinder.org/v2/gh/widdowquinn/Notebooks-Bioinformatics/master">https://mybinder.org/v2/gh/widdowquinn/Notebooks-Bioinformatics/master</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org2b53b3e">
+<h3 id="org2b53b3e">Google Colab</h3>
+<p>
+<a href="https://colab.research.google.com/notebooks/mlcc/intro_to_pandas.ipynb">https://colab.research.google.com/notebooks/mlcc/intro_to_pandas.ipynb</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org0e533c8">
+<h3 id="org0e533c8">Send it to me!</h3>
+<div class="outline-text-3" id="text-org0e533c8">
+</div>
+</section>
+<section id="slide-orgde966fd">
+<h4 id="orgde966fd">GitLab</h4>
+</section>
+</section>
+<section>
+<section id="slide-org50075f9">
+<h2 id="org50075f9">Mendeley</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
