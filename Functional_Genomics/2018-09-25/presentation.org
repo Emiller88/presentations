@@ -11,7 +11,7 @@
 ** Generated a 1Kb resolution map of the haploid genome
 *** Validates old features/ identifies new ones
 *** Extensive Regional and Higher order folding observed
-*** TODO Implicates the nucleolus as a formidable barrier to interaction between DNA sequences at either end
+*** Implicates the nucleolus as a formidable barrier to interaction between DNA sequences at either end
 *** Inter-chromosomal interations anchored by centromeres
 ** Constructed a 3D model of the yeast genome
 * Introduction
@@ -25,3 +25,105 @@ that differed in DNA concentration at the 3C step, which critically
 influences signal-to-noise ratios
 4. Consistency between the HindIII and EcoRI libraries
 5. A set of 24 chromosomal interactions using conventional 3C
+** 
+:PROPERTIES:
+:reveal_background: img/fig1.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig2.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig2a.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig2b.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig2c.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig2d.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig3.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig3a.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig3b.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig3c.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig3d.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig4.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig4a.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig4b.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig4c.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig4d.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** 
+:PROPERTIES:
+:reveal_background: img/fig5.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
