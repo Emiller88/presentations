@@ -1,7 +1,7 @@
 #+TITLE: A three-dimensional model of the yeast genome
-#+OPTIONS: reveal_title_slide:nil
 #+OPTIONS: num:nil
 #+OPTIONS: toc:nil
+#+OPTIONS: DATE:false
 #+REVEAL_THEME: white
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
 #+REVEAL_HLEVEL: 2
