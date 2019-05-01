@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GRO-Seq</title>
+    <meta name="author" content="(Edmund Miller)" />
+    <style type="text/css">
+      .underline {
+        text-decoration: underline;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css"
+      id="theme"
+    />
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = "http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section id="slide-org7e74502">
+            <h2 id="org7e74502">GRO-Seq Analysis</h2>
+            <div class="outline-text-2" id="text-org7e74502"></div>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgf8447b7">
+            <h3 id="orgf8447b7">Recap</h3>
+            <ul>
+              <li>Predicted IMR90 eRNAs</li>
+              <li>Compared IMR90 Predicted Enhancers to GM</li>
+              <li>Ran GREAT Analysis on them</li>
+              <li>Used Homer builtin scripts to find DE of eRNAs and Genes</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgf251441">
+            <h3 id="orgf251441">What I've been working on</h3>
+            <div class="outline-text-3" id="text-orgf251441"></div>
+          </section>
+          <section id="slide-org4b6078b">
+            <h4 id="org4b6078b">Gene Centric vs. Enhancer Centric</h4>
+            <ul>
+              <li>
+                Peng's approach
+                <ul>
+                  <li>Took enhancers that were expressed deferentially</li>
+                  <li>Linked them to Genes within 200Kb</li>
+                </ul>
+              </li>
+              <li>
+                New approach
+                <ul>
+                  <li>Take genes that are deferentially expressed</li>
+                  <li>Link the Enhancers to those genes</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org5db51ec">
+            <h4 id="org5db51ec">Gene Differenitial Expression</h4>
+          </section>
+          <section
+            id="slide-orgc3f950b"
+            data-background="viz/pipeline.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="orgc3f950b"></h4>
+          </section>
+          <section id="slide-orgf31c4d4">
+            <h4 id="orgf31c4d4">featureCounts</h4>
+            <div class="outline-text-4" id="text-orgf31c4d4"></div>
+            <ul class="org-ul">
+              <li><a id="orgc4e76d4"></a>Tried CLI version<br /></li>
+              <li>
+                <a id="org2de4fa3"></a>Couldn't get examples to work with
+                edgeR<br />
+              </li>
+              <li><a id="orgd056c02"></a>Switched to R package<br /></li>
+            </ul>
+          </section>
+          <section id="slide-org62323fc">
+            <h4 id="org62323fc">edgeR</h4>
+            <div class="outline-text-4" id="text-org62323fc"></div>
+            <ul class="org-ul">
+              <li><a id="orgd9b0b4e"></a>Error with exactTest<br /></li>
+              <li>
+                <a id="orgdc5bc1a"></a>Defaulted to writing raw DGEList to
+                file<br />
+              </li>
+              <li><a id="org4ddfc98"></a>Used in Pivot<br /></li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orge8029e6">
+            <h3 id="orge8029e6">Results</h3>
+            <div class="outline-text-3" id="text-orge8029e6"></div>
+          </section>
+          <section
+            id="slide-orgc8d6e81"
+            data-background="img/GM_normalized.png"
+            data-background-size="1200px"
+            data-background-transition="slide"
+          >
+            <h4 id="orgc8d6e81"></h4>
+          </section>
+          <section
+            id="slide-org9629910"
+            data-background="img/IMR_normalized.png"
+            data-background-size="1200px"
+            data-background-transition="slide"
+          >
+            <h4 id="org9629910"></h4>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org8edb98e">
+            <h3 id="org8edb98e">Future</h3>
+            <div class="outline-text-3" id="text-org8edb98e"></div>
+          </section>
+          <section id="slide-org3f38979">
+            <h4 id="org3f38979">Future</h4>
+            <div class="outline-text-4" id="text-org3f38979"></div>
+            <ul class="org-ul">
+              <li><a id="org939d1d7"></a>Compare IMR and GM Genes<br /></li>
+              <li><a id="org3d0a8f1"></a>Get List of Top Genes<br /></li>
+              <li><a id="orga824def"></a>Link eRNAs and Top genes<br /></li>
+              <li><a id="org7789e1c"></a>Kinetics of the eRNAs<br /></li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: false,
+        center: true,
+        slideNumber: "c",
+        rollingLinks: false,
+        keyboard: true,
+        overview: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || "default", // default/cube/page/concave/zoom/linear/fade/none
+        transitionSpeed: "default",
+        multiplex: {
+          secret: "", // null if client
+          id: "", // id, obtained from socket.io server
+          url: "" // Location of socket.io server
+        },
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          {
+            src: "http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js",
+            condition: function() {
+              return !document.body.classList;
+            }
+          },
+          {
+            src:
+              "http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          {
+            src:
+              "http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
