@@ -1,0 +1,137 @@
+#+REVEAL_THEME: white
+#+TITLE: Transcriptional Kinetics of Viral Induced eRNAs across cell lines
+#+AUTHOR: Edmund Miller
+#+OPTIONS: reveal_title_slide:nil
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_HLEVEL: 1
+* Jupyter
+** Jupyter Links
+- [[http://10.163.45.122/][Functional Genomics JupyterHub]]
+- [[https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/try.jupyter.org?urlpath=lab][JupyterLab-Demo]]
+* Visidata
+** Links
+- [[http://visidata.org/install/][Install]]
+- [[https://jsvine.github.io/intro-to-visidata/][An Introduction to VisiData]]
+** 
+#+REVEAL_HTML: <iframe width="840" height="630" src="https://emiller88.github.io/presentations/Zhang/2019-10-07/img/visdata.mp4" frameborder="0" allowfullscreen></iframe>
+* Transcriptional Kinetics of Viral Induced eRNAs across cell lines
+** Recap
+*** 
+:PROPERTIES:
+:reveal_background: img/globaltrans.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** Overview
+- Reproducing GM18
+- Predicted IMR90 eRNAs
+- Compared IMR90 Predicted Enhancers to GM
+- Used Homer scripts to find DE of eRNAs and Genes
+- Gene Centric vs. Enhancer Centric
+*** Reproducing GM18
+- hg18 vs hg19
+- Overpredicting eRNA transcripts
+- Past Issue
+  - What I thought Peng sent me
+  - hg18 -> eRNAs -> Me
+  - What actually happened
+  - hg18 -> eRNAs -> LiftOver -> hg19 -> Me
+- Main issue is homer uniqmap
+***
+:PROPERTIES:
+:reveal_background: img/dag.png
+:reveal_background_size: 400px
+:reveal_background_trans: slide
+:END:
+*** Actual Pipelines
+***** [[file:files/GM18dag.pdf][GM18]]
+***** [[file:files/IMR19dag.pdf][IMR19]]
+***** [[file:files/all.pdf][All]]
+*** Predicted IMR90 eRNAs
+Changes from GM18
+- hg19
+- No liftover
+*** Compared IMR90 Predicted Enhancers to GM
+*** 
+:PROPERTIES:
+:reveal_background: img/Venn.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+
+*** Used Homer scripts to find DE of eRNAs and Genes
+*** Gene Centric vs. Enhancer Centric
+- Peng's approach
+  - Took enhancers that were expressed deferentially
+  - Linked them to Genes within 200Kb
+- New approach
+  - Take genes that are deferentially expressed
+  - Link the Enhancers to those genes
+
+*** 
+:PROPERTIES:
+:reveal_background: viz/pipeline.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** featureCounts
+***** Tried CLI version
+***** Couldn't get examples to work with edgeR
+***** Switched to R package
+***** Update: switched back
+*** Linear Model / Time Series Analysis
+*** Limma
+- [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4937821/][RNA-seq analysis is easy as 1-2-3 with limma, Glimma and edgeR]]
+- [[http://bioinf.wehi.edu.au/folders/limmaWorkflow/glimma-plots/MDS-Plot.html][glimma Plots]]
+*** 
+:PROPERTIES:
+:reveal_background: img/limma/GM19_fig1_limma.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** 
+:PROPERTIES:
+:reveal_background: img/limma/IMR_fig1_limma.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** 
+:PROPERTIES:
+:reveal_background: img/limma/GM19_fig2_limma.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** 
+:PROPERTIES:
+:reveal_background: img/limma/IMR_fig2_limma.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** 
+:PROPERTIES:
+:reveal_background: img/limma/GM19_fig3_limma.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+*** 
+:PROPERTIES:
+:reveal_background: img/limma/IMR_fig3_limma.png
+:reveal_background_size: 800px
+:reveal_background_trans: slide
+:END:
+** Overview
+- Get List of DE Genes
+- Link eRNAs and Top genes
+- Compare IMR and GM eRNAs
+- Checking for L2
+** Get List of DE Genes
+- Used TPM values
+- Removed Genes without a foldchange > 1 between any timepoints
+- Considering using only points t<24h for inducibility
+** Link eRNAs and Top genes
+- Awk script to get RefSeq, with only specific BED entries
+-
+** Compare IMR and GM eRNAs
+** Checking for L2

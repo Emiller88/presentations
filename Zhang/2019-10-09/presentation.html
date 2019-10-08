@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Transcriptional Kinetics of Viral Induced eRNAs across cell lines
+    </title>
+    <meta name="author" content="(Edmund Miller)" />
+    <style type="text/css">
+      .underline {
+        text-decoration: underline;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js/css/reveal.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js/css/theme/white.css"
+      id="theme"
+    />
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = "https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section id="slide-orgf24994a">
+            <h2 id="orgf24994a">Jupyter</h2>
+            <div class="outline-text-2" id="text-orgf24994a"></div>
+          </section>
+          <section id="slide-org8cd4b9e">
+            <h3 id="org8cd4b9e">Jupyter Links</h3>
+            <ul>
+              <li>
+                <a href="http://10.163.45.122/"
+                  >Functional Genomics JupyterHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/try.jupyter.org?urlpath=lab"
+                  >JupyterLab-Demo</a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgb9b1365">
+            <h2 id="orgb9b1365">Visidata</h2>
+            <div class="outline-text-2" id="text-orgb9b1365"></div>
+          </section>
+          <section id="slide-org14d4817">
+            <h3 id="org14d4817">Links</h3>
+            <ul>
+              <li><a href="http://visidata.org/install/">Install</a></li>
+            </ul>
+          </section>
+          <section id="slide-orgdfa850e">
+            <h3 id="orgdfa850e"></h3>
+            <iframe
+              width="420"
+              height="315"
+              src="img/visidata.mp4"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org8a28c53">
+            <h2 id="org8a28c53">
+              Transcriptional Kinetics of Viral Induced eRNAs across cell lines
+            </h2>
+            <div class="outline-text-2" id="text-org8a28c53"></div>
+          </section>
+          <section id="slide-org1abf32a">
+            <h3 id="org1abf32a">Recap</h3>
+            <div class="outline-text-3" id="text-org1abf32a"></div>
+          </section>
+          <section
+            id="slide-org7ec3f53"
+            data-background="img/globaltrans.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org7ec3f53"></h4>
+          </section>
+          <section id="slide-orgd128a7c">
+            <h4 id="orgd128a7c">Overview</h4>
+            <ul>
+              <li>Reproducing GM18</li>
+              <li>Predicted IMR90 eRNAs</li>
+              <li>Compared IMR90 Predicted Enhancers to GM</li>
+              <li>Used Homer scripts to find DE of eRNAs and Genes</li>
+              <li>Gene Centric vs. Enhancer Centric</li>
+            </ul>
+          </section>
+          <section id="slide-orgae1d5c6">
+            <h4 id="orgae1d5c6">Reproducing GM18</h4>
+            <ul>
+              <li>hg18 vs hg19</li>
+              <li>Overpredicting eRNA transcripts</li>
+              <li>
+                Past Issue
+                <ul>
+                  <li>What I thought Peng sent me</li>
+                  <li>hg18 -&gt; eRNAs -&gt; Me</li>
+                  <li>What actually happened</li>
+                  <li>hg18 -&gt; eRNAs -&gt; LiftOver -&gt; hg19 -&gt; Me</li>
+                </ul>
+              </li>
+              <li>Main issue is homer uniqmap</li>
+            </ul>
+            <p>
+              <b>*</b>
+            </p>
+            <p>
+              :reveal<sub>background</sub>: img/dag.png :reveal<sub
+                >background</sub
+              ><sub>size</sub>: 400px :reveal<sub>background</sub
+              ><sub>trans</sub>: slide
+            </p>
+          </section>
+          <section id="slide-org229663f">
+            <h4 id="org229663f">Actual Pipelines</h4>
+            <div class="outline-text-4" id="text-org229663f"></div>
+            <ul class="org-ul">
+              <li>
+                <a id="org026cfad"></a><a href="files/GM18dag.pdf">GM18</a
+                ><br />
+              </li>
+              <li>
+                <a id="org49b99a2"></a><a href="files/IMR19dag.pdf">IMR19</a
+                ><br />
+              </li>
+              <li>
+                <a id="org8b13186"></a><a href="files/all.pdf">All</a><br />
+              </li>
+            </ul>
+          </section>
+          <section id="slide-orgc833dcb">
+            <h4 id="orgc833dcb">Predicted IMR90 eRNAs</h4>
+            <p>
+              Changes from GM18
+            </p>
+            <ul>
+              <li>hg19</li>
+              <li>No liftover</li>
+            </ul>
+          </section>
+          <section id="slide-org6e95dff">
+            <h4 id="org6e95dff">Compared IMR90 Predicted Enhancers to GM</h4>
+          </section>
+          <section
+            id="slide-orgde7cf69"
+            data-background="img/Venn.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="orgde7cf69"></h4>
+          </section>
+          <section id="slide-orgf9c89c1">
+            <h4 id="orgf9c89c1">
+              Used Homer scripts to find DE of eRNAs and Genes
+            </h4>
+          </section>
+          <section id="slide-org7e9e7d2">
+            <h4 id="org7e9e7d2">Gene Centric vs. Enhancer Centric</h4>
+            <ul>
+              <li>
+                Peng&rsquo;s approach
+                <ul>
+                  <li>Took enhancers that were expressed deferentially</li>
+                  <li>Linked them to Genes within 200Kb</li>
+                </ul>
+              </li>
+              <li>
+                New approach
+                <ul>
+                  <li>Take genes that are deferentially expressed</li>
+                  <li>Link the Enhancers to those genes</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section
+            id="slide-orge660a88"
+            data-background="viz/pipeline.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="orge660a88"></h4>
+          </section>
+          <section id="slide-orge9ccf9a">
+            <h4 id="orge9ccf9a">featureCounts</h4>
+            <div class="outline-text-4" id="text-orge9ccf9a"></div>
+            <ul class="org-ul">
+              <li><a id="orgb1e2a43"></a>Tried CLI version<br /></li>
+              <li>
+                <a id="org900f662"></a>Couldn&rsquo;t get examples to work with
+                edgeR<br />
+              </li>
+              <li><a id="orgb7a3868"></a>Switched to R package<br /></li>
+              <li><a id="orgbf6c0d1"></a>Update: switched back<br /></li>
+            </ul>
+          </section>
+          <section id="slide-org2a026ff">
+            <h4 id="org2a026ff">Linear Model / Time Series Analysis</h4>
+          </section>
+          <section id="slide-orgeafad33">
+            <h4 id="orgeafad33">Limma</h4>
+            <ul>
+              <li>
+                <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4937821/"
+                  >RNA-seq analysis is easy as 1-2-3 with limma, Glimma and
+                  edgeR</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://bioinf.wehi.edu.au/folders/limmaWorkflow/glimma-plots/MDS-Plot.html"
+                  >glimma Plots</a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            id="slide-org070c126"
+            data-background="img/limma/GM19_fig1_limma.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org070c126"></h4>
+          </section>
+          <section
+            id="slide-org52d8840"
+            data-background="img/limma/IMR_fig1_limma.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org52d8840"></h4>
+          </section>
+          <section
+            id="slide-org83bd40d"
+            data-background="img/limma/GM19_fig2_limma.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org83bd40d"></h4>
+          </section>
+          <section
+            id="slide-org16ef724"
+            data-background="img/limma/IMR_fig2_limma.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org16ef724"></h4>
+          </section>
+          <section
+            id="slide-org0fff64f"
+            data-background="img/limma/GM19_fig3_limma.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org0fff64f"></h4>
+          </section>
+          <section
+            id="slide-org02342ee"
+            data-background="img/limma/IMR_fig3_limma.png"
+            data-background-size="800px"
+            data-background-transition="slide"
+          >
+            <h4 id="org02342ee"></h4>
+          </section>
+          <section id="slide-org683c9be">
+            <h3 id="org683c9be">Get List of Top Genes</h3>
+          </section>
+          <section id="slide-orgc0a5fc4">
+            <h3 id="orgc0a5fc4">Link eRNAs and Top genes</h3>
+          </section>
+          <section id="slide-orgf581b3f">
+            <h3 id="orgf581b3f">Compare IMR and GM Genes</h3>
+          </section>
+          <section id="slide-orgc1495ef">
+            <h3 id="orgc1495ef">Kinetics of the eRNAs</h3>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/js/reveal.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        multiplex: {
+          secret: "", // null if client
+          id: "", // id, obtained from socket.io server
+          url: "" // Location of socket.io server
+        },
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          {
+            src: "https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js",
+            condition: function() {
+              return !document.body.classList;
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src:
+              "https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          },
+          {
+            src: "https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js",
+            async: true,
+            condition: function() {
+              return !!document.body.classList;
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
