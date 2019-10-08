@@ -15,7 +15,7 @@
 - [[http://visidata.org/install/][Install]]
 - [[https://jsvine.github.io/intro-to-visidata/][An Introduction to VisiData]]
 ** 
-#+REVEAL_HTML: <iframe width="840" height="630" src="https://emiller88.github.io/presentations/Zhang/2019-10-09/img/visidata.mp4" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/xtNxgDX4qsw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 * Transcriptional Kinetics of Viral Induced eRNAs across cell lines
 ** Recap
 *** 
