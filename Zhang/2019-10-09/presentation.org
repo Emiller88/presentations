@@ -49,13 +49,6 @@
 Changes from GM18
 - hg19
 - No liftover
-*** Compared IMR90 Predicted Enhancers to GM
-*** 
-:PROPERTIES:
-:reveal_background: img/Venn.png
-:reveal_background_size: 800px
-:reveal_background_trans: slide
-:END:
 *** Gene Centric vs. Enhancer Centric
 - Peng's approach
   - Took enhancers that were expressed deferentially
@@ -67,7 +60,7 @@ Changes from GM18
 *** 
 :PROPERTIES:
 :reveal_background: viz/pipeline.png
-:reveal_background_size: 800px
+:reveal_background_size: 600px
 :reveal_background_trans: slide
 :END:
 *** featureCounts
@@ -126,3 +119,14 @@ rg -w exon - > de_genes.gtf
 :reveal_background_size: 1000px
 :reveal_background_trans: slide
 :END:
+** Possible Groupings
+*** 
+:PROPERTIES:
+:reveal_background: img/grouping_eRNAs.png
+:reveal_background_size: 1500px
+:reveal_background_trans: slide
+:END:
+** [[https://emiller88.github.io/presentations/Zhang/2019-10-09/report.html][Report]]
+** Future
+- Utilize Induciblability Index
+- Work with TNFSF10 to test grouping Identification Pipeline
