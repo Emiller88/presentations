@@ -1,0 +1,159 @@
+#+REVEAL_THEME: white
+#+TITLE:
+#+AUTHOR: Edmund Miller
+#+OPTIONS: reveal_title_slide:nil
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_HLEVEL: 1
+* Open Protocols
+** Highlights
+- Markdown
+- Collaboration through Git
+- Automatic Deployment
+** Markdown
+*** Intro
+- https://commonmark.org/
+#+BEGIN_SRC markdown
+# Heading 1
+,*Italic*
+,**Bold**
+
+## Heading 2
+- List
+- List
+- List
+
+### Heading 3
+---
+
+```python
+# code block
+print '3 backticks or'
+print 'indent 4 spaces'
+```
+#+END_SRC
+** Collaboration through Git
+*** Intro to Git
+- [[https://learnxinyminutes.com/docs/git/][Learn git in y]]
+- [[https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668][Plos Computational Biology Paper]]
+- [[https://webtuu.com/blog/04/a-laymans-introduction-to-git][A layman’s introduction to git]]
+#+BEGIN_SRC shell
+git clone https://gitlab.com/functional-genomics/docs.git
+# Adds all the files in the current directory
+git add .
+# Creating a commit message
+git commit -m "A commit message"
+# Pushing to the remote repo
+git push origin master
+#+END_SRC
+*** Why should you use git?
+- It’s a super save button that lets you create snapshots/backups of your work.
+- Lets you work on multiple versions of a project simultaneously – i.e. create a
+  new step in the pipeline, and change the tool used for alignment in another
+  and merge them to the main branch when ready
+- It’s amazing for collaboration and keeps things organized.
+*** Trunk Based Development
+- https://trunkbaseddevelopment.com/
+*** Precommit
+- Runs before ~git commit~
+- Code Formatting
+- Commit Formatting
+*** Conventional Commits
+Format:
+#+BEGIN_SRC shell
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+#+END_SRC
+Example:
+#+BEGIN_SRC shell
+feat: use poetry instead of conda
+#+END_SRC
+
+- Changelogs automatically generated
+- https://semver.org/
+** CI/CD
+- Continuous Integration
+- Continuous Deployment
+*** Features
+- Deploys Website whenever pushed to master
+- Checks merge requests for correct formatting
+- Creates PDFs of pages for Web lab use
+*** GitLab
+- Password Authetication for Website
+- CI configured in yaml
+*** TODO Support for GitHub
+** Create Your Own!
+#+BEGIN_SRC shell
+cookiecutter gl:functional-genomics/cookiecutter-open-protocol
+#+END_SRC
+*** TODO Fill in your lab info
+#+BEGIN_SRC shell
+#+END_SRC
+*** Workflow
+#+BEGIN_SRC shell
+make install
+# Serving locally http://127.0.0.1:8000/
+make serve
+#+END_SRC
+* Functional Genomics Documentation
+- https://functional-genomics.gitlab.io/docs/
+* New and improved Snakemake
+** Cookiecutter
+#+BEGIN_SRC shell
+cookiecutter gl:functional-genomics/cookiecutter-snakemake-workflow
+#+END_SRC
+** Before
+Setup
+#+BEGIN_SRC shell
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+cd project/dir
+conda env create -f environment.yml
+# Get Coffee while waiting on conda
+#+END_SRC
+Workflow
+#+BEGIN_SRC shell
+conda activate smk
+cd <project/dir>
+snakemake --use-conda --use-singularity
+# Rerunning a specific rule
+snakemake --use-conda --use-singularity -R bowtie2
+snakemake --report report.html
+#+END_SRC
+** After
+Setup
+#+BEGIN_SRC shell
+cd <project/dir>
+make install
+make
+# Or specific rules
+make smk bowtie2
+make report
+#+END_SRC
+** Cluster
+*** Before
+#+BEGIN_SRC shell
+mkdir -p ~/.config/snakemake
+cd ~/.config/snakemake
+cookiecutter https://github.com/Snakemake-Profiles/slurm.git
+cd <project/dir>
+snakemake --profile slurm
+#+END_SRC
+*** After
+#+BEGIN_SRC shell
+cd <project/dir>
+make profile slurm
+make slurm
+#+END_SRC
+* Nix development
+** Managing R environments
+- https://nixos.wiki/wiki/R
+- Reproducible R enviroments
+** Installing nix
+#+BEGIN_SRC shell
+curl https://nixos.org/nix/install | sh
+#+END_SRC
