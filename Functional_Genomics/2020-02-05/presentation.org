@@ -6,6 +6,15 @@
 #+OPTIONS: toc:nil
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+REVEAL_HLEVEL: 1
+* Functional Genomics Documentation
+- https://functional-genomics.gitlab.io/docs/
+** Functional Genomics GitLab
+https://gitlab.com/functional-genomics
+** Goals
+- Protocols all in one place
+- Updating protocols quickly
+- Better on boarding for new lab members
+- Retaining knowledge when people move on
 * Open Protocols
 ** Highlights
 - Markdown
@@ -35,9 +44,10 @@ print 'indent 4 spaces'
 #+END_SRC
 ** Collaboration through Git
 *** Intro to Git
+- [[https://happygitwithr.com/][happy git with r]]
+
 - [[https://learnxinyminutes.com/docs/git/][Learn git in y]]
 - [[https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668][Plos Computational Biology Paper]]
-- [[https://webtuu.com/blog/04/a-laymans-introduction-to-git][A layman’s introduction to git]]
 #+BEGIN_SRC shell
 git clone https://gitlab.com/functional-genomics/docs.git
 # Adds all the files in the current directory
@@ -53,11 +63,11 @@ git push origin master
   new step in the pipeline, and change the tool used for alignment in another
   and merge them to the main branch when ready
 - It’s amazing for collaboration and keeps things organized.
-*** Trunk Based Development
-- https://trunkbaseddevelopment.com/
-*** Precommit
+*** pre-commit
+- https://pre-commit.com/
 - Runs before ~git commit~
-- Code Formatting
+- Makes everyone follow the rules
+- Code Formatting([[https://www.shellcheck.net/][shellcheck]], [[https://github.com/psf/black][black]], [[https://styler.r-lib.org/][styler]])
 - Commit Formatting
 *** Conventional Commits
 Format:
@@ -85,7 +95,7 @@ feat: use poetry instead of conda
 *** GitLab
 - Password Authetication for Website
 - CI configured in yaml
-*** TODO Support for GitHub
+- Support for GitHub in the future
 ** Create Your Own!
 #+BEGIN_SRC shell
 cookiecutter gl:functional-genomics/cookiecutter-open-protocol
@@ -99,13 +109,46 @@ make install
 # Serving locally http://127.0.0.1:8000/
 make serve
 #+END_SRC
-* Functional Genomics Documentation
-- https://functional-genomics.gitlab.io/docs/
+* Nix development
+** Managing R environments
+- Reproducible R enviroments
+- https://nixos.wiki/wiki/R
+- https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable
+** Installing nix
+#+BEGIN_SRC shell
+curl https://nixos.org/nix/install | sh
+#+END_SRC
+** nix-shell for R
+~shell.nix~
+#+BEGIN_SRC nix
+let
+  pkgs = import <nixpkgs> { };
+  stdenv = pkgs.stdenv;
+in with pkgs; {
+  myProject = stdenv.mkDerivation {
+    name = "bioinformatics-pipeline";
+    version = "1";
+
+    buildInputs =
+      # Any package available in CRAN
+      [ R rPackages.edgeR rPackages.RColorBrewer tidyverse ];
+  };
+}
+#+END_SRC
+** nix-shell
+#+BEGIN_SRC shell
+$ nix-shell
+[nix-shell:~/src/fg/presentations/Functional_Genomics/2020-02-05]$ R
+>
+#+END_SRC
 * New and improved Snakemake
+** Plain R vs Snakemake example
+Coming soon!
 ** Cookiecutter
 #+BEGIN_SRC shell
 cookiecutter gl:functional-genomics/cookiecutter-snakemake-workflow
 #+END_SRC
+- Fill in your info and get started!
 ** Before
 Setup
 #+BEGIN_SRC shell
@@ -131,7 +174,7 @@ cd <project/dir>
 make install
 make
 # Or specific rules
-make smk bowtie2
+make smk rule=bowtie2
 make report
 #+END_SRC
 ** Cluster
@@ -146,14 +189,7 @@ snakemake --profile slurm
 *** After
 #+BEGIN_SRC shell
 cd <project/dir>
-make profile slurm
+make profile
 make slurm
-#+END_SRC
-* Nix development
-** Managing R environments
-- https://nixos.wiki/wiki/R
-- Reproducible R enviroments
-** Installing nix
-#+BEGIN_SRC shell
-curl https://nixos.org/nix/install | sh
+make slurm rule=bowtie2
 #+END_SRC
