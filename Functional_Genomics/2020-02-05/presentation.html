@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<title>Workflow Improvements</title>
 <meta name="author" content="Edmund Miller"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
@@ -25,24 +26,16 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h2 class="author">Edmund Miller</h2><p class="date">Created: 2020-02-04 Tue 20:10</p>
+<h1 class="title">Workflow Improvements</h1><h2 class="author">Edmund Miller</h2><p class="date">Created: 2020-02-04 Tue 23:23</p>
 </section>
 <section>
-<section id="slide-orged16e6f">
-<h2 id="orged16e6f">Functional Genomics Documentation</h2>
-<ul>
-<li><a href="https://functional-genomics.gitlab.io/docs/">https://functional-genomics.gitlab.io/docs/</a></li>
-
-</ul>
+<section id="slide-orgb297173">
+<h2 id="orgb297173">Functional Genomics Documentation</h2>
+<div class="outline-text-2" id="text-orgb297173">
+</div>
 </section>
-<section id="slide-org9403dff">
-<h3 id="org9403dff">Functional Genomics GitLab</h3>
-<p>
-<a href="https://gitlab.com/functional-genomics">https://gitlab.com/functional-genomics</a>
-</p>
-</section>
-<section id="slide-org01c1dee">
-<h3 id="org01c1dee">Goals</h3>
+<section id="slide-org0dbd856">
+<h3 id="org0dbd856">Goals</h3>
 <ul>
 <li>Protocols all in one place</li>
 <li>Updating protocols quickly</li>
@@ -51,15 +44,23 @@
 
 </ul>
 </section>
+<section id="slide-org141513d">
+<h3 id="org141513d">Functional Genomics GitLab</h3>
+<ul>
+<li><a href="https://gitlab.com/functional-genomics">https://gitlab.com/functional-genomics</a></li>
+<li><a href="https://functional-genomics.gitlab.io/docs/">Docs</a></li>
+
+</ul>
+</section>
 </section>
 <section>
-<section id="slide-orgda5a889">
-<h2 id="orgda5a889">Open Protocols</h2>
-<div class="outline-text-2" id="text-orgda5a889">
+<section id="slide-org0c32af1">
+<h2 id="org0c32af1">Open Protocols</h2>
+<div class="outline-text-2" id="text-org0c32af1">
 </div>
 </section>
-<section id="slide-org9051458">
-<h3 id="org9051458">Highlights</h3>
+<section id="slide-org0ca0f63">
+<h3 id="org0ca0f63">Highlights</h3>
 <ul>
 <li>Markdown</li>
 <li>Collaboration through Git</li>
@@ -67,46 +68,46 @@
 
 </ul>
 </section>
-<section id="slide-org8428e71">
-<h3 id="org8428e71">Markdown</h3>
-<div class="outline-text-3" id="text-org8428e71">
+<section id="slide-orga6ab2e1">
+<h3 id="orga6ab2e1">Markdown</h3>
+<div class="outline-text-3" id="text-orga6ab2e1">
 </div>
 </section>
-<section id="slide-org17f8068">
-<h4 id="org17f8068">Intro</h4>
+<section id="slide-org2505f8b">
+<h4 id="org2505f8b">Intro</h4>
 <ul>
 <li><a href="https://commonmark.org/">https://commonmark.org/</a></li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-markdown"><span style="color: #ff6c6b; font-weight: bold;"># </span><span style="color: #ff6c6b; font-weight: bold;">Heading 1</span>
-<span style="color: #5B6268;">*</span><span style="color: #a9a1e1; font-style: italic;">Italic</span><span style="color: #5B6268;">*</span>
-<span style="color: #5B6268;">**</span><span style="color: #da8548; font-weight: bold;">Bold</span><span style="color: #5B6268;">**</span>
+<pre  class="src src-markdown"><span style="color: #e45649; font-weight: bold;"># </span><span style="color: #e45649; font-weight: bold;">Heading 1</span>
+<span style="color: #383a42;">*</span><span style="color: #b751b6; font-style: italic;">Italic</span><span style="color: #383a42;">*</span>
+<span style="color: #383a42;">**</span><span style="color: #da8548; font-weight: bold;">Bold</span><span style="color: #383a42;">**</span>
 
-<span style="color: #ff6c6b; font-weight: bold;">## </span><span style="color: #ff6c6b; font-weight: bold;">Heading 2</span>
-<span style="color: #ff6c6b;">-</span> List
-<span style="color: #ff6c6b;">-</span> List
-<span style="color: #ff6c6b;">-</span> List
+<span style="color: #e45649; font-weight: bold;">## </span><span style="color: #e45649; font-weight: bold;">Heading 2</span>
+<span style="color: #e45649;">-</span> List
+<span style="color: #e45649;">-</span> List
+<span style="color: #e45649;">-</span> List
 
-<span style="color: #ff6c6b; font-weight: bold;">### Heading 3</span>
-<span style="color: #5B6268;">---</span>
+<span style="color: #e45649; font-weight: bold;">### Heading 3</span>
+<span style="color: #383a42;">---</span>
 
-<span style="color: #5B6268; background-color: #2e3138;">```</span><span style="color: #ECBE7B; background-color: #2e3138;">python</span>
-<span style="color: #5B6268; background-color: #2e3138;"># </span><span style="color: #5B6268; background-color: #2e3138;">code block</span>
-<span style="color: #51afef; background-color: #2e3138;">print</span><span style="background-color: #2e3138;"> </span><span style="color: #98be65; background-color: #2e3138;">'3 backticks or'</span>
-<span style="color: #51afef; background-color: #2e3138;">print</span><span style="background-color: #2e3138;"> </span><span style="color: #98be65; background-color: #2e3138;">'indent 4 spaces'</span>
-<span style="color: #5B6268; background-color: #2e3138;">```</span>
+<span style="color: #383a42; background-color: #e7e7e7;">```</span><span style="color: #986801; background-color: #e7e7e7;">python</span>
+<span style="color: #9ca0a4; background-color: #e7e7e7;"># </span><span style="color: #9ca0a4; background-color: #e7e7e7;">code block</span>
+<span style="color: #e45649; background-color: #e7e7e7;">print</span><span style="background-color: #e7e7e7;"> </span><span style="color: #50a14f; background-color: #e7e7e7;">'3 backticks or'</span>
+<span style="color: #e45649; background-color: #e7e7e7;">print</span><span style="background-color: #e7e7e7;"> </span><span style="color: #50a14f; background-color: #e7e7e7;">'indent 4 spaces'</span>
+<span style="color: #383a42; background-color: #e7e7e7;">```</span>
 </pre>
 </div>
 </section>
-<section id="slide-org5b18795">
-<h3 id="org5b18795">Collaboration through Git</h3>
-<div class="outline-text-3" id="text-org5b18795">
+<section id="slide-org30c8b9d">
+<h3 id="org30c8b9d">Collaboration through Git</h3>
+<div class="outline-text-3" id="text-org30c8b9d">
 </div>
 </section>
-<section id="slide-org166355b">
-<h4 id="org166355b">Intro to Git</h4>
+<section id="slide-org4a7142f">
+<h4 id="org4a7142f">Intro to Git</h4>
 <ul>
 <li><a href="https://happygitwithr.com/">happy git with r</a></li>
 
@@ -116,18 +117,18 @@
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><span style="color: #ECBE7B;">git</span> clone https://gitlab.com/functional-genomics/docs.git
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Adds all the files in the current directory</span>
-<span style="color: #ECBE7B;">git</span> add .
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Creating a commit message</span>
-<span style="color: #ECBE7B;">git</span> commit -m <span style="color: #98be65;">"A commit message"</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Pushing to the remote repo</span>
-<span style="color: #ECBE7B;">git</span> push origin master
+<pre  class="src src-shell"><span style="color: #986801;">git</span> clone https://gitlab.com/functional-genomics/docs.git
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Adds all the files in the current directory</span>
+<span style="color: #986801;">git</span> add .
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Creating a commit message</span>
+<span style="color: #986801;">git</span> commit -m <span style="color: #50a14f;">"A commit message"</span>
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Pushing to the remote repo</span>
+<span style="color: #986801;">git</span> push origin master
 </pre>
 </div>
 </section>
-<section id="slide-orgda473f7">
-<h4 id="orgda473f7">Why should you use git?</h4>
+<section id="slide-org276ab18">
+<h4 id="org276ab18">Why should you use git?</h4>
 <ul>
 <li>It’s a super save button that lets you create snapshots/backups of your work.</li>
 <li>Lets you work on multiple versions of a project simultaneously – i.e. create a
@@ -137,8 +138,8 @@ and merge them to the main branch when ready</li>
 
 </ul>
 </section>
-<section id="slide-org284bd87">
-<h4 id="org284bd87">pre-commit</h4>
+<section id="slide-org189217a">
+<h4 id="org189217a">pre-commit</h4>
 <ul>
 <li><a href="https://pre-commit.com/">https://pre-commit.com/</a></li>
 <li>Runs before <code>git commit</code></li>
@@ -148,18 +149,18 @@ and merge them to the main branch when ready</li>
 
 </ul>
 </section>
-<section id="slide-orga6ad6fc">
-<h4 id="orga6ad6fc">Conventional Commits</h4>
+<section id="slide-org39cfd15">
+<h4 id="org39cfd15">Conventional Commits</h4>
 <p>
 Format:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell">&lt;type&gt;<span style="color: #51afef;">[</span>optional scope<span style="color: #51afef;">]</span>: &lt;description&gt;
+<pre  class="src src-shell">&lt;type&gt;<span style="color: #4078f2;">[</span>optional scope<span style="color: #4078f2;">]</span>: &lt;description&gt;
 
-<span style="color: #51afef;">[</span>optional body<span style="color: #51afef;">]</span>
+<span style="color: #4078f2;">[</span>optional body<span style="color: #4078f2;">]</span>
 
-<span style="color: #51afef;">[</span>optional footer<span style="color: #c678dd;">(</span>s<span style="color: #c678dd;">)</span><span style="color: #51afef;">]</span>
+<span style="color: #4078f2;">[</span>optional footer<span style="color: #a626a4;">(</span>s<span style="color: #a626a4;">)</span><span style="color: #4078f2;">]</span>
 </pre>
 </div>
 <p>
@@ -177,16 +178,16 @@ Example:
 
 </ul>
 </section>
-<section id="slide-org0a07776">
-<h3 id="org0a07776">CI/CD</h3>
+<section id="slide-org62d02c7">
+<h3 id="org62d02c7">CI/CD</h3>
 <ul>
 <li>Continuous Integration</li>
 <li>Continuous Deployment</li>
 
 </ul>
 </section>
-<section id="slide-orgbfe5b35">
-<h4 id="orgbfe5b35">Features</h4>
+<section id="slide-org92a2015">
+<h4 id="org92a2015">Features</h4>
 <ul>
 <li>Deploys Website whenever pushed to master</li>
 <li>Checks merge requests for correct formatting</li>
@@ -194,8 +195,8 @@ Example:
 
 </ul>
 </section>
-<section id="slide-orge4856ed">
-<h4 id="orge4856ed">GitLab</h4>
+<section id="slide-orga975c9e">
+<h4 id="orga975c9e">GitLab</h4>
 <ul>
 <li>Password Authetication for Website</li>
 <li>CI configured in yaml</li>
@@ -203,41 +204,37 @@ Example:
 
 </ul>
 </section>
-<section id="slide-org2530085">
-<h3 id="org2530085">Create Your Own!</h3>
+<section id="slide-org6741c61">
+<h3 id="org6741c61">Create Your Own!</h3>
 <div class="org-src-container">
 
-<pre  class="src src-shell">cookiecutter gl:functional-genomics/cookiecutter-open-protocol
+<pre  class="src src-shell">cookiecutter gl:functional-genomics/open-protocols/cookiecutter-open-protocol
 </pre>
 </div>
 </section>
-<section id="slide-org9c09c70">
-<h4 id="org9c09c70"><span class="todo TODO">TODO</span> Fill in your lab info</h4>
-<div class="org-src-container">
-
-<pre  class="src src-shell">
-</pre>
-</div>
+<section id="slide-org00a9d92">
+<h4 id="org00a9d92">Fill in your lab info</h4>
+<a href="https://asciinema.org/a/5Hv2mtnYBJQ74u4MzMOwOl1yh" target="_blank"><img src="https://asciinema.org/a/5Hv2mtnYBJQ74u4MzMOwOl1yh.svg" /></a>
 </section>
-<section id="slide-org520a242">
-<h4 id="org520a242">Workflow</h4>
+<section id="slide-org373a7cd">
+<h4 id="org373a7cd">Workflow</h4>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><span style="color: #ECBE7B;">make</span> install
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Serving locally http://127.0.0.1:8000/</span>
-<span style="color: #ECBE7B;">make</span> serve
+<pre  class="src src-shell"><span style="color: #986801;">make</span> install
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Serving locally http://127.0.0.1:8000/</span>
+<span style="color: #986801;">make</span> serve
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org0eed291">
-<h2 id="org0eed291">Nix development</h2>
-<div class="outline-text-2" id="text-org0eed291">
+<section id="slide-orgfa05fe3">
+<h2 id="orgfa05fe3">Nix development</h2>
+<div class="outline-text-2" id="text-orgfa05fe3">
 </div>
 </section>
-<section id="slide-org475ae02">
-<h3 id="org475ae02">Managing R environments</h3>
+<section id="slide-org8ccf40e">
+<h3 id="org8ccf40e">Managing R environments</h3>
 <ul>
 <li>Reproducible R enviroments</li>
 <li><a href="https://nixos.wiki/wiki/R">https://nixos.wiki/wiki/R</a></li>
@@ -245,62 +242,62 @@ Example:
 
 </ul>
 </section>
-<section id="slide-orgf7d0c3d">
-<h3 id="orgf7d0c3d">Installing nix</h3>
+<section id="slide-org76a15ef">
+<h3 id="org76a15ef">Installing nix</h3>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><span style="color: #ECBE7B;">curl</span> https://nixos.org/nix/install | sh
+<pre  class="src src-shell"><span style="color: #986801;">curl</span> https://nixos.org/nix/install | sh
 </pre>
 </div>
 </section>
-<section id="slide-org2042b97">
-<h3 id="org2042b97">nix-shell for R</h3>
+<section id="slide-orgf5e576b">
+<h3 id="orgf5e576b">nix-shell for R</h3>
 <p>
 <code>shell.nix</code>
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-nix"><span style="color: #51afef;">let</span>
-  <span style="color: #dcaeea;">pkgs</span> = <span style="color: #c678dd;">import</span> <span style="color: #a9a1e1;">&lt;nixpkgs&gt;</span> { };
-  <span style="color: #dcaeea;">stdenv</span> = pkgs.stdenv;
-<span style="color: #51afef;">in</span> with pkgs; {
-  <span style="color: #dcaeea;">myProject</span> = stdenv.mkDerivation {
-    <span style="color: #dcaeea;">name</span> = <span style="color: #98be65;">"bioinformatics-pipeline"</span>;
-    <span style="color: #dcaeea;">version</span> = <span style="color: #98be65;">"1"</span>;
+<pre  class="src src-nix"><span style="color: #e45649;">let</span>
+  <span style="color: #6a1868;">pkgs</span> = <span style="color: #a626a4;">import</span> <span style="color: #b751b6;">&lt;nixpkgs&gt;</span> { };
+  <span style="color: #6a1868;">stdenv</span> = pkgs.stdenv;
+<span style="color: #e45649;">in</span> with pkgs; {
+  <span style="color: #6a1868;">myProject</span> = stdenv.mkDerivation {
+    <span style="color: #6a1868;">name</span> = <span style="color: #50a14f;">"bioinformatics-pipeline"</span>;
+    <span style="color: #6a1868;">version</span> = <span style="color: #50a14f;">"1"</span>;
 
-    <span style="color: #dcaeea;">buildInputs</span> =
-      <span style="color: #5B6268;"># Any package available in CRAN</span>
+    <span style="color: #6a1868;">buildInputs</span> =
+      <span style="color: #9ca0a4;"># Any package available in CRAN</span>
       [ R rPackages.edgeR rPackages.RColorBrewer tidyverse ];
   };
 }
 </pre>
 </div>
 </section>
-<section id="slide-org13016da">
-<h3 id="org13016da">nix-shell</h3>
+<section id="slide-org70574a0">
+<h3 id="org70574a0">nix-shell</h3>
 <div class="org-src-container">
 
 <pre  class="src src-shell">$ nix-shell
-<span style="color: #51afef;">[</span>nix-shell:~/src/fg/presentations/Functional_Genomics/2020-02-05<span style="color: #51afef;">]</span>$ R
+<span style="color: #4078f2;">[</span>nix-shell:~/src/fg/presentations/Functional_Genomics/2020-02-05<span style="color: #4078f2;">]</span>$ R
 &gt;
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org229f246">
-<h2 id="org229f246">New and improved Snakemake</h2>
-<div class="outline-text-2" id="text-org229f246">
+<section id="slide-orgc9e6988">
+<h2 id="orgc9e6988">New and improved Snakemake</h2>
+<div class="outline-text-2" id="text-orgc9e6988">
 </div>
 </section>
-<section id="slide-org808f0aa">
-<h3 id="org808f0aa">Plain R vs Snakemake example</h3>
+<section id="slide-org6a7900d">
+<h3 id="org6a7900d">Plain R vs Snakemake example</h3>
 <p>
 Coming soon!
 </p>
 </section>
-<section id="slide-orgb10a33e">
-<h3 id="orgb10a33e">Cookiecutter</h3>
+<section id="slide-org5275c89">
+<h3 id="org5275c89">Cookiecutter</h3>
 <div class="org-src-container">
 
 <pre  class="src src-shell">cookiecutter gl:functional-genomics/cookiecutter-snakemake-workflow
@@ -311,8 +308,8 @@ Coming soon!
 
 </ul>
 </section>
-<section id="slide-org91b2895">
-<h3 id="org91b2895">Before</h3>
+<section id="slide-org217e148">
+<h3 id="org217e148">Before</h3>
 <p>
 Setup
 </p>
@@ -320,9 +317,9 @@ Setup
 
 <pre  class="src src-shell">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
-<span style="color: #ECBE7B;">cd</span> project/dir
+<span style="color: #986801;">cd</span> project/dir
 conda env create -f environment.yml
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Get Coffee while waiting on conda</span>
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Get Coffee while waiting on conda</span>
 </pre>
 </div>
 <p>
@@ -331,55 +328,57 @@ Workflow
 <div class="org-src-container">
 
 <pre  class="src src-shell">conda activate smk
-<span style="color: #ECBE7B;">cd</span> &lt;project/dir&gt;
+<span style="color: #986801;">cd</span> &lt;project/dir&gt;
 snakemake --use-conda --use-singularity
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Rerunning a specific rule</span>
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Rerunning a specific rule</span>
 snakemake --use-conda --use-singularity -R bowtie2
 snakemake --report report.html
 </pre>
 </div>
 </section>
-<section id="slide-orgd3ac54c">
-<h3 id="orgd3ac54c">After</h3>
+<section id="slide-org4875d20">
+<h3 id="org4875d20">After</h3>
 <p>
 Setup
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><span style="color: #ECBE7B;">cd</span> &lt;project/dir&gt;
-<span style="color: #ECBE7B;">make</span> install
-<span style="color: #ECBE7B;">make</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Or specific rules</span>
-<span style="color: #ECBE7B;">make</span> smk <span style="color: #dcaeea;">rule</span>=bowtie2
-<span style="color: #ECBE7B;">make</span> report
+<pre  class="src src-shell"><span style="color: #986801;">cd</span> &lt;project/dir&gt;
+<span style="color: #986801;">make</span> install
+<span style="color: #986801;">make</span>
+<span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">Or specific rules</span>
+<span style="color: #986801;">make</span> smk <span style="color: #6a1868;">rule</span>=bowtie2
+<span style="color: #986801;">make</span> report
 </pre>
 </div>
 </section>
-<section id="slide-org18c16e2">
-<h3 id="org18c16e2">Cluster</h3>
-<div class="outline-text-3" id="text-org18c16e2">
+<section id="slide-org726596b">
+<h3 id="org726596b">Cluster</h3>
+<div class="outline-text-3" id="text-org726596b">
 </div>
 </section>
-<section id="slide-org8a0d9e5">
-<h4 id="org8a0d9e5">Before</h4>
+<section id="slide-orgf2f8923">
+<h4 id="orgf2f8923">Before</h4>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><span style="color: #ECBE7B;">mkdir</span> -p ~/.config/snakemake
-<span style="color: #ECBE7B;">cd</span> ~/.config/snakemake
+<pre  class="src src-shell"><span style="color: #986801;">mkdir</span> -p ~/.config/snakemake
+<span style="color: #986801;">cd</span> ~/.config/snakemake
 cookiecutter https://github.com/Snakemake-Profiles/slurm.git
-<span style="color: #ECBE7B;">cd</span> &lt;project/dir&gt;
-snakemake --profile slurm
+<span style="color: #986801;">cd</span> &lt;project/dir&gt;
+activate singularity
+snakemake --profile slurm --use-conda --use-singularity
+snakemake --profile slurm --use-conda --use-singularity -R bowtie2
 </pre>
 </div>
 </section>
-<section id="slide-org137e0f6">
-<h4 id="org137e0f6">After</h4>
+<section id="slide-orgaac2940">
+<h4 id="orgaac2940">After</h4>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><span style="color: #ECBE7B;">cd</span> &lt;project/dir&gt;
-<span style="color: #ECBE7B;">make</span> profile
-<span style="color: #ECBE7B;">make</span> slurm
-<span style="color: #ECBE7B;">make</span> slurm <span style="color: #dcaeea;">rule</span>=bowtie2
+<pre  class="src src-shell"><span style="color: #986801;">cd</span> &lt;project/dir&gt;
+<span style="color: #986801;">make</span> profile
+<span style="color: #986801;">make</span> slurm
+<span style="color: #986801;">make</span> slurm <span style="color: #6a1868;">rule</span>=bowtie2
 </pre>
 </div>
 </section>

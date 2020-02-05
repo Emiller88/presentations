@@ -1,5 +1,5 @@
 #+REVEAL_THEME: white
-#+TITLE:
+#+TITLE: Workflow Improvements
 #+AUTHOR: Edmund Miller
 #+OPTIONS: reveal_title_slide:nil
 #+OPTIONS: num:nil
@@ -7,14 +7,14 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+REVEAL_HLEVEL: 1
 * Functional Genomics Documentation
-- https://functional-genomics.gitlab.io/docs/
-** Functional Genomics GitLab
-https://gitlab.com/functional-genomics
 ** Goals
 - Protocols all in one place
 - Updating protocols quickly
 - Better on boarding for new lab members
 - Retaining knowledge when people move on
+** Functional Genomics GitLab
+- https://gitlab.com/functional-genomics
+- [[https://functional-genomics.gitlab.io/docs/][Docs]]
 * Open Protocols
 ** Highlights
 - Markdown
@@ -98,11 +98,10 @@ feat: use poetry instead of conda
 - Support for GitHub in the future
 ** Create Your Own!
 #+BEGIN_SRC shell
-cookiecutter gl:functional-genomics/cookiecutter-open-protocol
+cookiecutter gl:functional-genomics/open-protocols/cookiecutter-open-protocol
 #+END_SRC
-*** TODO Fill in your lab info
-#+BEGIN_SRC shell
-#+END_SRC
+*** Fill in your lab info
+#+REVEAL_HTML:<a href="https://asciinema.org/a/5Hv2mtnYBJQ74u4MzMOwOl1yh" target="_blank"><img src="https://asciinema.org/a/5Hv2mtnYBJQ74u4MzMOwOl1yh.svg" /></a>
 *** Workflow
 #+BEGIN_SRC shell
 make install
@@ -184,7 +183,9 @@ mkdir -p ~/.config/snakemake
 cd ~/.config/snakemake
 cookiecutter https://github.com/Snakemake-Profiles/slurm.git
 cd <project/dir>
-snakemake --profile slurm
+activate singularity
+snakemake --profile slurm --use-conda --use-singularity
+snakemake --profile slurm --use-conda --use-singularity -R bowtie2
 #+END_SRC
 *** After
 #+BEGIN_SRC shell
