@@ -1,0 +1,19 @@
+2023-07-11 17:51:23	-	boring_poitras	-	e27ba53743208c2d9e0d946999d79385	8933bfd3-642c-4736-8eea-ae8a848faa96	nextflow run main.nf
+2023-07-11 17:51:50	-	goofy_ardinghelli	-	de6686cc9f83268893547f09b46c6425	a0b2624f-90c5-413c-bd44-5395397a4139	nextflow run main.nf
+2023-07-11 17:51:58	-	astonishing_hilbert	-	6b728424194d4cb0b81192d9077e7ae3	3275ecf5-b603-4dd3-8251-ed4786445b61	nextflow run main.nf
+2023-07-11 17:52:31	3.6s	crazy_mcclintock	ERR	5bfc7408748be70669766f3cb7836764	f392ec04-1bdc-48f6-823d-acad78be21b2	nextflow run main.nf
+2023-07-11 17:52:49	7.7s	lonely_snyder	ERR	f288158195001b5de0cc28226a52aa7c	31f6b83c-483e-4ef0-9b8c-637653902289	nextflow run main.nf
+2023-07-11 17:55:50	5.9s	clever_austin	ERR	bf43e75f8bf4729ecc3763e9e2178246	ce9a0f38-8793-40e5-bd93-0993e8108aac	nextflow run main.nf
+2023-07-11 17:56:09	7.4s	confident_shaw	ERR	ee7a955e81cb2d291933ec0c5619793e	1bda81e3-911b-4762-89e1-c0b1390009b7	nextflow run main.nf
+2023-07-11 17:57:32	1m 29s	nice_easley	ERR	64b6f7206768128e1957f947bb17e848	c4cccce6-188d-41da-ad9e-45e7ca279e98	nextflow run main.nf
+2023-07-11 18:00:44	8.9s	loving_mirzakhani	ERR	2e44de54cfdae9520cb9003b6c059fd8	612054a5-f108-45ff-9e1a-8ef103762141	nextflow run main.nf
+2023-07-11 18:01:51	1m 43s	spontaneous_sammet	OK	d805c87ec224ad8bf8637c7238154f43	5d82d9aa-bb2b-449a-a164-4463fde2ce62	nextflow run main.nf
+2023-07-11 18:04:13	8.6s	confident_keller	ERR	29ee4d925dd994638c58424c891accd7	5b750489-0672-495a-92aa-e07c6668525a	nextflow run main.nf
+2023-07-17 08:16:06	40.1s	lonely_visvesvaraya	ERR	6857fe7ea3502c861e069d855cf7b08e	19503888-25b8-49ad-b88f-6a9535129d1b	nextflow run .
+2023-07-17 08:16:49	8s	nostalgic_carlsson	ERR	1017df4f07a993e26c5f802d492146c2	1159fc37-31c6-4e6c-b55b-54095f98bb61	nextflow run .
+2023-07-17 08:17:46	5.2s	grave_mccarthy	ERR	3c57d06748d3be446c4ccf0888f21194	c9cf5ebc-099e-4129-a508-60cb137886b0	nextflow run .
+2023-07-17 08:18:31	12.5s	jovial_mayer	ERR	3c57d06748d3be446c4ccf0888f21194	71730ef5-1feb-489e-9ca1-6040c689b417	nextflow run .
+2023-07-17 08:24:41	4.3s	prickly_heisenberg	ERR	e355312d8b089e6d598f2ee8f3f9bac7	b05b4559-1ef7-43dc-89e0-701871edd96b	nextflow run .
+2023-07-17 08:25:16	5.1s	berserk_euclid	ERR	3c57d06748d3be446c4ccf0888f21194	8c6310f2-219f-4fef-b8cc-8d9dc17d2050	nextflow run .
+2023-07-17 08:27:35	4.1s	sharp_babbage	ERR	3c57d06748d3be446c4ccf0888f21194	e34dd342-4287-4711-bdce-8d9c111de559	nextflow run .
+2023-07-17 08:28:47	6.7s	disturbed_maxwell	ERR	3c57d06748d3be446c4ccf0888f21194	e6b6ff90-fe4e-4ecc-9672-641b9827d9da	nextflow run .

@@ -1,0 +1,21 @@
+Unable to find image 'julia:latest' locally
+latest: Pulling from library/julia
+faef57eae888: Pulling fs layer
+06944e2a3b3e: Pulling fs layer
+86dddcf3e65c: Pulling fs layer
+72cfdb150b09: Pulling fs layer
+72cfdb150b09: Waiting
+06944e2a3b3e: Verifying Checksum
+06944e2a3b3e: Download complete
+72cfdb150b09: Verifying Checksum
+72cfdb150b09: Download complete
+faef57eae888: Download complete
+86dddcf3e65c: Verifying Checksum
+86dddcf3e65c: Download complete
+faef57eae888: Pull complete
+06944e2a3b3e: Pull complete
+86dddcf3e65c: Pull complete
+72cfdb150b09: Pull complete
+Digest: sha256:e95993d17016c2df34d63bc7d2a0673e69f92d06cb1e393f0217894a874a8b06
+Status: Downloaded newer image for julia:latest
+/home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/95/ba80baf3ce1b7271b14ce559e57aad/.command.sh: line 2:     #!/usr/bin/env: No such file or directory

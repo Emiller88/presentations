@@ -1,0 +1,842 @@
+% Created 2023-07-26 Wed 17:37
+% Intended LaTeX compiler: lualatex
+\documentclass[bigger]{beamer}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{scrextend}
+\usepackage{xcolor}
+\usepackage[inkscapelatex=false,inkscapearea=page]{svg}
+\titlegraphic{\hfill\includesvg[height=2cm]{figures/logo.svg}}
+\usepackage[scale=0.88]{sourcecodepro}
+\newcommand{\codefont}{\footnotesize\fontseries{mb}\selectfont}
+\usepackage{emoji}
+\usepackage{scrextend}
+\NewCommandCopy{\moldusetheme}{\usetheme}
+\renewcommand*{\usetheme}[2][]{\moldusetheme[#1]{#2}  \setbeamertemplate{items}{$\bullet$}  \setbeamerfont{block title}{size=\normalsize, series=\bfseries\parbox{0pt}{\rule{0pt}{4ex}}}}
+\makeatletter
+\makeatother
+\usepackage{etoolbox}
+\AtEndPreamble{\setmetropolislinewidth}
+\definecolor{EfD}{HTML}{fafafa}
+\usetheme[progressbar=foot]{metropolis}
+\author{Edmund Miller}
+\date{July 26th, 2023}
+\title{Unlocking the Power of Genomic Analysis in Julia}
+\hypersetup{
+ pdfauthor={Edmund Miller},
+ pdftitle={Unlocking the Power of Genomic Analysis in Julia},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.0.92 (Org mode 9.7)}, 
+ pdflang={English}}
+
+% Setup for code blocks [1/2]
+
+\usepackage{fvextra}
+
+\fvset{%
+  commandchars=\\\{\},
+  highlightcolor=white!95!black!80!blue,
+  breaklines=true,
+  breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}}
+
+% Make line numbers smaller and grey.
+\renewcommand\theFancyVerbLine{\footnotesize\color{black!40!white}\arabic{FancyVerbLine}}
+
+\usepackage{xcolor}
+
+% In case engrave-faces-latex-gen-preamble has not been run.
+\providecolor{EfD}{HTML}{f7f7f7}
+\providecolor{EFD}{HTML}{28292e}
+
+% Define a Code environment to prettily wrap the fontified code.
+\usepackage[breakable,xparse]{tcolorbox}
+\DeclareTColorBox[]{Code}{o}%
+{colback=EfD!98!EFD, colframe=EfD!95!EFD,
+  fontupper=\footnotesize\setlength{\fboxsep}{0pt},
+  colupper=EFD,
+  IfNoValueTF={#1}%
+  {boxsep=2pt, arc=2.5pt, outer arc=2.5pt,
+    boxrule=0.5pt, left=2pt}%
+  {boxsep=2.5pt, arc=0pt, outer arc=0pt,
+    boxrule=0pt, leftrule=1.5pt, left=0.5pt},
+  right=2pt, top=1pt, bottom=0.5pt,
+  breakable}
+
+% Support listings with captions
+\usepackage{float}
+\floatstyle{plain}
+\newfloat{listing}{htbp}{lst}
+\newcommand{\listingsname}{Listing}
+\floatname{listing}{\listingsname}
+\newcommand{\listoflistingsname}{List of Listings}
+\providecommand{\listoflistings}{\listof{listing}{\listoflistingsname}}
+
+
+% Setup for code blocks [2/2]: syntax highlighting colors
+
+\newcommand\efstrut{\vrule height 2.1ex depth 0.8ex width 0pt}
+\definecolor{EFD}{HTML}{383a42}
+\definecolor{EfD}{HTML}{fafafa}
+\newcommand{\EFD}[1]{\textcolor{EFD}{#1}} % default
+\newcommand{\EFvp}[1]{#1} % variable-pitch
+\definecolor{EFh}{HTML}{9ca0a4}
+\newcommand{\EFh}[1]{\textcolor{EFh}{#1}} % shadow
+\definecolor{EFsc}{HTML}{50a14f}
+\newcommand{\EFsc}[1]{\textcolor{EFsc}{#1}} % success
+\definecolor{EFw}{HTML}{986801}
+\newcommand{\EFw}[1]{\textcolor{EFw}{#1}} % warning
+\definecolor{EFe}{HTML}{e45649}
+\newcommand{\EFe}[1]{\textcolor{EFe}{#1}} % error
+\definecolor{EFl}{HTML}{4078f2}
+\newcommand{\EFl}[1]{\textcolor{EFl}{\textbf{#1}}} % link
+\definecolor{EFlv}{HTML}{8b008b}
+\newcommand{\EFlv}[1]{\textcolor{EFlv}{\textbf{#1}}} % link-visited
+\definecolor{EFhi}{HTML}{f0f0f0}
+\definecolor{Efhi}{HTML}{4078f2}
+\newcommand{\EFhi}[1]{\colorbox{Efhi}{\efstrut{}\textcolor{EFhi}{#1}}} % highlight
+\definecolor{EFc}{HTML}{9ca0a4}
+\newcommand{\EFc}[1]{\textcolor{EFc}{#1}} % font-lock-comment-face
+\definecolor{EFcd}{HTML}{9ca0a4}
+\newcommand{\EFcd}[1]{\textcolor{EFcd}{#1}} % font-lock-comment-delimiter-face
+\definecolor{EFs}{HTML}{50a14f}
+\newcommand{\EFs}[1]{\textcolor{EFs}{#1}} % font-lock-string-face
+\definecolor{EFd}{HTML}{84888b}
+\newcommand{\EFd}[1]{\textcolor{EFd}{\textit{#1}}} % font-lock-doc-face
+\definecolor{EFm}{HTML}{b751b6}
+\newcommand{\EFm}[1]{\textcolor{EFm}{#1}} % font-lock-doc-markup-face
+\definecolor{EFk}{HTML}{e45649}
+\newcommand{\EFk}[1]{\textcolor{EFk}{#1}} % font-lock-keyword-face
+\definecolor{EFb}{HTML}{a626a4}
+\newcommand{\EFb}[1]{\textcolor{EFb}{#1}} % font-lock-builtin-face
+\definecolor{EFf}{HTML}{a626a4}
+\newcommand{\EFf}[1]{\textcolor{EFf}{#1}} % font-lock-function-name-face
+\definecolor{EFv}{HTML}{6a1868}
+\newcommand{\EFv}[1]{\textcolor{EFv}{#1}} % font-lock-variable-name-face
+\definecolor{EFt}{HTML}{986801}
+\newcommand{\EFt}[1]{\textcolor{EFt}{#1}} % font-lock-type-face
+\definecolor{EFo}{HTML}{b751b6}
+\newcommand{\EFo}[1]{\textcolor{EFo}{#1}} % font-lock-constant-face
+\definecolor{EFwr}{HTML}{986801}
+\newcommand{\EFwr}[1]{\textcolor{EFwr}{#1}} % font-lock-warning-face
+\definecolor{EFnc}{HTML}{4078f2}
+\newcommand{\EFnc}[1]{\textcolor{EFnc}{\textbf{#1}}} % font-lock-negation-char-face
+\definecolor{EFpp}{HTML}{4078f2}
+\newcommand{\EFpp}[1]{\textcolor{EFpp}{\textbf{#1}}} % font-lock-preprocessor-face
+\definecolor{EFrc}{HTML}{4078f2}
+\newcommand{\EFrc}[1]{\textcolor{EFrc}{\textbf{#1}}} % font-lock-regexp-grouping-construct
+\definecolor{EFrb}{HTML}{4078f2}
+\newcommand{\EFrb}[1]{\textcolor{EFrb}{\textbf{#1}}} % font-lock-regexp-grouping-backslash
+\definecolor{Efob}{HTML}{e7e7e7}
+\newcommand{\EFob}[1]{\colorbox{Efob}{\efstrut{}#1}} % org-block
+\definecolor{Efobb}{HTML}{e7e7e7}
+\newcommand{\EFobb}[1]{\colorbox{Efobb}{\efstrut{}\textit{#1}}} % org-block-begin-line
+\definecolor{Efobe}{HTML}{e7e7e7}
+\newcommand{\EFobe}[1]{\colorbox{Efobe}{\efstrut{}\textit{#1}}} % org-block-end-line
+\definecolor{EFOa}{HTML}{e45649}
+\newcommand{\EFOa}[1]{\textcolor{EFOa}{\textbf{#1}}} % outline-1
+\definecolor{EFOb}{HTML}{da8548}
+\newcommand{\EFOb}[1]{\textcolor{EFOb}{\textbf{#1}}} % outline-2
+\definecolor{EFOc}{HTML}{b751b6}
+\newcommand{\EFOc}[1]{\textcolor{EFOc}{\textbf{#1}}} % outline-3
+\definecolor{EFOd}{HTML}{6f99f5}
+\newcommand{\EFOd}[1]{\textcolor{EFOd}{\textbf{#1}}} % outline-4
+\definecolor{EFOe}{HTML}{bc5cba}
+\newcommand{\EFOe}[1]{\textcolor{EFOe}{\textbf{#1}}} % outline-5
+\definecolor{EFOf}{HTML}{9fbbf8}
+\newcommand{\EFOf}[1]{\textcolor{EFOf}{\textbf{#1}}} % outline-6
+\definecolor{EFOg}{HTML}{d292d1}
+\newcommand{\EFOg}[1]{\textcolor{EFOg}{\textbf{#1}}} % outline-7
+\definecolor{EFOh}{HTML}{d8e4fc}
+\newcommand{\EFOh}[1]{\textcolor{EFOh}{\textbf{#1}}} % outline-8
+\definecolor{EFhn}{HTML}{da8548}
+\newcommand{\EFhn}[1]{\textcolor{EFhn}{\textbf{#1}}} % highlight-numbers-number
+\newcommand{\EFhq}[1]{#1} % highlight-quoted-quote
+\newcommand{\EFhs}[1]{#1} % highlight-quoted-symbol
+\definecolor{EFrda}{HTML}{4078f2}
+\newcommand{\EFrda}[1]{\textcolor{EFrda}{#1}} % rainbow-delimiters-depth-1-face
+\definecolor{EFrdb}{HTML}{a626a4}
+\newcommand{\EFrdb}[1]{\textcolor{EFrdb}{#1}} % rainbow-delimiters-depth-2-face
+\definecolor{EFrdc}{HTML}{50a14f}
+\newcommand{\EFrdc}[1]{\textcolor{EFrdc}{#1}} % rainbow-delimiters-depth-3-face
+\definecolor{EFrdd}{HTML}{b751b6}
+\newcommand{\EFrdd}[1]{\textcolor{EFrdd}{#1}} % rainbow-delimiters-depth-4-face
+\definecolor{EFrde}{HTML}{4db5bd}
+\newcommand{\EFrde}[1]{\textcolor{EFrde}{#1}} % rainbow-delimiters-depth-5-face
+\definecolor{EFrdf}{HTML}{4078f2}
+\newcommand{\EFrdf}[1]{\textcolor{EFrdf}{#1}} % rainbow-delimiters-depth-6-face
+\definecolor{EFrdg}{HTML}{a626a4}
+\newcommand{\EFrdg}[1]{\textcolor{EFrdg}{#1}} % rainbow-delimiters-depth-7-face
+\definecolor{EFrdh}{HTML}{50a14f}
+\newcommand{\EFrdh}[1]{\textcolor{EFrdh}{#1}} % rainbow-delimiters-depth-8-face
+\definecolor{EFrdi}{HTML}{b751b6}
+\newcommand{\EFrdi}[1]{\textcolor{EFrdi}{#1}} % rainbow-delimiters-depth-9-face
+\usepackage{biblatex}
+\addbibresource{~/sync/reference/bibliography.bib}
+\addbibresource{~/sync/reference/biochemistry.bib}
+\addbibresource{~/sync/reference/genomics.bib}
+\addbibresource{~/sync/reference/molecular_biology.bib}
+\addbibresource{~/sync/reference/molecular_biology_project.bib}
+\addbibresource{~/sync/reference/viralintegration.bib}
+\addbibresource{~/sync/reference/books.bib}
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+\label{sec:org8628067}
+\begin{frame}[label={sec:orgbd6cdda}]{About Me}
+\begin{itemize}
+\item Phd Candidate @ University of Texas at Dallas
+\end{itemize}
+\url{http://www.securitybsides.com/f/1411058410/UT\_Dallas\_tex\_orange.jpg}
+\begin{itemize}
+\item nf-core maintainer
+\end{itemize}
+\begin{center}
+\includesvg[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/fd/375858-629a-49f3-b84d-c285eb5abf83-0ecf14b5a67d9a0b38cd6eaa9bcc6054}
+\end{center}
+\end{frame}
+\begin{frame}[label={sec:orgdf65936}]{Why should biologists working in Genomics be interested in Julia?}
+\begin{itemize}
+\item ``Why We Created Julia''\footnote{\url{https://julialang.org/blog/2012/02/why-we-created-julia}}
+\begin{itemize}
+\item As easy for statistics as R
+\item With mathematical notation like Matlab
+\item As usable for general programming as Python
+\item As natural for string processing as Perl
+\item As good at gluing programs together as the shell
+\item As fast as C
+\end{itemize}
+
+\item Reproducibility
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgbdc161b}]{Why should Julia enthusiasts interested in Genomics?}
+\begin{itemize}
+\item Interest in keeping costs low through more efficient computation
+\begin{itemize}
+\item Cost of Whole Genome Sequencing: \textasciitilde{}\$100-1000
+\item Cost of computational Analysis: \textasciitilde{}\$25
+\end{itemize}
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.65\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/6a/1fb5eb-8ac8-4ffe-8963-9319db6c793f-ad916491e99263c1bba3562abacc56d6.jpg}
+\end{center} \footnote{\url{https://www.genome.gov/about-genomics/fact-sheets/DNA-Sequencing-Costs-Data}}
+
+\note{
+\begin{itemize}
+\item Rapid lowering cost of sequencing cost
+\item Smaller computers needed that run in less time
+\end{itemize}}
+\end{frame}
+
+\begin{frame}[label={sec:org5cc9229}]{Overview}
+\begin{itemize}
+\item Julia Features for Analysis
+\item Ecosystem
+\item Julia in Workflows
+\end{itemize}
+\end{frame}
+
+\section*{Julia Features for Analysis}
+\label{sec:orgfab0678}
+\begin{frame}[label={sec:org66ac1a9},fragile]{Juliaup}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFt{curl} -fsSL https://install.julialang.org | sh
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item Cross-platform installer
+\item Install specific Julia versions
+\item Stay up to date with release channels(Stable, LTS)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org08fe72a},fragile]{Package management - Pkg.jl}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFcd{\#} \EFc{]}
+(\textcolor[HTML]{483d8b}{\textbf{@v1}}.\EFhn{8}) pkg\EFt{>}
+(\textcolor[HTML]{483d8b}{\textbf{@v1}}.\EFhn{8}) pkg\EFt{>} add Example
+Resolving package versions...
+Installed Example ─ v0.\EFhn{5.3}
+    Updating \EFs{`\char126{}/.julia/environments/v1.8/Project.toml`}
+[\EFhn{7876}af07] \EFt{+} Example v0.\EFhn{5.3}
+    Updating \EFs{`\char126{}/.julia/environments/v1.8/Manifest.toml`}
+[\EFhn{7876}af07] \EFt{+} Example v0.\EFhn{5.3}
+julia\EFt{>} \EFk{import} Example
+
+julia\EFt{>} Example.hello(\EFs{"friend"})
+\EFs{"Hello, friend"}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+\begin{frame}[label={sec:orgbbe8699},fragile]{Pkg.jl Environments}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}(\textcolor[HTML]{483d8b}{\textbf{@v1}}.\EFhn{8}) pkg\EFt{>} activate tutorial
+[ Info: activating new environment at \EFs{`\char126{}/tutorial/Project.toml`}.
+(tutorial) pkg\EFt{>}
+(tutorial) pkg\EFt{>} status
+    Status \EFs{`\char126{}/tutorial/Project.toml`}
+(empty environment)
+(tutorial) pkg\EFt{>} add Example JSON
+...
+
+(tutorial) pkg\EFt{>} status
+    Status \EFs{`\char126{}/tutorial/Project.toml`}
+[\EFhn{7876}af07] Example v0.\EFhn{5.3}
+[\EFhn{682}c06a0] JSON v0.\EFhn{21.3}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgfbc2e64},fragile]{Want to hack on a project?}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}pkg\EFt{>} develop \EFt{--}\EFk{local} Bed
+\end{Verbatim}
+\end{Code}
+
+There's a full clone at \texttt{dev/Bed}!
+\end{frame}
+
+\begin{frame}[label={sec:org70206bc}]{Other niceties}
+\begin{itemize}
+\item \href{https://github.com/JuliaCI/PkgTemplates.jl}{PkgTemplates.jl} - Easy Package Creation
+\item \href{https://www.youtube.com/live/bHLXEUt5KLc?feature=share}{Julia REPL Mastery Workshop}
+\item VS Code
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org102889b}]{DataToolkit}
+\begin{center}
+\includesvg[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/bc/086131-a31b-4a06-a2e2-41ffc5cb9239-1063016956b0153fa747abecf9acf718}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org9b78056},fragile]{DataToolkit - Example declarative data set}
+ \small
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}[[\EFf{HNSC\_Phenotypes}]]
+\EFb{uuid} = \textcolor[HTML]{7f7f7f}{"c2f8275e-f5b7-46f5-a95c-af3835573258"}
+\EFb{description} = \EFd{"TCGA Head and Neck Cancer (HNSC) RNA-seq data"}
+
+    [[\EFf{HNSC\_Phenotypes}\EFt{.storage}]]
+    \EFb{driver} = \EFs{"web"}
+    \EFv{checksum} = \EFs{"crc32c:d5c06b86"}
+    \EFv{url} = \EFs{"https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.HNSC.sampleMap\%2FHNSC\_clinicalMatrix"}
+
+    [[\EFf{HNSC\_Phenotypes}\EFt{.loader}]]
+    \EFb{driver} = \EFs{"csv"}
+    \EFb{type} = \EFs{"DataFrame"}
+
+        [\EFf{HNSC\_Phenotypes}\EFt{.loader.args}]
+        \EFv{delim} = \EFs{"\char92{}t"}
+        \EFv{header} = \EFhn{1}
+        \EFv{select} = [\EFs{"sampleID"}, \EFs{"sample\_type"}]
+        \EFb{type}s = \EFs{"String"}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgc4bd43c},fragile]{DataToolkit - Features in this example}
+ \begin{itemize}
+\item A named dataset \hfill
+\Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}[[\EFf{iris}]]}
+\item Which can be uniquely identified \hfill
+\Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}\EFv{uuid} = \EFs{"..."}}
+\item With metadata \hfill
+\Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}\EFb{description} = \EFd{"..."}}
+\item Named storage/loader backends \hfill
+\Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}\EFb{driver} = \EFs{"web"}}
+\item Content verification \hfill
+\Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}\EFv{checksum} = \EFs{"crc32c:d5c06b86"}}
+\item Storage/loader arguments \hfill
+\Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}\EFv{url} = \EFs{"..."}}, \Verb[commandchars=\\\{\},highlightcolor=white!95!black!80!blue,breaklines=true,breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}]{\color{EFD}\EFv{args.header} = \EFhn{1}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org352d563},fragile]{DataToolkit - Using a dataset in computation}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} \EFk{using} DataToolkit, DataFrames
+
+julia\EFt{>} sum(d\EFs{"iris"}.sepal\_length)
+\EFhn{876.5}
+\end{Verbatim}
+\end{Code}
+
+\pause
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} mean(d\EFs{"iris::Matrix"}, dims=\EFhn{1})
+\EFhn{1}×5 Matrix\{Float64\}:
+ \EFhn{5.84333}  \EFhn{3.05733}  \EFhn{3.758}  \EFhn{1.19933}  \EFhn{1.0}
+\end{Verbatim}
+\end{Code}
+
+\pause
+
+More than just string matching for types:
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} mean(d\EFs{"iris::Array\{T<:Any, 2\}"}, dims=\EFhn{1})
+\EFhn{1}×5 Matrix\{Float64\}:
+ \EFhn{5.84333}  \EFhn{3.05733}  \EFhn{3.758}  \EFhn{1.19933}  \EFhn{1.0}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgabe793f}]{DataToolkit - Want to learn more?}
+Join Teco Friday @ TODO
+\end{frame}
+
+\section*{Ecosystem}
+\label{sec:org7027fbb}
+\begin{frame}[label={sec:org3a1f462}]{Package comparisons - General Utilities}
+\scriptsize
+\begin{center}
+\begin{tabular}{l|l|l|l|}
+Purpose & Python & R & Julia\\[0pt]
+\hline
+Plotting & Matplotlib & ggplot2 & \href{https://github.com/JuliaPy/PyPlot.jl}{PyPlot.jl} / \href{https://github.com/MakieOrg/Makie.jl}{Makie.jl} / \href{https://gadflyjl.org/stable/}{Gadfly.jl}\\[0pt]
+Dataframes & Pandas/Polars & \href{https://tibble.tidyverse.org/}{tibble} & DataFrames.jl\\[0pt]
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orgd2716cb}]{Package comparisons - Biological File Formats}
+\scriptsize
+\begin{center}
+\begin{tabular}{l|l|l|l|}
+Purpose & Python & R & Julia\\[0pt]
+\hline
+Sam/Bam files & \href{https://biopython.org/wiki/SeqIO}{Bio.SeqIO} &  & \href{https://docs.juliahub.com/XAM/4JnDO/0.3.1/}{XAM.jl}\\[0pt]
+Fastq files &  &  & \href{https://github.com/BioJulia/FASTX.jl}{FASTX.jl}\\[0pt]
+Variants/vcf &  &  & \href{https://github.com/BioJulia/GeneticVariation.jl}{GeneticVariation.jl} / \href{https://github.com/rasmushenningsson/VariantCallFormat.jl}{VariantCallFormat.jl}\\[0pt]
+ &  &  & \href{https://biojulia.dev/Phylogenies.jl/stable/}{Phylogenies.jl}\\[0pt]
+ & \href{https://biopython.org/wiki/The\_Biopython\_Structural\_Bioinformatics\_FAQ}{Bio.PDB} &  & \href{https://biojulia.dev/BioStructures.jl/stable/}{BioStructures.jl}\\[0pt]
+ &  &  & \href{https://github.com/BioJulia/GFF3.jl}{GFF3.jl}\\[0pt]
+\end{tabular}
+\end{center}
+
+\note{
+\begin{itemize}
+\item Gadfly - if you prefer Grammer of graphics
+\end{itemize}
+
+\url{https://www.bioconductor.org/packages/stats/}}
+\end{frame}
+
+\begin{frame}[label={sec:org5548493}]{Package comparisons - Genomic Analysis}
+\tiny
+\begin{center}
+\begin{tabular}{l|l|l|l|}
+Purpose & Python & R & Julia\\[0pt]
+\hline
+ & \href{https://github.com/pyranges/pyranges}{pyranges} / \href{https://daler.github.io/pybedtools/}{pybedtools} & \href{https://bioconductor.org/packages/release/bioc/html/rtracklayer.html}{rtracklayer} & \href{https://docs.juliahub.com/GenomicFeatures/kSGNI/3.0.0/}{GenomicFeatures.jl}\\[0pt]
+ &  & \href{https://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html}{GenomicsRanges} & \href{https://biojulia.dev/GenomicFeatures.jl/stable/man/intervals/}{Intervals}\\[0pt]
+ &  & \href{https://github.com/drostlab/metablastr}{metablastr} & \href{https://docs.juliahub.com/BioTools/wwbVn/1.1.0/blast/}{BioTools.jl}\\[0pt]
+ & \href{https://biopython.org/wiki/SeqIO}{Bio.SeqIO} &  & \href{https://biojulia.dev/BioSequences.jl/stable/transforms/}{BioSequences.jl}\\[0pt]
+Data Retrieval & \href{https://github.com/pyranges/pyranges\_db}{pyranges\textsubscript{\db}} / \href{https://github.com/sebriois/biomart}{biomart} (api) & \href{https://github.com/ropensci/biomartr}{biomartr} & \href{https://docs.juliahub.com/BioServices/nOcmO/0.4.1/man/eutils/}{BioServices.jl} / \href{https://github.com/BioJulia/BioFetch.jl}{BioFetch.jl}\\[0pt]
+Genomic Annotations &  &  & \href{https://docs.juliahub.com/GenomicAnnotations/ckOyU/0.3.2/}{GenomicAnnotations.jl}\\[0pt]
+Population Genetics & \href{https://biopython.org/wiki/PopGen}{Bio.PopGen} &  & \href{https://github.com/BioJulia/PopGen.jl}{PopGen.jl}\\[0pt]
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org7799271}]{What about when you can't replace popular packages?}
+\pause
+\begin{itemize}
+\item Working in Python \& R is like buying a \uline{house in DFW}
+\end{itemize}
+\pause
+\begin{itemize}
+\item Downtown, constant re-development(pip, poetry, hatch, piptools, conda)
+\end{itemize}
+\pause
+\begin{itemize}
+\item Compared to the suburbs where you need a car
+\end{itemize}
+
+\pause
+\begin{itemize}
+\item Urban Sprawl of Python \& R packages
+\begin{itemize}
+\item DESeq2/edgeR/seurat/scanpy
+\item ggplot2
+\end{itemize}
+\end{itemize}
+
+
+\note{
+\begin{itemize}
+\item Gotta give my PI credit for this one
+\item You're constantly getting new restaurants, there's plenty of public
+transportation
+\item But at least in the suburbs your favorite restaurant isn't getting torn down, hopefully there's less traffic.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}[label={sec:org60173b7}]{What about when you can't replace popular packages?}
+Options:
+\begin{itemize}
+\item \href{https://github.com/JuliaInterop}{JuliaInterop · GitHub}
+\item \href{https://juliainterop.github.io/RCall.jl/stable/gettingstarted/}{RCall.jl}
+\end{itemize}
+
+\begin{itemize}
+\item PythonCall.jl
+
+\item Calling commandline tools from Julia
+\end{itemize}
+
+\note{
+\begin{itemize}
+\item Also libraries for C/C++, Matlab and GNU Octave, Java, Fortran
+\item There is a Rust crate but it doesn't seem very active. Probably because Julia
+\end{itemize}
+came out in 2009, and Rust in 2015, so why would you reach for Rust if you're
+going to write Julia anyways.
+
+There is a Rust birds of a feather}
+\end{frame}
+
+\begin{frame}[label={sec:org6f8b493},fragile]{JuliaInterop - RCall}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} \EFk{using} RCall
+\EFcd{\#} \EFc{type `\$`}
+R\EFt{>} install.packages(\EFs{"ggplot2"})
+R\EFt{>} library(ggplot2)
+R\EFt{>} data(diamonds)
+R\EFt{>} ggplot(diamonds, aes(x=carat, y=price)) \EFt{\char92{}}
+    \EFt{+} geom\_point()
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgbe03eea}]{JuliaInterop - RCall importing packages}
+\end{frame}
+
+\begin{frame}[label={sec:org0b1f0ca},fragile]{PythonCall}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{import} scanpy \EFk{as} sc
+
+
+\EFk{def} \EFf{preprocessing}(adata):
+    \EFcd{\#} \EFc{Perform preprocessing of a anndata object}
+    sc.pp.filter\_cells(adata, min\_genes=\EFhn{200})
+    sc.pp.filter\_genes(adata, min\_cells=\EFhn{3})
+
+    \EFcd{\#} \EFc{Normalization and scaling:}
+    sc.pp.normalize\_total(adata, target\_sum=1e4)
+    sc.pp.log1p(adata)
+
+    \EFcd{\#} \EFc{Identify highly-variable genes}
+    sc.pp.highly\_variable\_genes(
+        adata, min\_mean=\EFhn{0.0125}, max\_mean=\EFhn{3}, min\_disp=\EFhn{0.5}, subset=\EFo{True}
+    )
+    sc.pp.scale(adata, zero\_center=\EFo{True}, max\_value=\EFhn{3})
+    \EFv{x} = adata.X
+    \EFv{data} = tf.data.Dataset.from\_tensor\_slices((x, x))
+    \EFk{return} data, x
+\end{Verbatim}
+\end{Code}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{using} PythonCall
+
+sc = pyimport(\EFs{"scanpy"})
+
+\EFk{function} \EFf{preprocessing}(adata)
+    sc.pp.filter\_cells(adata, min\_genes=\EFhn{200})
+    sc.pp.filter\_genes(adata, min\_cells=\EFhn{3})
+
+    \EFcd{\#} \EFc{Normalization and scaling:}
+    sc.pp.normalize\_total(adata, target\_sum=\EFhn{1e4})
+    sc.pp.log1p(adata)
+
+    \EFcd{\#} \EFc{Identify highly-variable genes}
+    sc.pp.highly\_variable\_genes(adata, min\_mean=\EFhn{0.0125}, max\_mean=\EFhn{3}, min\_disp=\EFhn{0.5}, subset=\EFo{true})
+    sc.pp.scale(adata, zero\_center=\EFo{true}, max\_value=\EFhn{3})
+    x = adata.X
+    \EFcd{\#} \EFc{We don't need Tensorflow because Julia is fast enough I think?}
+    \EFcd{\#} \EFc{data = tf.data.Dataset.from\_tensor\_slices((x, x))}
+    x = pyconvert(Array\{Float32\}, x)
+
+    \EFk{return} [x, x], x
+\EFk{end}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+\begin{frame}[label={sec:org9c9cf36}]{PythonCall and Pycall are different}
+\begin{itemize}
+\item Doesn't have to support as much legacy
+\begin{itemize}
+\item PythonCall supports Julia 1.6.1+ and Python 3.7+
+\item PyCall supports Julia 0.7+ and Python 2.7+.
+\end{itemize}
+\item Uses CondaPkg by default
+\item You can use them both at the same time if you needed to for some reason
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgabbf9d6},fragile]{Managing conda envs in Julia}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{using} Conda, RCall
+
+Conda.add(\EFs{"bioconductor-deseq2"}, channel=\EFs{"bioconda"}, \textcolor[HTML]{008b8b}{:rnaseq})
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org8e522b7}]{CondaPkg.jl}
+\end{frame}
+\begin{frame}[label={sec:org5e751c4},fragile]{Calling commandline tools from Julia}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} mycommand = \EFs{`echo hello`}
+\EFs{`echo hello`}
+
+julia\EFt{>} typeof(mycommand)
+Cmd
+
+julia\EFt{>} run(mycommand);
+hello
+\end{Verbatim}
+\end{Code}
+
+\href{https://docs.julialang.org/en/v1/manual/running-external-programs/}{Docs on Running External Programs}
+\end{frame}
+\begin{frame}[label={sec:org39d576d},fragile]{Calling commandline tools from Julia}
+ \small
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} files = [\EFs{"/etc/passwd"},\EFs{"/Volumes/External HD/data.csv"}]
+\EFhn{2}\EFt{-}element Vector\{String\}:
+\EFs{"/etc/passwd"}
+\EFs{"/Volumes/External HD/data.csv"}
+
+julia\EFt{>} \EFs{`grep foo \$files`}
+\EFs{`grep foo /etc/passwd '/Volumes/External HD/data.csv'`}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org0f64977}]{Mention Michael's new project}
+\end{frame}
+\section*{Julia in Workflows}
+\label{sec:orgce3f249}
+\begin{frame}[label={sec:orgae48e4c},fragile]{Running Julia in Snakemake}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{from} snakemake.remote \EFk{import} AUTO
+\EFv{iris} = \EFs{"https://raw.githubusercontent.com/scikit-learn/scikit-learn/1.0/sklearn/datasets/data/iris.csv"}
+\EFk{rule} \EFf{calling\_script}:
+    \EFt{input}:
+        AUTO.remote(iris)
+    \EFt{output}:
+        \EFs{"results/out.csv"},
+    \EFt{container}: \EFs{"docker://julia"}
+    \EFt{script}:
+        \EFs{"bin/smk\_script.jl"}
+\end{Verbatim}
+\end{Code}
+
+\small
+\begin{quote}
+In the Julia script, a snakemake object is available, which can be accessed
+similar to the Python case, with the only difference that you have to index from
+1 instead of 0.
+\end{quote}
+\end{frame}
+
+\begin{frame}[label={sec:org6a84d8a},fragile]{Running Julia in Snakemake - Inside the Julia script}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{import} Pkg; Pkg.add([\EFs{"CSV"}, \EFs{"DataFrames"}])
+
+\EFk{using} CSV, DataFrames
+
+df = DataFrame(CSV.File(snakemake.input[\EFhn{1}], footerskip=\EFhn{50}))
+names(df)
+CSV.write(snakemake.output[\EFhn{1}], df)
+
+do\_something(snakemake.input[\EFhn{1}], snakemake.output[\EFhn{2}], snakemake.threads, snakemake.config[\EFs{"myparam"}])
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org8fcd6f2},fragile]{Running Julia in Nextflow - Installing Packages to Julia Depot}
+ \href{https://apeltzer.github.io/post/03-julia-lang-nextflow/}{Julia Lang, Docker \& Nextflow | Personal Homepage of Alex Peltzer}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFcd{//} \EFc{nextflow.config}
+env \{
+    JULIA\_DEPOT\_PATH = \EFs{"/usr/local/share/julia"}
+\}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+
+\begin{frame}[label={sec:org960aa5f},fragile]{Running Julia in Nextflow - The Nextflow script}
+ \small
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{process} \EFf{cli} \{
+    \EFb{container} \EFs{'julia'}
+
+    \EFk{input}:
+    \EFt{path} \EFv{csv\_file}
+
+    \EFk{output}:
+    \EFt{stdout}
+
+    \EFs{"""}
+    \EFs{julia hello.jl} \EFv{\$csv\_file}
+    \EFs{"""}
+\}
+
+\EFk{process} \EFf{shebang} \{
+    \EFb{container} \EFs{'julia'}
+    \EFb{beforeScript} \EFs{"julia -e 'using Pkg; Pkg.activate("}.\EFs{"); Pkg.add(["}HTTP\EFs{", "}\EFt{DataFrames}\EFs{"]); Pkg.precompile();'"}
+
+    \EFk{input}:
+    \EFt{path} \EFv{csv\_file}
+
+    \EFk{output}:
+    \EFt{path} \EFs{"out.csv"}
+
+    \EFs{"""}
+    \EFs{\#!/usr/bin/env -S julia --startup-file=no}
+
+    \EFs{using CSV, DataFrames}
+
+    \EFs{df = DataFrame(CSV.File(}\EFv{\$csv\_file}\EFs{, footerskip=50))}
+    \EFs{names(df)}
+    \EFs{CSV.write("out.csv", df)}
+    \EFs{"""}
+\}
+
+\EFk{workflow} \{
+    cli(file(\EFs{'./test.csv'}))
+    shebang(file(\EFs{'./test.csv'}))
+\}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orge807967},fragile]{Running Julia in Nextflow - The Julia script}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFcd{\#}\EFc{!/usr/bin/env -S julia --color=yes --startup-file=no}
+
+println(PROGRAM\_FILE);
+abspath(PROGRAM\_FILE) \EFt{==} \textcolor[HTML]{483d8b}{\textbf{@\_\_FILE\_\_}}
+
+\textcolor[HTML]{483d8b}{\textbf{@show}} ARGS
+
+\EFk{for} x \EFk{in} ARGS
+    println(x)
+\EFk{end}
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item Move it to the \texttt{bin/} folder of the pipeline, and make it executable (\texttt{chmod +x bin\textbackslash{}*.jl})
+\end{itemize}
+\end{frame}
+
+
+\note{
+\begin{itemize}
+\item The \texttt{-{}-{}project=@.} is the default
+\item But the way Nextflow works that doesn't get picked up
+\end{itemize}}
+\section*{{\bfseries\sffamily TODO} Analysis Example}
+\label{sec:orge6ff876}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFcd{\#} \EFc{overlap of H3K27ac and P63 peaks identifies enhancer regions where p63 binds}
+
+\EFk{using} Downloads
+
+\EFk{if} \EFt{!}isfile(raw\EFs{"H3K27ac.consensus\_peaks.bed"})
+    Downloads.download(\EFs{"https://utdallas.box.com/shared/static/y4glk8y8chjq5fuv6iowe6bjz1vovkr3.bed"}, \EFs{"H3K27ac.consensus\_peaks.bed"})
+    Downloads.download(\EFs{"https://utdallas.box.com/shared/static/y4glk8y8chjq5fuv6iowe6bjz1vovkr3.bed"}, \EFs{"p63\_4A4.consensus\_peaks.bed"})
+\EFk{end}
+
+\EFk{using} GenomicFeatures
+\EFk{using} BED
+
+\EFcd{\#} \EFc{Create an interval collection in memory.}
+h3k27ac\_icol = open(BED.Reader, \EFs{"H3K27ac.consensus\_peaks.bed"}) \EFk{do} reader
+    IntervalCollection(reader)
+\EFk{end}
+
+p63\_icol = open(BED.Reader, \EFs{"p63\_4A4.consensus\_peaks.bed"}) \EFk{do} reader
+    IntervalCollection(reader)
+\EFk{end}
+
+overlap\_icol = eachoverlap(h3k27ac\_icol, p63\_icol)
+typeof(p63\_icol)
+first(overlap\_icol)
+overlaps = collect(overlap\_icol)
+overlaps
+typeof(overlaps[\EFhn{1}][\EFhn{1}])
+BED.Record(p63\_icol)
+
+writer = BED.Writer(output)
+expected\_entries = BED.Record[]
+\EFk{for} interval \EFk{in} open(BED.Reader, filename)
+    write(writer, interval)
+    push!(expected\_entries, interval)
+\EFk{end}
+\end{Verbatim}
+\end{Code}
+
+\section*{Conclusion}
+\label{sec:org6114bc3}
+\begin{frame}[label={sec:orgc23a052}]{Where is Julia lacking?}
+\begin{itemize}
+\item Creating binaries/CLIs
+\item But what about Rust?
+\begin{itemize}
+\item Rust for tools
+\item Julia for analysis
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orge0d2f3a}]{Resources}
+\begin{itemize}
+\item \href{https://github.com/BioJulia/BioTutorials}{GitHub - BioJulia/BioTutorials: Tutorial Notebooks of BioJulia}
+\item New Documenter.jl Docs!
+\item TODO Slides Link
+\item \href{https:/link.edmundmiller.dev}{link.edmundmiller.dev}
+\end{itemize}
+\end{frame}
+\end{document}

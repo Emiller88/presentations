@@ -1,0 +1,85 @@
+[32m[1m  Installing[22m[39m known registries into `~/.julia`
+[32m[1m    Updating[22m[39m registry at `~/.julia/registries/General.toml`
+[32m[1m   Resolving[22m[39m package versions...
+[32m[1m   Installed[22m[39m TableTraits ───────────────── v1.0.1
+[32m[1m   Installed[22m[39m OpenSSL_jll ───────────────── v3.0.9+0
+[32m[1m   Installed[22m[39m BitFlags ──────────────────── v0.1.7
+[32m[1m   Installed[22m[39m LoggingExtras ─────────────── v1.0.0
+[32m[1m   Installed[22m[39m Crayons ───────────────────── v4.1.1
+[32m[1m   Installed[22m[39m Parsers ───────────────────── v2.7.1
+[32m[1m   Installed[22m[39m Preferences ───────────────── v1.4.0
+[32m[1m   Installed[22m[39m SimpleBufferStream ────────── v1.1.0
+[32m[1m   Installed[22m[39m SentinelArrays ────────────── v1.4.0
+[32m[1m   Installed[22m[39m DataAPI ───────────────────── v1.15.0
+[32m[1m   Installed[22m[39m PooledArrays ──────────────── v1.4.2
+[32m[1m   Installed[22m[39m ConcurrentUtilities ───────── v2.2.1
+[32m[1m   Installed[22m[39m InlineStrings ─────────────── v1.4.0
+[32m[1m   Installed[22m[39m Tables ────────────────────── v1.10.1
+[32m[1m   Installed[22m[39m DataValueInterfaces ───────── v1.0.0
+[32m[1m   Installed[22m[39m IteratorInterfaceExtensions ─ v1.0.0
+[32m[1m   Installed[22m[39m Formatting ────────────────── v0.4.2
+[32m[1m   Installed[22m[39m OrderedCollections ────────── v1.6.0
+[32m[1m   Installed[22m[39m URIs ──────────────────────── v1.4.2
+[32m[1m   Installed[22m[39m PrettyTables ──────────────── v2.2.5
+[32m[1m   Installed[22m[39m PrecompileTools ───────────── v1.1.2
+[32m[1m   Installed[22m[39m JLLWrappers ───────────────── v1.4.1
+[32m[1m   Installed[22m[39m LaTeXStrings ──────────────── v1.3.0
+[32m[1m   Installed[22m[39m OpenSSL ───────────────────── v1.4.1
+[32m[1m   Installed[22m[39m TranscodingStreams ────────── v0.9.13
+[32m[1m   Installed[22m[39m InvertedIndices ───────────── v1.3.0
+[32m[1m   Installed[22m[39m Reexport ──────────────────── v1.2.2
+[32m[1m   Installed[22m[39m MbedTLS ───────────────────── v1.1.7
+[32m[1m   Installed[22m[39m HTTP ──────────────────────── v1.9.14
+[32m[1m   Installed[22m[39m DataFrames ────────────────── v1.6.0
+[32m[1m   Installed[22m[39m CodecZlib ─────────────────── v0.7.2
+[32m[1m   Installed[22m[39m Compat ────────────────────── v4.7.0
+[32m[1m   Installed[22m[39m DataStructures ────────────── v0.18.14
+[32m[1m   Installed[22m[39m SortingAlgorithms ─────────── v1.1.1
+[32m[1m   Installed[22m[39m Missings ──────────────────── v1.1.0
+[32m[1m   Installed[22m[39m ExceptionUnwrapping ───────── v0.1.9
+[32m[1m   Installed[22m[39m StringManipulation ────────── v0.3.0
+[32m[1m  No Changes[22m[39m to `/home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/a7/5c2a2eda25acb5299e8e962ee6ce93/Project.toml`
+[32m[1m    Updating[22m[39m `/home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/a7/5c2a2eda25acb5299e8e962ee6ce93/Manifest.toml`
+  [90m[44cfe95a] [39m[93m↑ Pkg v1.9.0 ⇒ v1.9.2[39m
+  [90m[e66e0078] [39m[93m↑ CompilerSupportLibraries_jll v1.0.2+0 ⇒ v1.0.5+0[39m
+[32m[1mPrecompiling[22m[39m project...
+[32m  ✓ [39m[90mCompat[39m
+[32m  ✓ [39m[90mLaTeXStrings[39m
+[32m  ✓ [39m[90mDataValueInterfaces[39m
+[32m  ✓ [39m[90mInvertedIndices[39m
+[32m  ✓ [39m[90mOrderedCollections[39m
+[32m  ✓ [39m[90mReexport[39m
+[32m  ✓ [39m[90mIteratorInterfaceExtensions[39m
+[32m  ✓ [39m[90mSimpleBufferStream[39m
+[32m  ✓ [39m[90mBitFlags[39m
+[32m  ✓ [39m[90mCompilerSupportLibraries_jll[39m
+[32m  ✓ [39m[90mURIs[39m
+[32m  ✓ [39m[90mDataAPI[39m
+[32m  ✓ [39m[90mLoggingExtras[39m
+[32m  ✓ [39m[90mFormatting[39m
+[32m  ✓ [39m[90mSentinelArrays[39m
+[32m  ✓ [39m[90mExceptionUnwrapping[39m
+[32m  ✓ [39m[90mCompat → CompatLinearAlgebraExt[39m
+[32m  ✓ [39m[90mConcurrentUtilities[39m
+[32m  ✓ [39m[90mCrayons[39m
+[32m  ✓ [39m[90mPreferences[39m
+[32m  ✓ [39m[90mTranscodingStreams[39m
+[32m  ✓ [39m[90mTableTraits[39m
+[32m  ✓ [39m[90mMissings[39m
+[32m  ✓ [39m[90mPooledArrays[39m
+[32m  ✓ [39m[90mMbedTLS[39m
+[32m  ✓ [39m[90mPrecompileTools[39m
+[32m  ✓ [39m[90mJLLWrappers[39m
+[32m  ✓ [39m[90mCodecZlib[39m
+[32m  ✓ [39m[90mOpenSSL_jll[39m
+[32m  ✓ [39m[90mTables[39m
+[32m  ✓ [39m[90mStringManipulation[39m
+[32m  ✓ [39m[90mDataStructures[39m
+[32m  ✓ [39m[90mSortingAlgorithms[39m
+[32m  ✓ [39m[90mOpenSSL[39m
+[32m  ✓ [39mHTTP
+[32m  ✓ [39m[90mPrettyTables[39m
+[32m  ✓ [39m[90mParsers[39m
+[32m  ✓ [39m[90mInlineStrings[39m
+[32m  ✓ [39mDataFrames
+  39 dependencies successfully precompiled in 75 seconds. 5 already precompiled.

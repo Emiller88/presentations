@@ -1,0 +1,909 @@
+% Created 2023-07-26 Wed 15:50
+% Intended LaTeX compiler: lualatex
+\documentclass[bigger]{beamer}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{scrextend}
+\usepackage{xcolor}
+\usepackage[inkscapelatex=false,inkscapearea=page]{svg}
+\titlegraphic{\hfill\includesvg[height=2cm]{figures/logo.svg}}
+\usepackage[scale=0.88]{sourcecodepro}
+\newcommand{\codefont}{\footnotesize\fontseries{mb}\selectfont}
+\usepackage{emoji}
+\usepackage{scrextend}
+\NewCommandCopy{\moldusetheme}{\usetheme}
+\renewcommand*{\usetheme}[2][]{\moldusetheme[#1]{#2}  \setbeamertemplate{items}{$\bullet$}  \setbeamerfont{block title}{size=\normalsize, series=\bfseries\parbox{0pt}{\rule{0pt}{4ex}}}}
+\makeatletter
+\makeatother
+\usepackage{etoolbox}
+\AtEndPreamble{\setmetropolislinewidth}
+\definecolor{EfD}{HTML}{fafafa}
+\usetheme[progressbar=foot]{metropolis}
+\author{Edmund Miller}
+\date{July 26th, 2023}
+\title{Exploring the State of Machine Learning for Biological Data}
+
+\providecolor{url}{HTML}{0077bb}
+\providecolor{link}{HTML}{882255}
+\providecolor{cite}{HTML}{0077bb}
+\hypersetup{
+pdfauthor={Edmund Miller},
+pdftitle={Exploring the State of Machine Learning for Biological Data},
+pdfkeywords={},
+pdfsubject={},
+pdfcreator={Emacs 29.0.91 (Org mode 9.7)},
+pdflang={English},
+    breaklinks=true,
+    colorlinks=true,
+    linkcolor=link,
+    urlcolor=url,
+    citecolor=cite
+  }
+\urlstyle{same}
+
+% Setup for code blocks [1/2]
+
+\usepackage{fvextra}
+
+\fvset{%
+  commandchars=\\\{\},
+  highlightcolor=white!95!black!80!blue,
+  breaklines=true,
+  breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}}
+
+% Make line numbers smaller and grey.
+\renewcommand\theFancyVerbLine{\footnotesize\color{black!40!white}\arabic{FancyVerbLine}}
+
+\usepackage{xcolor}
+
+% In case engrave-faces-latex-gen-preamble has not been run.
+\providecolor{EfD}{HTML}{f7f7f7}
+\providecolor{EFD}{HTML}{28292e}
+
+% Define a Code environment to prettily wrap the fontified code.
+\usepackage[breakable,xparse]{tcolorbox}
+\DeclareTColorBox[]{Code}{o}%
+{colback=EfD!98!EFD, colframe=EfD!95!EFD,
+  fontupper=\footnotesize\setlength{\fboxsep}{0pt},
+  colupper=EFD,
+  IfNoValueTF={#1}%
+  {boxsep=2pt, arc=2.5pt, outer arc=2.5pt,
+    boxrule=0.5pt, left=2pt}%
+  {boxsep=2.5pt, arc=0pt, outer arc=0pt,
+    boxrule=0pt, leftrule=1.5pt, left=0.5pt},
+  right=2pt, top=1pt, bottom=0.5pt,
+  breakable}
+
+% Support listings with captions
+\usepackage{float}
+\floatstyle{plain}
+\newfloat{listing}{htbp}{lst}
+\newcommand{\listingsname}{Listing}
+\floatname{listing}{\listingsname}
+\newcommand{\listoflistingsname}{List of Listings}
+\providecommand{\listoflistings}{\listof{listing}{\listoflistingsname}}
+
+
+% Setup for code blocks [2/2]: syntax highlighting colors
+
+\newcommand\efstrut{\vrule height 2.1ex depth 0.8ex width 0pt}
+\definecolor{EFD}{HTML}{383a42}
+\definecolor{EfD}{HTML}{fafafa}
+\newcommand{\EFD}[1]{\textcolor{EFD}{#1}} % default
+\newcommand{\EFvp}[1]{#1} % variable-pitch
+\definecolor{EFh}{HTML}{9ca0a4}
+\newcommand{\EFh}[1]{\textcolor{EFh}{#1}} % shadow
+\definecolor{EFsc}{HTML}{50a14f}
+\newcommand{\EFsc}[1]{\textcolor{EFsc}{#1}} % success
+\definecolor{EFw}{HTML}{986801}
+\newcommand{\EFw}[1]{\textcolor{EFw}{#1}} % warning
+\definecolor{EFe}{HTML}{e45649}
+\newcommand{\EFe}[1]{\textcolor{EFe}{#1}} % error
+\definecolor{EFl}{HTML}{4078f2}
+\newcommand{\EFl}[1]{\textcolor{EFl}{\textbf{#1}}} % link
+\definecolor{EFlv}{HTML}{8b008b}
+\newcommand{\EFlv}[1]{\textcolor{EFlv}{\textbf{#1}}} % link-visited
+\definecolor{EFhi}{HTML}{f0f0f0}
+\definecolor{Efhi}{HTML}{4078f2}
+\newcommand{\EFhi}[1]{\colorbox{Efhi}{\efstrut{}\textcolor{EFhi}{#1}}} % highlight
+\definecolor{EFc}{HTML}{9ca0a4}
+\newcommand{\EFc}[1]{\textcolor{EFc}{#1}} % font-lock-comment-face
+\definecolor{EFcd}{HTML}{9ca0a4}
+\newcommand{\EFcd}[1]{\textcolor{EFcd}{#1}} % font-lock-comment-delimiter-face
+\definecolor{EFs}{HTML}{50a14f}
+\newcommand{\EFs}[1]{\textcolor{EFs}{#1}} % font-lock-string-face
+\definecolor{EFd}{HTML}{84888b}
+\newcommand{\EFd}[1]{\textcolor{EFd}{\textit{#1}}} % font-lock-doc-face
+\definecolor{EFm}{HTML}{b751b6}
+\newcommand{\EFm}[1]{\textcolor{EFm}{#1}} % font-lock-doc-markup-face
+\definecolor{EFk}{HTML}{e45649}
+\newcommand{\EFk}[1]{\textcolor{EFk}{#1}} % font-lock-keyword-face
+\definecolor{EFb}{HTML}{a626a4}
+\newcommand{\EFb}[1]{\textcolor{EFb}{#1}} % font-lock-builtin-face
+\definecolor{EFf}{HTML}{a626a4}
+\newcommand{\EFf}[1]{\textcolor{EFf}{#1}} % font-lock-function-name-face
+\definecolor{EFv}{HTML}{6a1868}
+\newcommand{\EFv}[1]{\textcolor{EFv}{#1}} % font-lock-variable-name-face
+\definecolor{EFt}{HTML}{986801}
+\newcommand{\EFt}[1]{\textcolor{EFt}{#1}} % font-lock-type-face
+\definecolor{EFo}{HTML}{b751b6}
+\newcommand{\EFo}[1]{\textcolor{EFo}{#1}} % font-lock-constant-face
+\definecolor{EFwr}{HTML}{986801}
+\newcommand{\EFwr}[1]{\textcolor{EFwr}{#1}} % font-lock-warning-face
+\definecolor{EFnc}{HTML}{4078f2}
+\newcommand{\EFnc}[1]{\textcolor{EFnc}{\textbf{#1}}} % font-lock-negation-char-face
+\definecolor{EFpp}{HTML}{4078f2}
+\newcommand{\EFpp}[1]{\textcolor{EFpp}{\textbf{#1}}} % font-lock-preprocessor-face
+\definecolor{EFrc}{HTML}{4078f2}
+\newcommand{\EFrc}[1]{\textcolor{EFrc}{\textbf{#1}}} % font-lock-regexp-grouping-construct
+\definecolor{EFrb}{HTML}{4078f2}
+\newcommand{\EFrb}[1]{\textcolor{EFrb}{\textbf{#1}}} % font-lock-regexp-grouping-backslash
+\definecolor{Efob}{HTML}{e7e7e7}
+\newcommand{\EFob}[1]{\colorbox{Efob}{\efstrut{}#1}} % org-block
+\definecolor{Efobb}{HTML}{e7e7e7}
+\newcommand{\EFobb}[1]{\colorbox{Efobb}{\efstrut{}\textit{#1}}} % org-block-begin-line
+\definecolor{Efobe}{HTML}{e7e7e7}
+\newcommand{\EFobe}[1]{\colorbox{Efobe}{\efstrut{}\textit{#1}}} % org-block-end-line
+\definecolor{EFOa}{HTML}{e45649}
+\newcommand{\EFOa}[1]{\textcolor{EFOa}{\textbf{#1}}} % outline-1
+\definecolor{EFOb}{HTML}{da8548}
+\newcommand{\EFOb}[1]{\textcolor{EFOb}{\textbf{#1}}} % outline-2
+\definecolor{EFOc}{HTML}{b751b6}
+\newcommand{\EFOc}[1]{\textcolor{EFOc}{\textbf{#1}}} % outline-3
+\definecolor{EFOd}{HTML}{6f99f5}
+\newcommand{\EFOd}[1]{\textcolor{EFOd}{\textbf{#1}}} % outline-4
+\definecolor{EFOe}{HTML}{bc5cba}
+\newcommand{\EFOe}[1]{\textcolor{EFOe}{\textbf{#1}}} % outline-5
+\definecolor{EFOf}{HTML}{9fbbf8}
+\newcommand{\EFOf}[1]{\textcolor{EFOf}{\textbf{#1}}} % outline-6
+\definecolor{EFOg}{HTML}{d292d1}
+\newcommand{\EFOg}[1]{\textcolor{EFOg}{\textbf{#1}}} % outline-7
+\definecolor{EFOh}{HTML}{d8e4fc}
+\newcommand{\EFOh}[1]{\textcolor{EFOh}{\textbf{#1}}} % outline-8
+\definecolor{EFhn}{HTML}{da8548}
+\newcommand{\EFhn}[1]{\textcolor{EFhn}{\textbf{#1}}} % highlight-numbers-number
+\definecolor{EFhq}{HTML}{4078f2}
+\newcommand{\EFhq}[1]{\textcolor{EFhq}{#1}} % highlight-quoted-quote
+\definecolor{EFhs}{HTML}{986801}
+\newcommand{\EFhs}[1]{\textcolor{EFhs}{#1}} % highlight-quoted-symbol
+\definecolor{EFrda}{HTML}{4078f2}
+\newcommand{\EFrda}[1]{\textcolor{EFrda}{#1}} % rainbow-delimiters-depth-1-face
+\definecolor{EFrdb}{HTML}{a626a4}
+\newcommand{\EFrdb}[1]{\textcolor{EFrdb}{#1}} % rainbow-delimiters-depth-2-face
+\definecolor{EFrdc}{HTML}{50a14f}
+\newcommand{\EFrdc}[1]{\textcolor{EFrdc}{#1}} % rainbow-delimiters-depth-3-face
+\definecolor{EFrdd}{HTML}{b751b6}
+\newcommand{\EFrdd}[1]{\textcolor{EFrdd}{#1}} % rainbow-delimiters-depth-4-face
+\definecolor{EFrde}{HTML}{4db5bd}
+\newcommand{\EFrde}[1]{\textcolor{EFrde}{#1}} % rainbow-delimiters-depth-5-face
+\definecolor{EFrdf}{HTML}{4078f2}
+\newcommand{\EFrdf}[1]{\textcolor{EFrdf}{#1}} % rainbow-delimiters-depth-6-face
+\definecolor{EFrdg}{HTML}{a626a4}
+\newcommand{\EFrdg}[1]{\textcolor{EFrdg}{#1}} % rainbow-delimiters-depth-7-face
+\definecolor{EFrdh}{HTML}{50a14f}
+\newcommand{\EFrdh}[1]{\textcolor{EFrdh}{#1}} % rainbow-delimiters-depth-8-face
+\definecolor{EFrdi}{HTML}{b751b6}
+\newcommand{\EFrdi}[1]{\textcolor{EFrdi}{#1}} % rainbow-delimiters-depth-9-face
+\usepackage{biblatex}
+\addbibresource{~/sync/reference/bibliography.bib}
+\addbibresource{~/sync/reference/biochemistry.bib}
+\addbibresource{~/sync/reference/genomics.bib}
+\addbibresource{~/sync/reference/molecular_biology.bib}
+\addbibresource{~/sync/reference/molecular_biology_project.bib}
+\addbibresource{~/sync/reference/viralintegration.bib}
+\addbibresource{~/sync/reference/books.bib}
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+\label{sec:org0eeca97}
+\begin{frame}[label={sec:orgdfcf7b2}]{About me}
+\begin{itemize}
+\item Phd Candidate @ University of Texas at Dallas
+\item nf-core maintainer
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\item Been Machine Learning curious since around 2017
+\end{itemize}
+\pause
+\begin{itemize}
+\item Never took Linear Algebra
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\item I had some questions
+\end{itemize}
+\pause
+\begin{itemize}
+\item What are the trade offs of all these packages?
+\end{itemize}
+\pause
+\begin{itemize}
+\item How do we load biological data? (Personal interest in genomics)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org242b94d}]{Exploring the State of Machine Learning for Biological Data}
+\begin{quote}
+Be the PR you want to see in the repo
+\end{quote}
+\begin{itemize}
+\item Michael Lingelbach
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgeec213b}]{Exploring the State of Machine Learning for Biological Data}
+\begin{quote}
+Be the \sout{PR} Talk you want to see \sout{in the repo} at Juliacon
+\end{quote}
+\end{frame}
+
+\begin{frame}[label={sec:orgd5c6aea}]{Goal of \emph{most} Biologists}
+\begin{itemize}
+\item We're not trying to create novel machine-learning models
+\item We're trying to apply these models in novel ways
+\item Then make biological inferences
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[label={sec:org32aad69}]{Old overview}
+\begin{itemize}
+\item Ability to call Python and R packages
+\item What are all of these different ML Packages?
+\item Loading biological file formats
+\item Some pretty basic toy examples
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org840a946}]{Then I had a thought\ldots{}}
+\pause
+
+What if I reproduce some analyses and recount what I learned along the way?
+\end{frame}
+
+\begin{frame}[label={sec:org98395b4}]{mlf-core - Overview}
+\begin{center}
+\includegraphics[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/55/c094b8-36dc-4c4d-bc0b-0a02dd10b7ea-18f210af8ba02477230d13c512a5535f.png}
+\end{center} \footnote{\url{https://doi.org/10.1093/bioinformatics/btad164}}
+
+\note{
+\begin{quote}
+Deterministic machine learning project templates based on MLflow.
+\end{quote}}
+\end{frame}
+
+\begin{frame}[label={sec:org201cd95}]{mlf-core - Summary}
+\begin{center}
+\includegraphics[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/e9/3d4b23-a2c4-4392-bef3-41a21d4bf88a-8f676d1fc92536f7f4957b0be2be5396.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org593fcd0},fragile]{mlf-core - Concept}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFcd{\#} \EFc{Install mlf-core}
+\$ pip install mlf-core
+
+\EFcd{\#} \EFc{Get an overview of all commands}
+\$ mlf-core --\EFb{help}
+
+\EFcd{\#} \EFc{Check out all available templates}
+\$ mlf-core \EFb{list}
+
+\EFcd{\#} \EFc{Get started and create your first project}
+\$ mlf-core create
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orge7751bc}]{mlf-core - Why do we care about Reproducibility?}
+\begin{itemize}
+\item why does reproducibility mater in science?
+\begin{itemize}
+\item compared to selling ads, chatbots
+\end{itemize}
+\item Lives are at stake
+\end{itemize}
+
+\note{
+\begin{itemize}
+\item Patients receiving a diagnosis
+\item Future scientists trying to reproduce the finding.
+\end{itemize}}
+\end{frame}
+
+\section*{lcep}
+\label{sec:org4ad1eec}
+\begin{frame}[label={sec:org82fd096}]{lcep - Overview}
+\begin{itemize}
+\item Classifying cancerous liver samples from gene expression data.
+\item RNA-seq data
+\item Nice warm up, purpose was to demonstrate \href{https://github.com/mlf-core/lcep-package}{creating a python package using
+mlf-core}, and using the package in \href{https://github.com/mlf-core/nextflow-lcep}{a Nextflow pipeline}
+\item \href{https://github.com/Emiller88/state-of-ml-for-biology-julia/tree/main/lcep}{Repo Link}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org30bf51f},fragile]{lcep - Dataloading - mlf-core}
+ \small
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{def} \EFf{load\_train\_test\_data}(train\_data, test\_data):
+    \EFv{X\_train}, \EFv{y\_train}, \EFv{train\_gene\_names}, \EFv{train\_sample\_names} = parse\_tpm\_table(train\_data)
+
+    \EFcd{\#} \EFc{Convert to Numpy Arrays}
+    \EFv{X\_train\_np} = np.array(X\_train)
+
+    \EFcd{\#} \EFc{Convert from Numpy Arrays to XGBoost Data Matrices}
+    \EFv{dtrain} = xgb.DMatrix(X\_train\_np, label=y\_train)
+
+    \EFv{training\_data} = Dataset(X\_train\_np, y\_train, dtrain, train\_gene\_names, train\_sample\_names)
+
+    \EFk{return} training\_data
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgfef0688},fragile]{lcep - Dataloading}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}train\_url = \EFs{"https://github.com/mlf-core/lcep/raw/master/data/train.tsv"}
+test\_url = \EFs{"https://github.com/mlf-core/lcep/raw/master/data/test.tsv"}
+
+train\_data = DataFrame(CSV.File(download(train\_url)))
+test\_data = DataFrame(CSV.File(download(test\_url)))
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item Note the lack of need to dance around with np arrays and XGBoost Data Matrices
+\begin{itemize}
+\item The Julia XGBoost wrapper handles the conversion from DataFrames to DMatrix
+\end{itemize}
+\end{itemize}
+
+\note{
+\begin{itemize}
+\item Data was precleaned following
+\end{itemize}}
+\end{frame}
+\begin{frame}[label={sec:org6bd1bd4}]{lcep - Dataloading}
+\begin{center}
+\small
+\begin{tabular}{llll}
+Gene ID & Gene Name & 0\_SRR143622 & 1\_bce80114-27b0-4318-9af1-d8fdf85ffd9c\\[0pt]
+\hline
+ENSG00000004975 & missing & 14.2893 & 18.7965\\[0pt]
+ENSG00000005339 & missing & 83.0387 & 78.4725\\[0pt]
+ENSG00000005884 & missing & 2.70558 & 11.0217\\[0pt]
+ENSG00000006451 & missing & 17.5549 & 34.9154\\[0pt]
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org3a88ead},fragile]{lcep - Data Cleaning - python}
+ \begin{itemize}
+\item Probably could have used pandas
+\end{itemize}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{def} \EFf{parse\_tpm\_table}(\EFb{input}):
+    \EFv{X\_train} = []
+    \EFv{y\_train} = []
+    \EFv{gene\_names} = []
+    \EFv{sample\_names} = []
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgb381656},fragile]{lcep - Data Cleaning - python}
+ \footnotesize
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}    \EFk{with} \EFb{open}(\EFb{input}, \EFs{"r"}) \EFk{as} \EFb{file}:
+        \EFv{all\_runs\_info} = \EFb{next}(\EFb{file}).split(\EFs{"}\EFo{\char92{}n}\EFs{"})[\EFhn{0}].split(\EFs{"}\EFo{\char92{}t}\EFs{"})[\EFhn{2}:]
+        \EFk{for} run\_info \EFk{in} all\_runs\_info:
+            \EFv{split\_info} = run\_info.split(\EFs{"\_"})
+            y\_train.append(\EFb{int}(split\_info[\EFhn{0}]))
+            sample\_names.append(split\_info[\EFhn{1}])
+        \EFk{for} line \EFk{in} \EFb{file}:
+            \EFv{splitted} = line.split(\EFs{"}\EFo{\char92{}n}\EFs{"})[\EFhn{0}].split(\EFs{"}\EFo{\char92{}t}\EFs{"})
+            X\_train.append([\EFb{float}(x) \EFk{for} x \EFk{in} splitted[\EFhn{2}:]])
+            gene\_names.append(splitted[:\EFhn{2}])
+
+    \EFv{X\_train} = [\EFb{list}(i) \EFk{for} i \EFk{in} \EFb{zip}(*X\_train)]
+
+    \EFk{return} X\_train, y\_train, gene\_names, sample\_names
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org72d9ab5},fragile]{lcep - Data Cleaning - Julia}
+ \footnotesize
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{function} \EFf{clean\_data}(input)
+    \EFcd{\#} \EFc{Drop any rows that are 0s}
+    input\_zeros = input[findall(x \EFt{->} x \EFt{!=} \EFhn{0}, names(input)), :]
+    \EFcd{\#} \EFc{Drop Gene Name col}
+    input\_id = input\_zeros[!, Not(\EFhn{2})]
+    \EFcd{\#} \EFc{Flip the dataframe}
+    input\_flip = rename(permutedims(input\_id, \EFs{"Gene ID"}), \EFs{"Gene ID"} \EFt{=>} \textcolor[HTML]{008b8b}{:status})
+
+    \EFcd{\#} \EFc{The 1\_s(cancer) and 0\_s(normal) are the labels}
+    \EFcd{\#} \EFc{Split status column by \_ and take the first}
+    transform(input\_flip, \textcolor[HTML]{008b8b}{:status} \EFt{=>} ByRow(x \EFt{->} parse(Float64, split(x, \EFs{"\_"})[\EFhn{1}])) \EFt{=>} \textcolor[HTML]{008b8b}{:status})
+\EFk{end}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+
+\begin{frame}[label={sec:org76252bc},fragile]{lcep - Training}
+ \small
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFv{booster} = xgb.train(param, training\_data.DM, dict\_args[\EFs{'max\_epochs'}], evals=[(test\_data.DM, \EFs{'test'})], evals\_result=results)
+
+\EFv{test\_predictions} = np.\EFb{round}(booster.predict(test\_data.DM))
+\end{Verbatim}
+\end{Code}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}train = (clean\_train\_data[:, \EFhn{2}:\EFk{end}], clean\_train\_data.status)
+bst = xgboost(train; num\_round=\EFhn{1000}, param...)
+
+test\_predictions = predict(bst, clean\_test\_data)
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org857c92b},fragile]{GPUs}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{using} CUDA
+X = cu(randn(\EFhn{1000}, \EFhn{3}))
+y = randn(\EFhn{1000})
+
+dm = DMatrix(X, y)
+XGBoost.isgpu(dm)  \EFcd{\#} \EFc{true}
+
+xgboost((X, y), num\_rounds=\EFhn{10})  \EFcd{\#} \EFc{no need to use `DMatrix`}
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item \href{https://github.com/ageron/julia\_notebooks/blob/main/Julia\_Colab\_Notebook\_Template.ipynb}{ageron Julia notebooks Template}
+\item Automatically downloads the CUDA toolkit for you
+\end{itemize}
+\end{frame}
+
+\section*{sc-autoencoder}
+\label{sec:org80d8ca5}
+\begin{frame}[label={sec:org40f46d6},fragile]{sc-autoencoder - Overview}
+ \begin{itemize}
+\item 3000 \href{https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k}{Peripheral blood mononuclear cells (PBMCs)} from 10x Genomics
+\item This time however they started from \texttt{h5ad}
+\item However they used \href{https://scanpy.readthedocs.io/en/stable/}{scanpy} to load and clean the data
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org11de45d},fragile]{Dataloading - Attempt to replicate scanpy functionality in Julia}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{using} Muon
+
+pbmc3k\_url = \EFs{"https://raw.githubusercontent.com/chanzuckerberg/cellxgene/main/example-dataset/pbmc3k.h5ad"}
+
+pmbc3k = readh5ad(download(pbmc3k\_url))
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item Muon is a part of \href{https://scverse.org/}{scverse}, the same group that wrote scanpy
+\item But it threw an error
+\end{itemize}
+
+\small
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}ERROR: MethodError: no method matching read\_dataframe\EFrda{(}::HDF5.Dataset\EFrda{)}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org9d29ec8},fragile]{Hacking on a package}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}pkg\EFt{>} develop \EFt{--}\EFk{local} Muon
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item Then there's a repo cloned at \texttt{dev/Muon}!
+\item And added to the Project.toml for tracking
+\end{itemize}
+\pause
+\begin{itemize}
+\item You can do this in python but here it's Julia all the way down
+\end{itemize}
+\note{
+Sadly fixing this was outside of my paygrade currently. Left off trying to get
+Muon to work. It's been fun to load a julia module and hack on it. Not sure if
+that path is going to go anywhere, probably should just move on to scanpy.}
+\end{frame}
+
+\begin{frame}[label={sec:org8d03c64},fragile]{Loading Data using PythonCall - CondaPkg.jl}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} \EFk{using} CondaPkg
+pkg\EFt{>} conda add\_channel conda\EFt{-}forge
+pkg\EFt{>} conda add scanpy python\EFt{-}igraph leidenalg
+\end{Verbatim}
+\end{Code}
+
+\texttt{CondaPkg.toml}
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFv{channels} = [\EFs{"conda-forge"}]
+
+[\textcolor[HTML]{228b22}{deps}]
+\EFv{leidenalg} = \EFs{""}
+\EFv{scanpy} = \EFs{""}
+\EFv{python-igraph} = \EFs{""}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org41bbce8}]{PythonCall and Pycall are different}
+\begin{itemize}
+\item Doesn't have to support as much legacy
+\begin{itemize}
+\item PythonCall supports Julia 1.6.1+ and Python 3.7+
+\item PyCall supports Julia 0.7+ and Python 2.7+.
+\end{itemize}
+\item Uses CondaPkg by default
+\item You can use them both at the same time if you needed to for some reason
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgc4e8357},fragile]{Loading Data using PythonCall}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{using} PythonCall
+
+sc = pyimport(\EFs{"scanpy"})
+
+\EFk{function} \EFf{preprocessing}(adata)
+    sc.pp.filter\_cells(adata, min\_genes=\EFhn{200})
+    sc.pp.filter\_genes(adata, min\_cells=\EFhn{3})
+
+    \EFcd{\#} \EFc{Normalization and scaling:}
+    sc.pp.normalize\_total(adata, target\_sum=\EFhn{1e4})
+    sc.pp.log1p(adata)
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org5eb81c7},fragile]{Loading Data using PythonCall}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}    \EFcd{\#} \EFc{Identify highly-variable genes}
+    sc.pp.highly\_variable\_genes(adata, min\_mean=\EFhn{0.0125}, max\_mean=\EFhn{3}, min\_disp=\EFhn{0.5}, subset=\EFo{true})
+    sc.pp.scale(adata, zero\_center=\EFo{true}, max\_value=\EFhn{3})
+    x = adata.X
+    \EFcd{\#} \EFc{We don't need Tensorflow because Julia is fast enough I think?}
+    \EFcd{\#} \EFc{data = tf.data.Dataset.from\_tensor\_slices((x, x))}
+    x = pyconvert(Array\{Float32\}, x)
+
+    \EFk{return} [x, x], x
+\EFk{end}
+
+dataset, test\_data = preprocessing(adata)
+dataset = Flux.DataLoader(dataset, batchsize=\EFhn{32})
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+
+\begin{frame}[label={sec:org9b15503},fragile]{TensorFlow Dataset Loading}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFv{data} = tf.data.Dataset.from\_tensor\_slices((x, x))
+\end{Verbatim}
+\end{Code}
+
+\begin{itemize}
+\item Realized once again there's no need to learn yet another library, can just use
+built-in Julia types
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org971af20},fragile]{DataToolkit}
+ \begin{itemize}
+\item Conda doesn't work well on NixOS
+\item Exported the \texttt{x} Matrix
+\end{itemize}
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}pkg\EFt{>} add DataToolkit
+\EFcd{\#} \EFc{\}}
+(.)\EFt{>} init
+(sc\EFt{-}autoencoder) data\EFt{>} add pbmc3k https:\EFt{//}huggingface.co\EFt{/}datasets\EFt{/}emiller\EFt{/}pbmc3k\EFt{/}resolve\EFt{/}main\EFt{/}delim\_file.txt
+\end{Verbatim}
+\end{Code}
+
+\pause
+
+\begin{itemize}
+\item Better practice would be to use the \href{https://tecosaur.github.io/DataToolkitDocs/common/stable/loaders/julia/}{Julia loader}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org5fe232a},fragile]{DataToolkit}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}[[\EFf{pbmc3k}]]
+\EFb{uuid} = \textcolor[HTML]{7f7f7f}{"2c0e014e-eea8-49e2-9916-6ab5d2df08b3"}
+\EFb{description} = \EFd{"Preprocessed pmbc3k Single Cell dataset"}
+
+    [[\EFf{pbmc3k}\EFt{.storage}]]
+    \EFb{driver} = \EFs{"web"}
+    \EFv{url} = \EFs{"https://huggingface.co/datasets/emiller/pbmc3k/resolve/main/delim\_file.txt"}
+
+    [[\EFf{pbmc3k}\EFt{.loader}]]
+    \EFb{driver} = \EFs{"delim"}
+    \EFv{delim} = \EFs{"\char92{}t"}
+    \EFv{dtype} = \EFs{"Float32"}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org871420c},fragile]{DataToolkit}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFk{using} DataToolkit
+
+dataset = d\EFs{"pbmc3k"}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org6607910}]{DataToolkit - Want to learn more?}
+\begin{center}
+\includesvg[width=0.7\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/bc/086131-a31b-4a06-a2e2-41ffc5cb9239-1063016956b0153fa747abecf9acf718}
+\end{center}
+
+Robust data management made simple: Introducing DataToolkit
+
+Timothy Chapman
+
+Friday, 07-28, 16:00–16:30 (US/Eastern), 32-123
+\end{frame}
+\begin{frame}[label={sec:org9aeedc3}]{Flux}
+\begin{center}
+\includegraphics[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/1f/474cbc-78c1-4b3a-9e88-d4f1bd015482-e4cfdc54911ec065898d48e2e19f42aa.png}
+\end{center}
+\begin{center}
+The \emph{Elegant} Machine Learning Stack
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orga25b0e8}]{Flux - Model}
+\begin{center}
+\includegraphics[width=0.45\linewidth]{./images/autoencoder_architecture.png}
+\end{center}
+
+\begin{itemize}
+\item Autoencoders are common in scRNA-seq data
+\begin{itemize}
+\item Denoising of single cell data
+\item predict perturbation responses
+\end{itemize}
+
+\item mlf-core purpose was to show that \alert{non-deterministic operations} can lead to
+significant differences in \alert{latent space embeddings}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org7569710},fragile]{Flux - DataLoader}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}train\_set = Flux.DataLoader((dataset, dataset), batchsize=\EFhn{256})
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:orgd5ba938},fragile]{Flux - Experiment Setup}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}device = cpu \EFcd{\#} \EFc{where will the calculations be performed?}
+L1, L2, L3 = \EFhn{256}, \EFhn{128}, \EFhn{64} \EFcd{\#} \EFc{layer dimensions}
+η = \EFhn{0.01} \EFcd{\#} \EFc{learning rate for ADAM optimization algorithm}
+batch\_size = \EFhn{100}; \EFcd{\#} \EFc{batch size for optimization}
+\end{Verbatim}
+\end{Code}
+
+\href{https://wildart.github.io/post/autoencoders/}{Autoencoders blog post by wildart}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgfe9e1b2},fragile]{Flux - Build the Model}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}enc1 = Dense(d, L1, relu)
+enc2 = Dense(L1, L2, relu)
+enc3 = Dense(L2, L3, relu)
+dec4 = Dense(L3, L2, relu)
+dec5 = Dense(L2, L1, relu)
+dec6 = Dense(L1, d)
+model = Chain(enc1, enc2, enc3, dec4, dec5, dec6) \EFt{|>} device
+\end{Verbatim}
+\end{Code}
+
+\href{https://wildart.github.io/post/autoencoders/}{Autoencoders blog post by wildart}
+\end{frame}
+
+\begin{frame}[label={sec:org6bf9fe4},fragile]{Flux - Training}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}opt\_state = Flux.setup(Adam(\EFhn{0.001}), model)
+\EFk{for} data \EFk{in} train\_set
+  \EFcd{\#} \EFc{Unpack this element (for supervised training):}
+  input, label = data
+  \EFcd{\#} \EFc{Calculate the gradient of the objective}
+  \EFcd{\#} \EFc{with respect to the parameters within the model:}
+  \EFf{loss}(A, B) = Flux.mae(model(A),B)
+  grads = Flux.gradient(model) \EFk{do} m
+      result = m(input)
+      loss(result, label)
+  \EFk{end}
+
+  Flux.update!(opt\_state, model, grads[\EFhn{1}])
+\EFk{end}
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\begin{frame}[label={sec:org66c51df},fragile]{Flux - \texttt{train!}}
+ \begin{Code}
+\begin{Verbatim}
+\color{EFD}opt\_state = Flux.setup(Adam(\EFhn{0.001}), model)
+
+\EFf{loss}(A, B) = Flux.mae(model(A),B)
+
+\textcolor[HTML]{483d8b}{\textbf{@withprogress}} Flux.train!(model, train\_set, opt\_state) \EFk{do} m, x, y
+  loss(m(x), y)
+\EFk{end}
+\end{Verbatim}
+\end{Code}
+
+\note{
+\begin{itemize}
+\item \emph{Elegant}
+\end{itemize}}
+\end{frame}
+
+\section*{liver-ct-segmentation}
+\label{sec:org4c52893}
+\begin{frame}[label={sec:org32be51e}]{liver-ct-segmentation - Overview}
+\begin{itemize}
+\item Liver-tumor segmentation of computed tomography scans using a U-Net model.
+\item The data in this challenge contains abdomen CT scans with contrast enhancement for liver lesions.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.7\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/2d/46d981-6a6b-4fb6-be81-7c814e75b2cd-0ccb23b21325ca4da289534a76aa72dd.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org760d9ac}]{liver-ct-segmentation - 3D U-Net architecture}
+\begin{center}
+\includegraphics[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/5e/eab26d-31aa-48db-89e9-efda25587432-9c3bd988872b017baa1199710088594d.png}
+\end{center}
+\end{frame}
+\begin{frame}[label={sec:org9e8d981}]{liver-ct-segmentation - Dataset}
+\begin{quote}
+The data set for LiTS was collected from 6 medical centres. The CT scans as well as the segmentations are provided as Nifti .nii files.
+\end{quote}
+
+\begin{itemize}
+\item Of course there's a package for that \href{https://github.com/JuliaNeuroscience/NIfTI.jl}{JuliaNeuroscience/NIfTI.jl} (It's 9 years
+old!)
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orgcd9bc67},fragile]{liver-ct-segmentation - model}
+ \begin{itemize}
+\item \href{https://juliapackages.com/p/unet}{UNet · Julia Packages}
+\begin{itemize}
+\item Written in Flux
+\end{itemize}
+\end{itemize}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}julia\EFt{>} u = Unet()
+UNet:
+  ConvDown(\EFhn{64}, \EFhn{64})
+  ConvDown(\EFhn{128}, \EFhn{128})
+  ConvDown(\EFhn{256}, \EFhn{256})
+  ConvDown(\EFhn{512}, \EFhn{512})
+  UNetConvBlock(\EFhn{1}, \EFhn{3})
+  ...
+  UNetConvBlock(\EFhn{1024}, \EFhn{1024})
+  UNetUpBlock(\EFhn{1024}, \EFhn{512})
+  ...
+  UNetUpBlock(\EFhn{256}, \EFhn{64})
+\end{Verbatim}
+\end{Code}
+\end{frame}
+
+\section*{Conclusion}
+\label{sec:org6edb6cc}
+\begin{frame}[label={sec:org035ba5d}]{Things we touched upon along the way}
+\begin{itemize}
+\item Simplicity of Dataloading
+\item Hacking on dependencies live
+\item Calling python packages from Julia
+\item DataToolkit
+\item Flux
+\item There's plenty of packages
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgbe1b816}]{Things I didn't get answers to}
+\begin{itemize}
+\item What would loading up BAMs like Deepvariant look like?
+\end{itemize}
+\begin{center}
+\includesvg[width=.9\linewidth]{/home/emiller/.config/emacs/.local/cache/org/persist/df/992170-c0a3-4642-9a42-82f9a4483cfe-a4cf8fbff6f3e0c1146442be11d19a2b}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orgefa6c64},fragile]{Things I didn't get answers to}
+ \begin{itemize}
+\item What would \href{https://github.com/FunctionLab/selene}{FunctionLab/selene} look like?
+\end{itemize}
+
+\begin{itemize}
+\item More Determinism
+\begin{itemize}
+\item \texttt{Lux.jl}?
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org67e0e3c}]{Links}
+\begin{columns}
+\begin{column}{0.5\columnwidth}
+Slides
+\begin{center}
+\includegraphics[width=.9\linewidth]{./images/slides-qr-code.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.5\columnwidth}
+\href{https:link.edmundmiller.dev}{link.edmundmiller.dev}
+\begin{center}
+\includegraphics[width=.9\linewidth]{/home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/links_qr.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+\end{document}

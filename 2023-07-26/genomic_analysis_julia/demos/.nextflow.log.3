@@ -1,0 +1,110 @@
+Jul-17 08:24:40.748 [main] DEBUG nextflow.cli.Launcher - $> nextflow run .
+Jul-17 08:24:40.830 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.06.0-edge
+Jul-17 08:24:40.856 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/emiller/.nextflow/plugins; core-plugins: nf-amazon@2.0.1,nf-azure@1.1.1,nf-codecommit@0.1.5,nf-console@1.0.6,nf-ga4gh@1.0.6,nf-google@1.8.0,nf-tower@1.5.14,nf-wave@0.10.0
+Jul-17 08:24:40.870 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-17 08:24:40.871 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-17 08:24:40.874 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-17 08:24:40.892 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-17 08:24:41.361 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/nextflow.config
+Jul-17 08:24:41.362 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/nextflow.config
+Jul-17 08:24:41.371 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-17 08:24:41.411 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-17 08:24:41.427 [main] INFO  nextflow.cli.CmdRun - Launching `./main.nf` [prickly_heisenberg] DSL2 - revision: e355312d8b
+Jul-17 08:24:41.428 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-17 08:24:41.429 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-17 08:24:41.441 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/emiller/.nextflow/secrets/store.json
+Jul-17 08:24:41.447 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@411c6d44] - activable => nextflow.secret.LocalSecretsProvider@411c6d44
+Jul-17 08:24:41.521 [main] DEBUG nextflow.Session - Session UUID: b05b4559-1ef7-43dc-89e0-701871edd96b
+Jul-17 08:24:41.521 [main] DEBUG nextflow.Session - Run name: prickly_heisenberg
+Jul-17 08:24:41.521 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-17 08:24:41.532 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-17 08:24:41.538 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-17 08:24:41.564 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.06.0-edge build 5864
+  Created: 14-06-2023 21:02 UTC (16:02 CDT)
+  System: Linux 6.3.12
+  Runtime: Groovy 3.0.17 on OpenJDK 64-Bit Server VM 17.0.7+7-nixos
+  Encoding: UTF-8 (UTF-8)
+  Process: 2010243@framework [127.0.0.2]
+  CPUs: 8 - Mem: 31.1 GB (11.9 GB) - Swap: 0 (0)
+Jul-17 08:24:41.609 [main] DEBUG nextflow.Session - Work-dir: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work [zfs]
+Jul-17 08:24:41.626 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-17 08:24:41.636 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-17 08:24:41.652 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-17 08:24:41.662 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-17 08:24:41.714 [main] DEBUG nextflow.Session - Session start
+Jul-17 08:24:41.927 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-17 08:24:42.022 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-17 08:24:42.022 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-17 08:24:42.028 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-17 08:24:42.032 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=31.1 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-17 08:24:42.114 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-17 08:24:42.114 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-17 08:24:42.119 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: system_image, cli, shebang
+Jul-17 08:24:42.120 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jul-17 08:24:42.120 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > cli
+Jul-17 08:24:42.121 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > shebang
+Jul-17 08:24:42.122 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-17 08:24:42.122 [main] DEBUG nextflow.Session - Session await
+Jul-17 08:24:42.311 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-17 08:24:42.314 [Task submitter] INFO  nextflow.Session - [cd/8d2d70] Submitted process > cli
+Jul-17 08:24:42.329 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-17 08:24:42.330 [Task submitter] INFO  nextflow.Session - [ef/a7c44b] Submitted process > shebang
+Jul-17 08:24:45.041 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: cli; status: COMPLETED; exit: 1; error: -; workDir: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/cd/8d2d70453f6bff3b658a887abbe354]
+Jul-17 08:24:45.046 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=cli; work-dir=/home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/cd/8d2d70453f6bff3b658a887abbe354
+  error [nextflow.exception.ProcessFailedException]: Process `cli` terminated with an error exit status (1)
+Jul-17 08:24:45.056 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'cli'
+
+Caused by:
+  Process `cli` terminated with an error exit status (1)
+
+Command executed:
+
+  julia hello.jl test.csv
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+  ERROR: SystemError: opening file "hello.jl": No such file or directory
+  Stacktrace:
+    [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
+      @ Base ./error.jl:176
+    [2] #systemerror#82
+      @ ./error.jl:175 [inlined]
+    [3] systemerror
+      @ ./error.jl:175 [inlined]
+    [4] open(fname::String; lock::Bool, read::Nothing, write::Nothing, create::Nothing, truncate::Nothing, append::Nothing)
+      @ Base ./iostream.jl:293
+    [5] open
+      @ ./iostream.jl:275 [inlined]
+    [6] open(f::Base.var"#418#419"{String}, args::String; kwargs::Base.Pairs{Symbol, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ Base ./io.jl:393
+    [7] open
+      @ ./io.jl:392 [inlined]
+    [8] read
+      @ ./io.jl:473 [inlined]
+    [9] _include(mapexpr::Function, mod::Module, _path::String)
+      @ Base ./loading.jl:1959
+   [10] include(mod::Module, _path::String)
+      @ Base ./Base.jl:457
+   [11] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:307
+   [12] _start()
+      @ Base ./client.jl:522
+
+Work dir:
+  /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/cd/8d2d70453f6bff3b658a887abbe354
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Jul-17 08:24:45.064 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `cli` terminated with an error exit status (1)
+Jul-17 08:24:45.087 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-17 08:24:45.089 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-17 08:24:45.096 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (1)
+Jul-17 08:24:45.131 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=1; succeedDuration=0ms; failedDuration=2.6s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
+Jul-17 08:24:45.315 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-17 08:24:45.335 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

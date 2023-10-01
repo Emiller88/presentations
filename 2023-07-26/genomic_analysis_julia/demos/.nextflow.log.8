@@ -1,0 +1,131 @@
+Jul-11 18:04:12.964 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+Jul-11 18:04:13.041 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.06.0-edge
+Jul-11 18:04:13.073 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/emiller/.nextflow/plugins; core-plugins: nf-amazon@2.0.1,nf-azure@1.1.1,nf-codecommit@0.1.5,nf-console@1.0.6,nf-ga4gh@1.0.6,nf-google@1.8.0,nf-tower@1.5.14,nf-wave@0.10.0
+Jul-11 18:04:13.091 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-11 18:04:13.092 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-11 18:04:13.095 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-11 18:04:13.107 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-11 18:04:13.130 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/nextflow.config
+Jul-11 18:04:13.131 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/nextflow.config
+Jul-11 18:04:13.157 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-11 18:04:13.729 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Jul-11 18:04:13.760 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [confident_keller] DSL2 - revision: 29ee4d925d
+Jul-11 18:04:13.761 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-11 18:04:13.761 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-11 18:04:13.772 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/emiller/.nextflow/secrets/store.json
+Jul-11 18:04:13.777 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@5460b754] - activable => nextflow.secret.LocalSecretsProvider@5460b754
+Jul-11 18:04:13.848 [main] DEBUG nextflow.Session - Session UUID: 5b750489-0672-495a-92aa-e07c6668525a
+Jul-11 18:04:13.849 [main] DEBUG nextflow.Session - Run name: confident_keller
+Jul-11 18:04:13.849 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-11 18:04:13.858 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-11 18:04:13.863 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-11 18:04:13.890 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.06.0-edge build 5864
+  Created: 14-06-2023 21:02 UTC (16:02 CDT)
+  System: Linux 6.1.31
+  Runtime: Groovy 3.0.17 on OpenJDK 64-Bit Server VM 17.0.6+10-nixos
+  Encoding: UTF-8 (UTF-8)
+  Process: 313999@framework [127.0.0.2]
+  CPUs: 8 - Mem: 31.2 GB (15.6 GB) - Swap: 0 (0)
+Jul-11 18:04:13.936 [main] DEBUG nextflow.Session - Work-dir: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work [zfs]
+Jul-11 18:04:13.936 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/bin
+Jul-11 18:04:13.949 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-11 18:04:13.962 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-11 18:04:13.987 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-11 18:04:13.999 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-11 18:04:14.073 [main] DEBUG nextflow.Session - Session start
+Jul-11 18:04:14.344 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-11 18:04:14.418 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-11 18:04:14.419 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-11 18:04:14.424 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-11 18:04:14.428 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=31.2 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-11 18:04:14.507 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: system_image, cli, shebang
+Jul-11 18:04:14.507 [main] DEBUG nextflow.Session - Igniting dataflow network (1)
+Jul-11 18:04:14.507 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > shebang
+Jul-11 18:04:14.508 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-11 18:04:14.508 [main] DEBUG nextflow.Session - Session await
+Jul-11 18:04:14.655 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-11 18:04:14.657 [Task submitter] INFO  nextflow.Session - [ec/3d90bc] Submitted process > shebang
+Jul-11 18:04:21.268 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: shebang; status: COMPLETED; exit: 1; error: -; workDir: /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/ec/3d90bc596e01a5bdc7dd6c0ffdca09]
+Jul-11 18:04:21.271 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=shebang; work-dir=/home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/ec/3d90bc596e01a5bdc7dd6c0ffdca09
+  error [nextflow.exception.ProcessFailedException]: Process `shebang` terminated with an error exit status (1)
+Jul-11 18:04:21.282 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'shebang'
+
+Caused by:
+  Process `shebang` terminated with an error exit status (1)
+
+Command executed:
+
+  #!/usr/bin/env -S julia --color=yes --startup-file=no --project=.
+  
+  using DataFrames
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+    [7b1f6079] + FileWatching
+    [9fa8497b] + Future
+    [b77e0a4c] + InteractiveUtils
+    [b27032c2] + LibCURL v0.6.3
+    [76f85450] + LibGit2
+    [8f399da3] + Libdl
+    [37e2e46d] + LinearAlgebra
+    [56ddb016] + Logging
+    [d6f4376e] + Markdown
+    [ca575930] + NetworkOptions v1.2.0
+    [44cfe95a] + Pkg v1.9.0
+    [de0858da] + Printf
+    [3fa0cd96] + REPL
+    [9a3f8284] + Random
+    [ea8e919c] + SHA v0.7.0
+    [9e88b42a] + Serialization
+    [6462fe0b] + Sockets
+    [2f01184e] + SparseArrays
+    [10745b16] + Statistics v1.9.0
+    [fa267f1f] + TOML v1.0.3
+    [a4e569a6] + Tar v1.10.0
+    [8dfed614] + Test
+    [cf7118a7] + UUIDs
+    [4ec0a83e] + Unicode
+    [e66e0078] + CompilerSupportLibraries_jll v1.0.2+0
+    [deac9b47] + LibCURL_jll v7.84.0+0
+    [29816b5a] + LibSSH2_jll v1.10.2+0
+    [c8ffd9c3] + MbedTLS_jll v2.28.2+0
+    [14a3606d] + MozillaCACerts_jll v2022.10.11
+    [4536629a] + OpenBLAS_jll v0.3.21+4
+    [bea87d4a] + SuiteSparse_jll v5.10.1+6
+    [83775a58] + Zlib_jll v1.2.13+0
+    [8e850b90] + libblastrampoline_jll v5.7.0+0
+    [8e850ede] + nghttp2_jll v1.48.0+0
+    [3f19e933] + p7zip_jll v17.4.0+0
+  [91m[1mERROR: [22m[39mLoadError: ArgumentError: Package DataFrames [a93c6f00-e57d-5684-b7b6-d8193f3e46c0] is required but does not seem to be installed:
+   - Run `Pkg.instantiate()` to install all recorded dependencies.
+  
+  Stacktrace:
+   [1] [0m[1m_require[22m[0m[1m([22m[90mpkg[39m::[0mBase.PkgId, [90menv[39m::[0mString[0m[1m)[22m
+  [90m   @[39m [90mBase[39m [90m./[39m[90m[4mloading.jl:1774[24m[39m
+   [2] [0m[1m_require_prelocked[22m[0m[1m([22m[90muuidkey[39m::[0mBase.PkgId, [90menv[39m::[0mString[0m[1m)[22m
+  [90m   @[39m [90mBase[39m [90m./[39m[90m[4mloading.jl:1660[24m[39m
+   [3] [0m[1mmacro expansion[22m
+  [90m   @[39m [90m./[39m[90m[4mloading.jl:1648[24m[39m[90m [inlined][39m
+   [4] [0m[1mmacro expansion[22m
+  [90m   @[39m [90m./[39m[90m[4mlock.jl:267[24m[39m[90m [inlined][39m
+   [5] [0m[1mrequire[22m[0m[1m([22m[90minto[39m::[0mModule, [90mmod[39m::[0mSymbol[0m[1m)[22m
+  [90m   @[39m [90mBase[39m [90m./[39m[90m[4mloading.jl:1611[24m[39m
+  in expression starting at .command.sh:3
+
+Work dir:
+  /home/emiller/src/personal/edmundmiller-dev/static/presentations/2023-07-26/demos/work/ec/3d90bc596e01a5bdc7dd6c0ffdca09
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Jul-11 18:04:21.287 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-11 18:04:21.288 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `shebang` terminated with an error exit status (1)
+Jul-11 18:04:21.312 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-11 18:04:21.320 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=6.5s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Jul-11 18:04:21.547 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-11 18:04:21.561 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

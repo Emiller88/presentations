@@ -1,0 +1,2 @@
+time="2023-07-17T08:18:43-05:00" level=error msg="error waiting for container: context canceled"
+docker: Error response from daemon: container is marked for removal and cannot be started.
