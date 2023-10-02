@@ -40,20 +40,24 @@ adoption of pytest-workflow.
 
 
 
-** TODO Evolution of Man Slide
+** TODO Evolution of nf-core Testing
 # Imagining a like evolution of man but testing graphic
 
 # Roll back to Methylseq
 - In a land before CI
+#+beamer: \pause
 - Using GitHub actions to run ~nextflow run main.nf -profile test~
+#+beamer: \pause
 - Using pytest-workflow to test nf-core/modules
+#+beamer: \pause
   - And check the md5sum of the outputs (and their existence!)
+#+beamer: \pause
 - A few clades in our phyogenetic tree
   - sarek using pytest-workflow to run ~nextflow run main.nf -profile test~
+#+beamer: \pause
 - ~nf-test~
 
-*
-** TODO Quick run through of pytest-workflow for modules
+** Quick run through of pytest-workflow for modules
 
 \small
 #+begin_src nextflow
@@ -72,7 +76,7 @@ workflow test_fastqc_paired_end {
 }
 #+end_src
 
-** TODO Quick run through of pytest-workflow for modules
+** Quick run through of pytest-workflow for modules
 
 \small
 #+begin_src yaml
@@ -85,10 +89,8 @@ workflow test_fastqc_paired_end {
       contains:
         - <tr><td>File type</td><td>Conventional base calls</td></tr>
     - path: output/fastqc/test_1_fastqc.zip
-    - path: output/fastqc/test_2_fastqc.html
-      contains:
-        - <tr><td>File type</td><td>Conventional base calls</td></tr>
-    - path: output/fastqc/test_2_fastqc.zip
+    - path: output/fastqc/test_1.txt
+      md5sum: 68db6114ef348f721c139cd4c9534f73
 #+end_src
 
 *** Notes :B_note:
@@ -111,6 +113,84 @@ workflow test_fastqc_paired_end {
   - GitHub runners are a finite resource
 - Conda is a pain with hashes
 - Investing time in testing leads to *improvements each release*
+
+* nf-test Features we love
+** nf-test Example
+
+#+begin_src nextflow
+nextflow_pipeline {
+
+  name "Test Hello World"
+  script "nextflow-io/hello"
+
+  test("hello world example should start 4 processes") {
+
+    expect {
+      with(workflow){
+        assert success
+        //analyze Nextflow trace file
+        assert trace.tasks().size() == 4
+        //Verify if strings have been written to stdout object
+        assert "Ciao world!" in stdout
+        assert "Bonjour world!" in stdout
+        assert "Hello world!" in stdout
+        assert "Hola world!" in stdout
+      }
+    }
+  }
+}
+#+end_src
+
+** Simple Nextflow style one-line install
+
+#+begin_src bash
+curl -fsSL https://code.askimed.com/install/nf-test | bash
+#+end_src
+
+** Testing all Nextflow components and Test generation
+
+#+begin_src bash
+# Create a test cases for all processes in folder modules:
+nf-test generate process modules/**/*.nf
+# Create a test case for a sub workflow:
+nf-test generate workflow workflows/some_workflow.nf
+# Create a test case for the whole pipeline:
+nf-test generate pipeline main.nf
+# Create a test case for each functio in file functions.nf:
+nf-test generate function functions.nf
+#+end_src
+
+** Snapshot generation
+
+#+begin_src nextflow
+assert snapshot(
+    workflow,
+    path("${params.outdir}/file1.txt"),
+    path("${params.outdir}/file2.txt"),
+    path("${params.outdir}/file3.txt")
+).match()
+#+end_src
+
+#+beamer: \pause
+#+begin_src bash
+nf-test test tests/main.nf.test --update-snapshot
+#+end_src
+
+
+** Powerful assertions
+
+#+begin_src bash
+# GZip files
+assert path(process.out.out_ch.get(0)).linesGzip.size() == 5
+assert path(process.out.out_ch.get(0)).linesGzip.contains("Line Content")
+# Fasta files (Plugins!)
+assert path('path/to/fasta1.fasta').fasta == path("path/to/fasta2.fasta'").fasta
+# Work with individual samples
+def sequences = path('path/to/fasta1.fasta.gz').fasta
+assert "seq1" in sequences
+assert !("seq8" in sequences)
+assert sequences.seq1 == "AGTACGTAGTAGCTGCTGCTACGTGCGCTAGCTAGTACGTCACGACGTAGATGCTAGCTGACTCGATGC"
+#+end_src
 
 * nf-test in modules
 
@@ -141,14 +221,25 @@ workflow test_fastqc_paired_end {
 ** In action :ATTACH:
 
 
-[[attachment:modules_porque_nolosdos.png]]
+[[attachment:modules_no-nf-test.png]]
 
 # ¿Por Qué No Los Dos? meme?
+# https://knowyourmeme.com/photos/166112
+
+** In action :ATTACH:
+
+
+[[attachment:modules_fastqc_workflow.png]]
+
 ** Pre-hackathon
 
 - 2 modules(fastqc and snakemake)
 
 ** Outstanding issues
+
+- Testing modules that are chained together
+- Unzipping input files
+
 ** Post-hackathon
 
 ** Where are we going?
@@ -196,8 +287,27 @@ converted over to nf-test during the hackathon
 
 
 [[attachment:_20231002_084701screenshot.png]]
+** nf-test scatter
+
+# https://github.com/askimed/nf-test/issues/102
+
+- Typically software tests are ran in parallel
+- Usually each test doesn't take 5 minutes...
+
+# TODO You get a test, and you get a test and you get test
+# https://imgflip.com/memegenerator/Oprah-You-Get-A
+
+** nf-test scatter :ATTACH:
+
+
+[[attachment:workflows_scatter_example_tmp.png]]
+
 
 ** Where are we going?
+
+- Lock down the nf-core nf-test standard(where do the tests live?)
+- Add nf-test to the template
+- Add test generation into ~nf-core <modules/subworkflows> create~
 
 ** IDEA Abstract :noexport:
 Next, we'll go over how nf-test has been amazing for testing full pipelines,

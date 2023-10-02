@@ -1,17 +1,18 @@
 #+title: Planning
 
-** STRT Make slides for nf-test in pipelines
+* STRT Make slides for nf-test in pipelines
 :LOGBOOK:
 CLOCK: [2023-10-01 Sun 21:40]--[2023-10-01 Sun 22:16] =>  0:36
 CLOCK: [2023-10-01 Sun 20:51]--[2023-10-01 Sun 21:05] =>  0:41
 :END:
-** TODO Make slides for nf-test in modules
+* TODO Make slides for nf-test in modules
 :LOGBOOK:
 CLOCK: [2023-10-02 Mon 08:27]
 CLOCK: [2023-10-02 Mon 08:07]--[2023-10-02 Mon 08:17] =>  0:10
 :END:
-** TODO Make conclusion slides?
+* TODO Make conclusion slides?
 Make it funny?
+* TODO Add rocket to all ~nf-test~ mentions
 * DONE Mess with devenv
 CLOSED: [2023-10-01 Sun 20:51]
 :LOGBOOK:
