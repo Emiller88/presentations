@@ -1,4 +1,8 @@
+:PROPERTIES:
+:DIR:      ./img/
+:END:
 #+title: nf-test at nf-core: empowering scalable and streamlined testing
+#+setupfile: ./setup.org
 
 * Abstract :noexport:
 
@@ -51,6 +55,7 @@ adoption of pytest-workflow.
 *
 ** TODO Quick run through of pytest-workflow for modules
 
+\small
 #+begin_src nextflow
 include { FASTQC } from '../../../../modules/nf-core/fastqc/main.nf'
 
@@ -69,6 +74,7 @@ workflow test_fastqc_paired_end {
 
 ** TODO Quick run through of pytest-workflow for modules
 
+\small
 #+begin_src yaml
 - name: fastqc test_fastqc_paired_end
   command: nextflow run ./tests/modules/nf-core/fastqc -entry test_fastqc_paired_end -c ./tests/config/nextflow.config -c ./tests/modules/nf-core/fastqc/nextflow.config
@@ -101,11 +107,62 @@ workflow test_fastqc_paired_end {
 ** Somethings we learned along the way
 
 - Checking what code has changed and only running tests for that code
-  - /Speed/
+  - /Speed/ - Saves developer time
   - GitHub runners are a finite resource
 - Conda is a pain with hashes
 - Investing time in testing leads to *improvements each release*
 
+* nf-test in modules
+
+** nf-test in modules
+
+- The cool things we're doing
+  - Only running CI on code that changed
+  - Splitting up jobs to run on separate runners
+
+** GitHub runs in modules :ATTACH:
+
+
+[[attachment:modules_workflows.png]]
+
+
+** A smooth transition :ATTACH:
+
+[[file:img/modules_activity.png]]
+
+- We can't just stop updating modules
+
+
+** The swap :ATTACH:
+
+
+[[attachment:nf-core_swap.jpg]]
+
+** In action :ATTACH:
+
+
+[[attachment:modules_porque_nolosdos.png]]
+
+# ¿Por Qué No Los Dos? meme?
+** Pre-hackathon
+
+- 2 modules(fastqc and snakemake)
+
+** Outstanding issues
+** Post-hackathon
+
+** Where are we going?
+
+
+** IDEA Abstract :noexport:
+Finally, we'll jump into nf-core modules, and how we couldn't just rip out
+pytest-workflow. We'll briefly go over the ability to have both testing
+frameworks available in the repo. Then we'll talk about the few issues holding
+back the overall adoption of nf-test because of some bad habits we picked up
+from pytest-workflow.
+
+Hopefully then we'll get to take a quick victory lap for all of the modules we
+converted over to nf-test during the hackathon
 * nf-test in pipelines
 
 ** Pipelines Introduction
@@ -120,14 +177,25 @@ workflow test_fastqc_paired_end {
 
 ** Why test pipelines?
 
-Avoid Regressions
+- Avoid Regressions
+- Improve confidence in scientific outcomes
 
 ** Where are we?
 
 - Added in Methylseq in version
-- Pre-hackathon implimented in ___ pipelines: demultiplex, nascent,
+- Pre-hackathon: 7 pipelines
+#+beamer: \pause
+- Post-hackathon: _?_ pipelines 🎉
+  - (We have another 3 slated)
 
-- Post-hackathon: implimented in ___ pipelines
+** GitHub Actions Runners are finite resources :ATTACH:
+
+[[attachment:actions.png]]
+
+** GitHub actions in sarek :ATTACH:
+
+
+[[attachment:_20231002_084701screenshot.png]]
 
 ** Where are we going?
 
@@ -141,19 +209,3 @@ snapshots, tags and the CI configuration.
   and how we parallelized the testing of the workflows.
 
 
-* nf-test in modules
-
-** Pre-hackathon
-** Post-hackathon
-** Where are we going?
-
-
-** IDEA Abstract :noexport:
-Finally, we'll jump into nf-core modules, and how we couldn't just rip out
-pytest-workflow. We'll briefly go over the ability to have both testing
-frameworks available in the repo. Then we'll talk about the few issues holding
-back the overall adoption of nf-test because of some bad habits we picked up
-from pytest-workflow.
-
-Hopefully then we'll get to take a quick victory lap for all of the modules we
-converted over to nf-test during the hackathon

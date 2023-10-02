@@ -1,0 +1,32 @@
+#+title: Planning
+
+** STRT Make slides for nf-test in pipelines
+:LOGBOOK:
+CLOCK: [2023-10-01 Sun 21:40]--[2023-10-01 Sun 22:16] =>  0:36
+CLOCK: [2023-10-01 Sun 20:51]--[2023-10-01 Sun 21:05] =>  0:41
+:END:
+** TODO Make slides for nf-test in modules
+:LOGBOOK:
+CLOCK: [2023-10-02 Mon 08:27]
+CLOCK: [2023-10-02 Mon 08:07]--[2023-10-02 Mon 08:17] =>  0:10
+:END:
+** TODO Make conclusion slides?
+Make it funny?
+* DONE Mess with devenv
+CLOSED: [2023-10-01 Sun 20:51]
+:LOGBOOK:
+CLOCK: [2023-10-01 Sun 20:31]--[2023-10-01 Sun 20:51] =>  0:20
+:END:
+* DONE Get started on nf-test presentation
+CLOSED: [2023-09-30 Sat 13:40]
+:LOGBOOK:
+CLOCK: [2023-09-30 Sat 12:50]--[2023-09-30 Sat 13:40] =>  0:50
+:END:
+* DONE Make a presentations repo
+CLOSED: [2023-10-01 Sun 18:32]
+:LOGBOOK:
+CLOCK: [2023-10-01 Sun 18:05]--[2023-10-01 Sun 18:31] =>  0:26
+:END:
+
+And move all of the presentations out, duh
+
