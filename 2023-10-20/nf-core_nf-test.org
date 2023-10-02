@@ -61,18 +61,15 @@ adoption of pytest-workflow.
 
 \small
 #+begin_src nextflow
-include { FASTQC } from '../../../../modules/nf-core/fastqc/main.nf'
-
 workflow test_fastqc_paired_end {
-    input = [
-                [id: 'test', single_end: false], // meta map
-                [
-                    file(params.test_data['sarscov2']['illumina']['test_1_fastq_gz'], checkIfExists: true),
-                    file(params.test_data['sarscov2']['illumina']['test_2_fastq_gz'], checkIfExists: true)
-                ]
-            ]
-
-    FASTQC ( input )
+  input = [
+    [id: 'test', single_end: false], // meta map
+    [
+      file(params.test_data['sarscov2']['illumina']['test_1_fastq_gz']),
+      file(params.test_data['sarscov2']['illumina']['test_2_fastq_gz'])
+      ]
+  ]
+  FASTQC ( input )
 }
 #+end_src
 
@@ -117,6 +114,7 @@ workflow test_fastqc_paired_end {
 * nf-test Features we love
 ** nf-test Example
 
+\small
 #+begin_src nextflow
 nextflow_pipeline {
 
@@ -124,13 +122,21 @@ nextflow_pipeline {
   script "nextflow-io/hello"
 
   test("hello world example should start 4 processes") {
+    // ...
+  }
+}
+#+end_src
 
+** nf-test Example
+
+#+begin_src Nextflow
+  test("hello world example should start 4 processes") {
     expect {
       with(workflow){
         assert success
-        //analyze Nextflow trace file
+        // analyze Nextflow trace file
         assert trace.tasks().size() == 4
-        //Verify if strings have been written to stdout object
+        // Verify if strings have been written to stdout object
         assert "Ciao world!" in stdout
         assert "Bonjour world!" in stdout
         assert "Hello world!" in stdout
@@ -138,9 +144,13 @@ nextflow_pipeline {
       }
     }
   }
-}
 #+end_src
 
+** nf-test Example
+
+#+begin_src bash
+nf-test test pipeline.nf.test
+#+end_src
 ** Simple Nextflow style one-line install
 
 #+begin_src bash
@@ -177,28 +187,30 @@ nf-test test tests/main.nf.test --update-snapshot
 #+end_src
 
 
-** Powerful assertions
+** Powerful assertions - GZip files
 
 #+begin_src bash
-# GZip files
 assert path(process.out.out_ch.get(0)).linesGzip.size() == 5
 assert path(process.out.out_ch.get(0)).linesGzip.contains("Line Content")
-# Fasta files (Plugins!)
+#+end_src
+
+** Powerful assertions - Fasta files (and Plugins!)
+
+#+begin_src bash
 assert path('path/to/fasta1.fasta').fasta == path("path/to/fasta2.fasta'").fasta
 # Work with individual samples
 def sequences = path('path/to/fasta1.fasta.gz').fasta
 assert "seq1" in sequences
 assert !("seq8" in sequences)
-assert sequences.seq1 == "AGTACGTAGTAGCTGCTGCTACGTGCGCTAGCTAGTACGTCACGACGTAGATGCTAGCTGACTCGATGC"
+assert sequences.seq1 == "AGTACGTAGTAGCTGC"
 #+end_src
 
 * nf-test in modules
 
 ** nf-test in modules
 
-- The cool things we're doing
-  - Only running CI on code that changed
-  - Splitting up jobs to run on separate runners
+- Only running CI on code that changed
+- Splitting up jobs to run on separate runners
 
 ** GitHub runs in modules :ATTACH:
 
@@ -215,11 +227,12 @@ assert sequences.seq1 == "AGTACGTAGTAGCTGCTGCTACGTGCGCTAGCTAGTACGTCACGACGTAGATGC
 
 ** The swap :ATTACH:
 
-
+#+attr_latex: :height 0.7\linewidth
 [[attachment:nf-core_swap.jpg]]
 
 ** In action :ATTACH:
 
+# TODO Swap these out for passing tests
 
 [[attachment:modules_no-nf-test.png]]
 
@@ -234,18 +247,23 @@ assert sequences.seq1 == "AGTACGTAGTAGCTGCTGCTACGTGCGCTAGCTAGTACGTCACGACGTAGATGC
 ** Pre-hackathon
 
 - 2 modules(fastqc and snakemake)
+- Still supporting pytest-workflow
+- Only running tests on changed code
+
+** Post-hackathon
+
+- [[https://github.com/nf-core/modules/pull/3228][nf-core/modules#3228 Migrate standalone tests to nf-test by sateeshperi]]
+- [[https://github.com/nf-core/modules/issues/3857][nf-core/modules#3857 Migrate subworkflow tests in nf-core/modules to nf-test]]
+- [[https://github.com/nf-core/modules/issues/3858][nf-core/modules#3858 Migrate chained modules tests to nf-test]]
+- Scatter-gather tests
 
 ** Outstanding issues
 
 - Testing modules that are chained together
 - Unzipping input files
 
-** Post-hackathon
-
-** Where are we going?
-
-
 ** IDEA Abstract :noexport:
+
 Finally, we'll jump into nf-core modules, and how we couldn't just rip out
 pytest-workflow. We'll briefly go over the ability to have both testing
 frameworks available in the repo. Then we'll talk about the few issues holding
@@ -259,11 +277,16 @@ converted over to nf-test during the hackathon
 ** Pipelines Introduction
 
 - Nextflow pipelines with a twist
+#+beamer: \pause
 - Run on /everything/
+#+beamer: \pause
 - Supported by *template updates* when new version releases of nf-core/tools that
   usually add *new features*
-  - These new features sometimes come with unintended bugs!
+#+beamer: \pause
+  + These new features sometimes come with unintended bugs!
+#+beamer: \pause
 - Supported by pull-requests from the community
+#+beamer: \pause
   - But how do we trust code from a new contributor?
 
 ** Why test pipelines?
@@ -273,10 +296,11 @@ converted over to nf-test during the hackathon
 
 ** Where are we?
 
-- Added in Methylseq in version
+- Added in Methylseq in version ~2.4.0~
 - Pre-hackathon: 7 pipelines
 #+beamer: \pause
-- Post-hackathon: _?_ pipelines 🎉
+# 🎉
+- Post-hackathon: _?_ pipelines
   - (We have another 3 slated)
 
 ** GitHub Actions Runners are finite resources :ATTACH:
@@ -286,7 +310,8 @@ converted over to nf-test during the hackathon
 ** GitHub actions in sarek :ATTACH:
 
 
-[[attachment:_20231002_084701screenshot.png]]
+[[attachment:sarek_workflows.png]]
+
 ** nf-test scatter
 
 # https://github.com/askimed/nf-test/issues/102
@@ -299,9 +324,18 @@ converted over to nf-test during the hackathon
 
 ** nf-test scatter :ATTACH:
 
-
+#+attr_latex: :height 0.7\linewidth
 [[attachment:workflows_scatter_example_tmp.png]]
 
+
+** Post Hackathon
+
+- Replace all basic CI tests with nf-test
+  - [[https://github.com/nf-core/tools/pull/2007][nf-core/tools#2007 Add nf-test to pipeline template by Emiller88]]
+- # of pipelines with basic CI tests
+- # of pipelines with subworkflows tested
+- # of pipelines with modules tested
+- # of pipelines with functions tested
 
 ** Where are we going?
 
