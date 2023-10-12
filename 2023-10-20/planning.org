@@ -7,7 +7,7 @@ CLOCK: [2023-10-01 Sun 20:51]--[2023-10-01 Sun 21:05] =>  0:41
 :END:
 * TODO Make slides for nf-test in modules
 :LOGBOOK:
-CLOCK: [2023-10-02 Mon 08:27]
+CLOCK: [2023-10-02 Mon 08:27]--[2023-10-02 Mon 19:52] => 11:25
 CLOCK: [2023-10-02 Mon 08:07]--[2023-10-02 Mon 08:17] =>  0:10
 :END:
 * TODO Make conclusion slides?
