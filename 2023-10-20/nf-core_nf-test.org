@@ -26,6 +26,9 @@ note on [[id:54549341-c326-434f-be59-cdac2b846eeb][nf-test at nf-core]]
 # more important to present. These talks are tough to prepare for ahead of time
 # because you're waiting for the hackathon to finish so you know what you can
 # present
+** Why Am I giving this talk
+
+# TODO Insert Spider man meme of Adam and Sateesh saying their the nf-test guru
 
 * History of testing at nf-core
 
