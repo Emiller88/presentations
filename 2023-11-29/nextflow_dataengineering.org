@@ -1,0 +1,4 @@
+#+title: Nextflow Dataengineering
+
+* Loved the modern biotech stack
+Play on the modern datastack
