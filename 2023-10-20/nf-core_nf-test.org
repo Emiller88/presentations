@@ -4,6 +4,9 @@
 #+title: nf-test at nf-core: empowering scalable and streamlined testing
 #+setupfile: ./setup.org
 
+* TODO Add nf-core logo inside of the nf-test logo
+* TODO Add in gregors custom version checker
+Make sure mahesh didn't also work on it
 * Abstract :noexport:
 
 The nf-core community values results. One of the most important steps in

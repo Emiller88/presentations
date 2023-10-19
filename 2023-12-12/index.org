@@ -3,3 +3,6 @@
 Should recommend people check out GitHub desktop, it's pretty easy to do good things, like rebase, add coauthors etc.
 
 https://docs.github.com/en/get-started/using-git/about-git-rebase Some great further reading here
+
+
+Talk about gh cli and making issues quickly
