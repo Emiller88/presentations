@@ -1,12 +1,12 @@
 :PROPERTIES:
 :DIR:      ./img/
 :END:
-#+title: nf-test at nf-core: empowering scalable and streamlined testing
+#+title: nf-test at nf-core: Empowering Scalable and Streamlined Testing
 #+author: Edmund Miller, Sateesh Peri, Maxime Garcia, Adam Talbot, Harshil Patel, Júlia Mir Pedrol, Nicolas Vannieuwkerke, and the nf-core maintainers
 #+setupfile: ./setup.org
 
-* TODO Add nf-core logo inside of the nf-test logo
-* TODO Add in gregors custom version checker
+* TODO Add nf-core logo inside of the nf-test logo :noexport:
+* TODO Add in gregors custom version checker :noexport:
 Make sure mahesh didn't also work on it
 * Abstract :noexport:
 
@@ -24,14 +24,9 @@ the hackathon on nf-test.
 
 note on [[id:54549341-c326-434f-be59-cdac2b846eeb][nf-test at nf-core]]
 
-
-** About me
-
-- Phd Candidate @ University of Texas at Dallas
-
-*** My nf-core origin story :B_note:
+* :B_ignoreheading:
 :PROPERTIES:
-:BEAMER_env: note
+:BEAMER_env: ignoreheading
 :END:
 
 ** Why Am I giving this talk :noexport:
@@ -47,12 +42,12 @@ note on [[id:54549341-c326-434f-be59-cdac2b846eeb][nf-test at nf-core]]
 #+beamer: \pause
 - Testing data pipelines is hard
 #+beamer: \pause
-- We really just want the bear-minimum, confidence in our results
+- We really just want the bear-minimum, *confidence in our results*
 #+beamer: \pause
 - Bioinformatics software is finicky
 ** Figure 1: Nextflow enables stable analyses on different platforms.
 
-[[https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fnbt.3820/MediaObjects/41587_2017_Article_BFnbt3820_Fig1_HTML.jpg?as=webp][Nextflow figure]]
+[[file:img/Fig1_nextflow.jpg]]
 
 * History of testing at nf-core
 
@@ -67,22 +62,28 @@ adoption of pytest-workflow.
 
 
 
-** TODO Evolution of nf-core Testing
+** Evolution of nf-core Testing
 # Imagining a like evolution of man but testing graphic
 
 # Roll back to Methylseq
-- In a land before CI
+- May 11th 2017 - Phil adds automated via Travis
 #+beamer: \pause
-- Using GitHub actions to run ~nextflow run main.nf -profile test~
+- Oct 7th 2019 - Tools v1.7, Using GitHub actions are added to the template
 #+beamer: \pause
-- Using pytest-workflow to test nf-core/modules
+- Nov 24, 2020 - Harshil merged CI for pytest-workflow to test nf-core/modules
+# https://github.com/nf-core/modules/pull/80
+# #+beamer: \pause
+  # - And check the md5sum of the outputs (and their existence!)
 #+beamer: \pause
-  - And check the md5sum of the outputs (and their existence!)
+- May 19, 2021 - Maxime starts using pytest-workflow in Sarek
 #+beamer: \pause
-- A few clades in our phyogenetic tree
-  - sarek using pytest-workflow to run ~nextflow run main.nf -profile test~
-#+beamer: \pause
-- ~nf-test~
+- Oct 10th, 2022 - Nicolas begins the modern era
+# https://github.com/nf-core/modules/pull/2199#issue-1403249996
+
+** TODO nf-test :noexport:
+# TODO Add real logo
+
+🚀
 
 ** pytest-workflow for modules
 
@@ -135,6 +136,13 @@ workflow test_fastqc_paired_end {
 - Investing time in testing *pays off in the long run*
 
 * nf-test Features we love
+** Simple Nextflow style one-line install
+
+\large
+#+begin_src bash
+curl -fsSL https://code.askimed.com/install/nf-test | bash
+#+end_src
+
 ** nf-test Example
 
 \small
@@ -174,22 +182,16 @@ nextflow_pipeline {
 #+begin_src bash
 nf-test test pipeline.nf.test
 #+end_src
-** Simple Nextflow style one-line install
-
-#+begin_src bash
-curl -fsSL https://code.askimed.com/install/nf-test | bash
-#+end_src
-
 ** Testing all Nextflow components and Test generation
 
 #+begin_src bash
 # Create a test cases for all processes in folder modules:
 nf-test generate process modules/**/*.nf
-# Create a test case for a sub workflow:
+# Create a test case for a subworkflow:
 nf-test generate workflow workflows/some_workflow.nf
 # Create a test case for the whole pipeline:
 nf-test generate pipeline main.nf
-# Create a test case for each functio in file functions.nf:
+# Create a test case for each function in file functions.nf:
 nf-test generate function functions.nf
 #+end_src
 
@@ -234,23 +236,24 @@ assert !("seq8" in sequences)
 assert sequences.seq1 == "AGTACGTAGTAGCTGC"
 #+end_src
 
-* nf-test in modules
+* nf-test in nf-test/modules
 
 ** nf-test in modules
 
 - Only running CI on code that changed
 - Splitting up jobs to run on separate runners
 
-** GitHub runs in modules :ATTACH:
+** Modules has a ton of activity :ATTACH:
 
-
+#+attr_latex: :height 0.55\linewidth
 [[attachment:modules_workflows.png]]
 
 
-** A smooth transition :ATTACH:
+** In a normal month :ATTACH:
 
 [[file:img/modules_activity.png]]
 
+#+beamer: \pause
 - We can't just stop updating modules
 
 
@@ -261,7 +264,10 @@ assert sequences.seq1 == "AGTACGTAGTAGCTGC"
 
 ** ¿Por Qué No Los Dos? :ATTACH:
 
-# TODO Swap these out for passing tests
+#+attr_latex: :height 0.7\linewidth
+[[file:img/porque.png]]
+
+** ¿Por Qué No Los Dos? :ATTACH:
 
 [[attachment:modules_no-nf-test.png]]
 
@@ -281,9 +287,9 @@ assert sequences.seq1 == "AGTACGTAGTAGCTGC"
 
 ** Future
 
-- 53 modules and subworkflows tested
+- 59 modules and subworkflows tested
 - Module maintainers with automated review requests
-- Automated package updates
+- Automated package version updates
 
 ** IDEA Abstract :noexport:
 
@@ -310,9 +316,9 @@ converted over to nf-test during the hackathon
 #+beamer: \pause
 - Supported by pull-requests from the community
 #+beamer: \pause
-  - But how do we trust code from a new contributor?
+  - But how do we have confidence in code from new contributors?
 
-** Why test pipelines?
+** Why test pipelines? :noexport:
 
 - Avoid Regressions
 - Improve confidence in scientific outcomes
@@ -344,7 +350,7 @@ bamtofastq
 
 ** The problem with testing :ATTACH:
 
-
+#+attr_latex: :height 0.55\linewidth
 [[attachment:sarek_workflows.png]]
 
 ** nf-test scatter
@@ -352,7 +358,10 @@ bamtofastq
 # https://github.com/askimed/nf-test/issues/102
 
 - Typically software tests are ran in parallel
+#+beamer: \pause
 - Usually each test doesn't take 5 minutes...
+#+beamer: \pause
+- Think GitHub actions batch
 
 # TODO You get a test, and you get a test and you get test
 # https://imgflip.com/memegenerator/Oprah-You-Get-A
@@ -381,4 +390,5 @@ snapshots, tags and the CI configuration.
 
 
 
-* TODO Conclusion
+** TODO Conclusion
+

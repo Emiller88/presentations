@@ -1,5 +1,4 @@
-#+author: Edmund Miller
-#+date: July 26th, 2023
+#+date: October 20th, 2023
 # #+beamer_header: \institute[UTD]{University of Texas at Dallas\\\url{https://www.utdallas.edu}}
 
 #+language: en
