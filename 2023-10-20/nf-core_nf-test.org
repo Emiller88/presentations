@@ -66,16 +66,16 @@ adoption of pytest-workflow.
 # Imagining a like evolution of man but testing graphic
 
 # Roll back to Methylseq
-- May 11th 2017 - Phil adds automated via Travis
+- May 11th, 2017 - Phil adds automated via Travis
 #+beamer: \pause
-- Oct 7th 2019 - Tools v1.7, Using GitHub actions are added to the template
+- Oct 7th, 2019 - Tools v1.7, Using GitHub actions are added to the template
 #+beamer: \pause
-- Nov 24, 2020 - Harshil merged CI for pytest-workflow to test nf-core/modules
+- Nov 24th, 2020 - Harshil merged CI for pytest-workflow to test nf-core/modules
 # https://github.com/nf-core/modules/pull/80
 # #+beamer: \pause
   # - And check the md5sum of the outputs (and their existence!)
 #+beamer: \pause
-- May 19, 2021 - Maxime starts using pytest-workflow in Sarek
+- May 19th, 2021 - Maxime starts using pytest-workflow in Sarek
 #+beamer: \pause
 - Oct 10th, 2022 - Nicolas begins the modern era
 # https://github.com/nf-core/modules/pull/2199#issue-1403249996
@@ -143,46 +143,13 @@ workflow test_fastqc_paired_end {
 curl -fsSL https://code.askimed.com/install/nf-test | bash
 #+end_src
 
-** nf-test Example
-
-\small
-#+begin_src nextflow
-nextflow_pipeline {
-
-  name "Test Hello World"
-  script "nextflow-io/hello"
-
-  test("hello world example should start 4 processes") {
-    // ...
-  }
-}
-#+end_src
-
-** nf-test Example
-
-#+begin_src Nextflow
-  test("hello world example should start 4 processes") {
-    expect {
-      with(workflow){
-        assert success
-        // analyze Nextflow trace file
-        assert trace.tasks().size() == 4
-        // Verify if strings have been written to stdout object
-        assert "Ciao world!" in stdout
-        assert "Bonjour world!" in stdout
-        assert "Hello world!" in stdout
-        assert "Hola world!" in stdout
-      }
-    }
-  }
-#+end_src
-
-** nf-test Example
+** Native support for Nextflow
 
 #+begin_src bash
-nf-test test pipeline.nf.test
+nf-test test pipeline.nf.test --profile test,docker
 #+end_src
-** Testing all Nextflow components and Test generation
+
+** Testing Nextflow all the way down
 
 #+begin_src bash
 # Create a test cases for all processes in folder modules:
@@ -262,20 +229,16 @@ assert sequences.seq1 == "AGTACGTAGTAGCTGC"
 #+attr_latex: :height 0.7\linewidth
 [[attachment:nf-core_swap.jpg]]
 
-** ¿Por Qué No Los Dos? :ATTACH:
+** ¿Porque No Los Dos? :ATTACH:
 
 #+attr_latex: :height 0.7\linewidth
 [[file:img/porque.png]]
 
-** ¿Por Qué No Los Dos? :ATTACH:
+** ¿Porque No Los Dos? :ATTACH:
 
 [[attachment:modules_no-nf-test.png]]
 
-# ¿Por Qué No Los Dos? meme?
-# https://knowyourmeme.com/photos/166112
-
-** In action :ATTACH:
-
+** ¿Porque No Los Dos? :ATTACH:
 
 [[attachment:modules_nftest_workflow.png]]
 
@@ -346,12 +309,23 @@ createpanelrefs
 bamtofastq
 ** GitHub Actions Runners are finite resources :ATTACH:
 
+#+attr_latex: :width 1.1\linewidth
 [[attachment:actions.png]]
 
 ** The problem with testing :ATTACH:
 
 #+attr_latex: :height 0.55\linewidth
 [[attachment:sarek_workflows.png]]
+
+** Community Feedback :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[file:img/waiting.png]]
+
+** Community Feedback :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[file:img/yourtestspass.jpg]]
 
 ** nf-test scatter
 
@@ -366,10 +340,16 @@ bamtofastq
 # TODO You get a test, and you get a test and you get test
 # https://imgflip.com/memegenerator/Oprah-You-Get-A
 
+** nf-test scatter
+
+#+begin_src bash
+nf-test list --silent --format=json
+#+end_src
+
 ** nf-test scatter :ATTACH:
 
 #+attr_latex: :height 0.7\linewidth
-[[attachment:workflows_scatter_example_tmp.png]]
+[[attachment:workflows_scatter.png]]
 
 
 ** Where are we going?
@@ -377,6 +357,11 @@ bamtofastq
 - Lock down the nf-core nf-test standard(where do the tests live?)
 - Add nf-test to the template
 - Add test generation into ~nf-core <modules/subworkflows> create~
+  
+** Conclusion
+
+#+beamer: \pause
+[[file:img/all-the-things.jpg]]
 
 ** IDEA Abstract :noexport:
 Next, we'll go over how nf-test has been amazing for testing full pipelines,
@@ -390,5 +375,4 @@ snapshots, tags and the CI configuration.
 
 
 
-** TODO Conclusion
 
