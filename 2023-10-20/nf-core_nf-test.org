@@ -66,18 +66,18 @@ adoption of pytest-workflow.
 # Imagining a like evolution of man but testing graphic
 
 # Roll back to Methylseq
-- May 11th, 2017 - Phil adds automated via Travis
+- _May 11th, 2017_ - Phil adds automated via Travis
 #+beamer: \pause
-- Oct 7th, 2019 - Tools v1.7, Using GitHub actions are added to the template
+- _Oct 7th, 2019_ - Tools v1.7, Using GitHub actions are added to the template
 #+beamer: \pause
-- Nov 24th, 2020 - Harshil merged CI for pytest-workflow to test nf-core/modules
+- _Nov 24th, 2020_ - Harshil merged CI for pytest-workflow to test nf-core/modules
 # https://github.com/nf-core/modules/pull/80
 # #+beamer: \pause
   # - And check the md5sum of the outputs (and their existence!)
 #+beamer: \pause
-- May 19th, 2021 - Maxime starts using pytest-workflow in Sarek
+- _May 19th, 2021_ - Maxime starts using pytest-workflow in Sarek
 #+beamer: \pause
-- Oct 10th, 2022 - Nicolas begins the modern era
+- _Oct 10th, 2022_ - Nicolas begins the modern era
 # https://github.com/nf-core/modules/pull/2199#issue-1403249996
 
 ** TODO nf-test :noexport:

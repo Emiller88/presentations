@@ -6,3 +6,10 @@ https://docs.github.com/en/get-started/using-git/about-git-rebase Some great fur
 
 
 Talk about gh cli and making issues quickly
+
+* You've heard of the merge cowboy
+:PROPERTIES:
+:CREATED:  [2023-10-18 Wed 09:49]
+:END:
+
+Let's talk about the rebase ranger

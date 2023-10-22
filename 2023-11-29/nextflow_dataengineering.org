@@ -2,3 +2,9 @@
 
 * Loved the modern biotech stack
 Play on the modern datastack
+
+
+* TODO Querying data lake with trino to kick off a workflow
+:PROPERTIES:
+:CREATED:  [2023-10-20 Fri 12:16]
+:END:
