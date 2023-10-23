@@ -7,6 +7,10 @@ https://docs.github.com/en/get-started/using-git/about-git-rebase Some great fur
 
 Talk about gh cli and making issues quickly
 
+* GitHub is the daunting thing keeping people from contributing
+:PROPERTIES:
+:CREATED:  [2023-10-20 Fri 21:49]
+:END:
 * You've heard of the merge cowboy
 :PROPERTIES:
 :CREATED:  [2023-10-18 Wed 09:49]
