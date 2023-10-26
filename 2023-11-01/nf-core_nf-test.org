@@ -1,0 +1,358 @@
+:PROPERTIES:
+:DIR:      ./img/
+:END:
+#+title: nf-test at nf-core: Empowering Scalable and Streamlined Testing
+#+author: Edmund Miller, Sateesh Peri, Maxime Garcia, Adam Talbot, Harshil Patel, Júlia Mir Pedrol, Nicolas Vannieuwkerke, and the nf-core maintainers
+#+setupfile: ./setup.org
+
+* TODO Add nf-core logo inside of the nf-test logo :noexport:
+* nf-core/modules
+
+# TODO confirm
+- Started in 2020
+-
+
+* :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+** Why does everyone keep talking about testing?
+
+#+beamer: \pause
+- Testing data pipelines is hard
+#+beamer: \pause
+- We really just want the bear-minimum, *confidence in our results*
+#+beamer: \pause
+- Bioinformatics software is finicky
+** Figure 1: Nextflow enables stable analyses on different platforms.
+
+[[file:img/Fig1_nextflow.jpg]]
+
+* History of testing at nf-core
+
+** Summary :noexport:
+
+The nf-core community values results. One of the most important steps in
+producing accurate analyses is incorporating reproducible and scalable testing
+within your workflows. First we'll reflect on the beginning of testing at
+nf-core, then dive into the evolution of testing starting with the need for a
+testing framework, examine the introduction of modules, and understand the
+adoption of pytest-workflow.
+
+
+
+** Evolution of nf-core Testing
+# Imagining a like evolution of man but testing graphic
+
+# Roll back to Methylseq
+- _May 11th, 2017_ - Phil adds automated via Travis
+#+beamer: \pause
+- _Oct 7th, 2019_ - Tools v1.7, Using GitHub actions are added to the template
+#+beamer: \pause
+- _Nov 24th, 2020_ - Harshil merged CI for pytest-workflow to test nf-core/modules
+# https://github.com/nf-core/modules/pull/80
+# #+beamer: \pause
+  # - And check the md5sum of the outputs (and their existence!)
+#+beamer: \pause
+- _May 19th, 2021_ - Maxime starts using pytest-workflow in Sarek
+#+beamer: \pause
+- _Oct 10th, 2022_ - Nicolas begins the modern era
+# https://github.com/nf-core/modules/pull/2199#issue-1403249996
+
+** TODO nf-test :noexport:
+# TODO Add real logo
+
+🚀
+
+** pytest-workflow for modules
+
+\small
+#+begin_src nextflow
+workflow test_fastqc_paired_end {
+  input = [
+    [id: 'test', single_end: false], // meta map
+    [
+      file(params.test_data['sarscov2']['illumina']['test_1_fastq_gz']),
+      file(params.test_data['sarscov2']['illumina']['test_2_fastq_gz'])
+      ]
+  ]
+  FASTQC ( input )
+}
+#+end_src
+
+** pytest-workflow for modules
+
+\small
+#+begin_src yaml
+- name: fastqc test_fastqc_paired_end
+  command: nextflow run ./tests/modules/nf-core/fastqc -entry test_fastqc_paired_end -c ./tests/config/nextflow.config -c ./tests/modules/nf-core/fastqc/nextflow.config
+  tags:
+    - fastqc
+  files:
+    - path: output/fastqc/test_1_fastqc.html
+      contains:
+        - <tr><td>File type</td><td>Conventional base calls</td></tr>
+    - path: output/fastqc/test_1_fastqc.zip
+    - path: output/fastqc/test_1.txt
+      md5sum: 68db6114ef348f721c139cd4c9534f73
+#+end_src
+
+*** Notes :B_note:
+:PROPERTIES:
+:BEAMER_env: note
+:END:
+
+- As you can see, a lot of complexity and HUGE barrier to entry
+- Time consuming and collecting files, and hashes by hand or writing scripts
+
+
+** Somethings we learned along the way
+
+- Checking what code has changed and only running tests for that code
+  - /Speed/ - Saves developer time
+  - GitHub runners are a finite resource
+- Conda hates checksums
+- Investing time in testing *pays off in the long run*
+
+* nf-test Features we love
+** Simple Nextflow style one-line install
+
+\large
+#+begin_src bash
+curl -fsSL https://code.askimed.com/install/nf-test | bash
+#+end_src
+
+** Native support for Nextflow
+
+#+begin_src bash
+nf-test test pipeline.nf.test --profile test,docker
+#+end_src
+
+** Testing Nextflow all the way down
+
+#+begin_src bash
+# Create a test cases for all processes in folder modules:
+nf-test generate process modules/**/*.nf
+# Create a test case for a subworkflow:
+nf-test generate workflow workflows/some_workflow.nf
+# Create a test case for the whole pipeline:
+nf-test generate pipeline main.nf
+# Create a test case for each function in file functions.nf:
+nf-test generate function functions.nf
+#+end_src
+
+** Snapshot generation
+
+#+begin_src nextflow
+assert snapshot(
+    workflow,
+    path("${params.outdir}/file1.txt"),
+    path("${params.outdir}/file2.txt"),
+    path("${params.outdir}/file3.txt")
+).match()
+#+end_src
+
+#+beamer: \pause
+#+begin_src bash
+nf-test test tests/main.nf.test --update-snapshot
+#+end_src
+
+*** :B_note:
+:PROPERTIES:
+:BEAMER_env: note
+:END:
+
+This was manual or scripted to pull in the hashes by Kevin
+
+** Powerful assertions - GZip files
+
+#+begin_src bash
+assert path(process.out.out_ch.get(0)).linesGzip.size() == 5
+assert path(process.out.out_ch.get(0)).linesGzip.contains("Line Content")
+#+end_src
+
+** Powerful assertions - Fasta files (and Plugins!)
+
+#+begin_src bash
+assert path('path/to/fasta1.fasta').fasta == path("path/to/fasta2.fasta'").fasta
+# Work with individual samples
+def sequences = path('path/to/fasta1.fasta.gz').fasta
+assert "seq1" in sequences
+assert !("seq8" in sequences)
+assert sequences.seq1 == "AGTACGTAGTAGCTGC"
+#+end_src
+
+* nf-test in nf-test/modules
+
+** nf-test in modules
+
+- Only running CI on code that changed
+- Splitting up jobs to run on separate runners
+
+** Modules has a ton of activity :ATTACH:
+
+#+attr_latex: :height 0.55\linewidth
+[[attachment:modules_workflows.png]]
+
+
+** In a normal month :ATTACH:
+
+[[file:img/modules_activity.png]]
+
+#+beamer: \pause
+- We can't just stop updating modules
+
+
+** The swap :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[attachment:nf-core_swap.jpg]]
+
+** ¿Porque No Los Dos? :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[file:img/porque.png]]
+
+** ¿Porque No Los Dos? :ATTACH:
+
+[[attachment:modules_no-nf-test.png]]
+
+** ¿Porque No Los Dos? :ATTACH:
+
+[[attachment:modules_nftest_workflow.png]]
+
+** Pre-hackathon
+
+- 2 modules(fastqc and snakemake)
+- Still supporting pytest-workflow
+- Only running tests on changed code
+
+** Future
+
+- 59 modules and subworkflows tested
+- Module maintainers with automated review requests
+- Automated package version updates
+
+** IDEA Abstract :noexport:
+
+Finally, we'll jump into nf-core modules, and how we couldn't just rip out
+pytest-workflow. We'll briefly go over the ability to have both testing
+frameworks available in the repo. Then we'll talk about the few issues holding
+back the overall adoption of nf-test because of some bad habits we picked up
+from pytest-workflow.
+
+Hopefully then we'll get to take a quick victory lap for all of the modules we
+converted over to nf-test during the hackathon
+* nf-test in pipelines
+
+** nf-core Introduction
+
+- Nextflow pipelines with a twist
+#+beamer: \pause
+- Run on /everything/
+#+beamer: \pause
+- Supported by *template updates* when new version releases of nf-core/tools that
+  usually add *new features*
+#+beamer: \pause
+  + These new features sometimes come with unintended bugs!
+#+beamer: \pause
+- Supported by pull-requests from the community
+#+beamer: \pause
+  - But how do we have confidence in code from new contributors?
+
+** Why test pipelines? :noexport:
+
+- Avoid Regressions
+- Improve confidence in scientific outcomes
+- Confidence in collaboration across the world
+
+** Where are we?
+
+- Added in Methylseq in version ~2.4.0~
+- Pre-hackathon: 7 pipelines
+#+beamer: \pause
+# 🎉
+- Post-hackathon: _11_ pipelines
+
+*** Pipelines :noexport:
+methylseq
+fetchngs
+ampliseq
+demultiplex
+nascent
+mag
+viralintegration
+phageannotator
+spatialtranscriptomics
+createpanelrefs
+bamtofastq
+** GitHub Actions Runners are finite resources :ATTACH:
+
+#+attr_latex: :width 1.1\linewidth
+[[attachment:actions.png]]
+
+** The problem with testing :ATTACH:
+
+#+attr_latex: :height 0.55\linewidth
+[[attachment:sarek_workflows.png]]
+
+** Community Feedback :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[file:img/waiting.png]]
+
+** Community Feedback :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[file:img/yourtestspass.jpg]]
+
+** nf-test scatter
+
+# https://github.com/askimed/nf-test/issues/102
+
+- Typically software tests are ran in parallel
+#+beamer: \pause
+- Usually each test doesn't take 5 minutes...
+#+beamer: \pause
+- Think GitHub actions batch
+
+# TODO You get a test, and you get a test and you get test
+# https://imgflip.com/memegenerator/Oprah-You-Get-A
+
+** nf-test scatter
+
+#+begin_src bash
+nf-test list --silent --format=json
+#+end_src
+
+** nf-test scatter :ATTACH:
+
+#+attr_latex: :height 0.7\linewidth
+[[attachment:workflows_scatter.png]]
+
+
+** Where are we going?
+
+- Lock down the nf-core nf-test standard(where do the tests live?)
+- Add nf-test to the template
+- Add test generation into ~nf-core <modules/subworkflows> create~
+  
+** Conclusion
+
+#+beamer: \pause
+[[file:img/all-the-things.jpg]]
+
+** IDEA Abstract :noexport:
+Next, we'll go over how nf-test has been amazing for testing full pipelines,
+their subworkflows and local modules. We'll examine some highlights such as
+snapshots, tags and the CI configuration.
+
+- We could never use pytest-workflow for testing pipelines(Expect Sarek)
+- We'll mainly focus on the CI infrastructure, and configuration of these tests
+  and how we parallelized the testing of the workflows.
+
+
+
+
+
