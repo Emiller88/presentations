@@ -8,9 +8,89 @@
 * TODO Add nf-core logo inside of the nf-test logo :noexport:
 * nf-core/modules
 
-# TODO confirm
+** nf-core/modules
+
 - Started in 2020
--
+- 1058 modules
+- Expanded to 51 subworkflows
+- 18 people on the modules teams
+
+** nf-core/modules Perks
+
+- Quickly create new modules
+- Install modules from the central repository
+- Update modules with bug fixes and version upgrades
+
+** nf-core/modules creating a module
+
+#+begin_src bash
+fgbio --tmp-dir=tmpFolder \\
+    FastqToBam \\
+    -i read1.fastq.gz read2.fastq.gz \\
+    -o "sampleID_umi_converted.bam" \\
+    --read-structures "+T 12M11S+T" \\
+    --sample "sampleID" \\
+    --library "sampleID"
+#+end_src
+
+** nf-core/modules creating a module
+
+[[file:img/nf-core-modules-create.svg]]
+
+** nf-core/modules creating a module
+
+#+begin_src nextflow
+process FGBIO_FASTQTOBAM {
+    conda "bioconda::fgbio=2.0.2"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/fgbio:2.0.2--hdfd78af_0' :
+        'biocontainers/fgbio:2.0.2--hdfd78af_0' }"
+
+    input:
+    tuple val(meta), path(reads)
+
+    output:
+    tuple val(meta), path("*.bam") , emit: bam , optional: true
+    tuple val(meta), path("*.cram"), emit: cram, optional: true
+
+    script:
+    def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${meta.id}"
+
+    def sample_name = args.contains("--sample") ? "" : "--sample ${prefix}"
+    def library_name = args.contains("--library") ? "" : "--library ${prefix}"
+    def output = prefix =~ /\.(bam|cram)$/ ? prefix : "${prefix}.bam"
+    """
+    fgbio \\
+        --tmp-dir=. \\
+        FastqToBam \\
+        ${args} \\
+        --input ${reads} \\
+        --output ${output} \\
+        ${sample_name} \\
+        ${library_name}
+    """
+}
+#+end_src
+
+** Installing nf-core/modules
+
+[[file:img/nf-core-modules-install.svg]]
+
+#+begin_src bash
+nf-core modules install fastqc
+#+end_src
+
+In your pipeline
+
+#+begin_src nextflow
+ABACAS ( input, fasta )
+#+end_src
+
+** Updating nf-core/modules
+# https://nf-co.re/tools#update-modules-in-a-pipeline
+
+[[file:img/nf-core-modules-update.svg]]
 
 * :B_ignoreheading:
 :PROPERTIES:
@@ -351,8 +431,7 @@ snapshots, tags and the CI configuration.
 - We could never use pytest-workflow for testing pipelines(Expect Sarek)
 - We'll mainly focus on the CI infrastructure, and configuration of these tests
   and how we parallelized the testing of the workflows.
-
-
-
-
-
+* Deeptools
+** Talk about the Issues
+- Install
+**
