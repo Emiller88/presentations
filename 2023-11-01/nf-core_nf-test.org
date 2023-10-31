@@ -39,6 +39,7 @@ fgbio --tmp-dir=tmpFolder \\
 
 ** nf-core/modules creating a module
 
+\tiny
 #+begin_src nextflow
 process FGBIO_FASTQTOBAM {
     conda "bioconda::fgbio=2.0.2"
@@ -77,11 +78,7 @@ process FGBIO_FASTQTOBAM {
 
 [[file:img/nf-core-modules-install.svg]]
 
-#+begin_src bash
-nf-core modules install fastqc
-#+end_src
-
-In your pipeline
+Call the module in your pipeline with:
 
 #+begin_src nextflow
 ABACAS ( input, fasta )
@@ -97,8 +94,9 @@ ABACAS ( input, fasta )
 :BEAMER_env: ignoreheading
 :END:
 
-** Why does everyone keep talking about testing?
+** Theme of the 2023 nf-core hackathon: Testing
 
+Why does everyone keep talking about testing?
 #+beamer: \pause
 - Testing data pipelines is hard
 #+beamer: \pause
@@ -137,7 +135,7 @@ adoption of pytest-workflow.
 #+beamer: \pause
 - _May 19th, 2021_ - Maxime starts using pytest-workflow in Sarek
 #+beamer: \pause
-- _Oct 10th, 2022_ - Nicolas begins the modern era
+- _Oct 10th, 2022_ - Nicolas begins the modern era, submitted a PR for nf-test
 # https://github.com/nf-core/modules/pull/2199#issue-1403249996
 
 ** TODO nf-test :noexport:
@@ -147,7 +145,7 @@ adoption of pytest-workflow.
 
 ** pytest-workflow for modules
 
-\small
+\tiny
 #+begin_src nextflow
 workflow test_fastqc_paired_end {
   input = [
@@ -247,6 +245,7 @@ This was manual or scripted to pull in the hashes by Kevin
 
 ** Powerful assertions - GZip files
 
+\small
 #+begin_src bash
 assert path(process.out.out_ch.get(0)).linesGzip.size() == 5
 assert path(process.out.out_ch.get(0)).linesGzip.contains("Line Content")
@@ -289,10 +288,6 @@ assert sequences.seq1 == "AGTACGTAGTAGCTGC"
 #+attr_latex: :height 0.7\linewidth
 [[attachment:nf-core_swap.jpg]]
 
-** ¿Porque No Los Dos? :ATTACH:
-
-#+attr_latex: :height 0.7\linewidth
-[[file:img/porque.png]]
 
 ** ¿Porque No Los Dos? :ATTACH:
 
@@ -372,20 +367,10 @@ bamtofastq
 #+attr_latex: :width 1.1\linewidth
 [[attachment:actions.png]]
 
-** The problem with testing :ATTACH:
+** The problem with testing pipelines :ATTACH:
 
 #+attr_latex: :height 0.55\linewidth
 [[attachment:sarek_workflows.png]]
-
-** Community Feedback :ATTACH:
-
-#+attr_latex: :height 0.7\linewidth
-[[file:img/waiting.png]]
-
-** Community Feedback :ATTACH:
-
-#+attr_latex: :height 0.7\linewidth
-[[file:img/yourtestspass.jpg]]
 
 ** nf-test scatter
 
@@ -395,7 +380,7 @@ bamtofastq
 #+beamer: \pause
 - Usually each test doesn't take 5 minutes...
 #+beamer: \pause
-- Think GitHub actions batch
+- Think +AWS+ GitHub actions batch
 
 # TODO You get a test, and you get a test and you get test
 # https://imgflip.com/memegenerator/Oprah-You-Get-A
@@ -406,22 +391,27 @@ bamtofastq
 nf-test list --silent --format=json
 #+end_src
 
+** nf-test scatter
+
+#+attr_latex: :height 0.7\linewidth
+[[file:img/playwright.png]]
+
 ** nf-test scatter :ATTACH:
 
 #+attr_latex: :height 0.7\linewidth
 [[attachment:workflows_scatter.png]]
-
 
 ** Where are we going?
 
 - Lock down the nf-core nf-test standard(where do the tests live?)
 - Add nf-test to the template
 - Add test generation into ~nf-core <modules/subworkflows> create~
-  
+
 ** Conclusion
 
-#+beamer: \pause
-[[file:img/all-the-things.jpg]]
+- nf-core/modules
+- Testing at nf-core
+- Conversion of testing to nf-test
 
 ** IDEA Abstract :noexport:
 Next, we'll go over how nf-test has been amazing for testing full pipelines,
@@ -431,7 +421,3 @@ snapshots, tags and the CI configuration.
 - We could never use pytest-workflow for testing pipelines(Expect Sarek)
 - We'll mainly focus on the CI infrastructure, and configuration of these tests
   and how we parallelized the testing of the workflows.
-* Deeptools
-** Talk about the Issues
-- Install
-**
