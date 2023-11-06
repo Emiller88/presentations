@@ -1,0 +1,401 @@
+#+title: Whats Edmund Been Up To?
+#+setupfile: ./setup.org
+
+** October GitHub Activity
+[[file:img/oct_gh.png]]
+* nf-core modules containers
+** The issue
+- Biocontainers generates a docker image for every release of every piece of software in bioconda
+- Problem: Containers only have one piece of software
+  - What if you want to pipe from bowtie into samtools?
+
+#+begin_src bash
+bowtie r1.fastq | samtools view -o r1.bam
+#+end_src
+
+** Mulled-containers
+
+- You need to have a very slim Docker or rkt Container of your favorite tool?
+
+- Your tool is already available in conda, alpine or linuxbrew?
+
+- Fantastic! This project will generate a minimal Container either for Docker or rkt and all what you need to do is to write one single line in packages.tsv.
+
+** Mulled-containers
+
+#+attr_latex: :height 0.4\linewidth
+[[https://github.com/BioContainers/mulled/raw/master/pictures/mulledflow.png]]
+
+
+** Mulled Containers
+
+#+begin_src tsv
+#targets	base_image	image_build
+bioblend=1.0.0,galaxyxml=0.4.14,git=2.38.1,planemo=0.75.3
+cooltools=0.5.1,ucsc-bedgraphtobigwig=377
+cooltools=0.5.4,ucsc-bedgraphtobigwig=377
+bwa=0.7.17,samtools=1.10,samblaster=0.1.24	bgruening/busybox-bash:0.1	1
+bowtie=1.1.1,picard=2.23.3	bgruening/busybox-bash:0.1	0
+#+end_src
+
+- Actually it's at [[https://github.com/BioContainers/multi-package-containers/blob/master/combinations/hash.tsv][multi-package-containers]]
+- No way to tell if there's already an image with what you want
+** Where's my image?
+
+#+attr_latex: :height 0.55\linewidth
+
+[[file:img/donde-esta.png]]
+** Issue Summary
+
+- Lack of Accessibility(Documentation, visability, lots of insider knowledge)
+- Name doesn't tell the user anything about the image
+  ~quay.io/biocontainers/mulled-v2-c4e658267db06cfc91d5b54f9eb8448b39f0f9d6:12f178b2697c0fd75af5738b089bcdab5cb5fd31-0~
+- Stuck waiting for someone with the keys to make your image available
+- Difficulty creating the image(will the versions clash?)
+- Difficult to update the image
+
+** TODO Intro to wave :noexport:
+Add icon
+** Intro to wave
+
+#+begin_src nextflow
+include { hello } from './modules/foo'
+
+workflow {
+  hello()
+}
+
+// modules/foo/main.nf
+process hello {
+  debug true
+  """
+  cowsay Hello Summit!
+  """
+}
+#+end_src
+
+** Intro to wave
+
+~modules/foo/Dockerfile~
+#+begin_src dockerfile
+FROM alpine
+
+RUN apk update && apk add bash cowsay \
+        --update-cache \
+        --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+        --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+        --repository https://dl-3.alpinelinux.org/alpine/edge/testing
+#+end_src
+
+** Intro to wave
+
+#+begin_src bash
+nextflow run demo.nf -with-wave
+#+end_src
+
+#+begin_example
+[0f/cd0c44] process > hello [100%] 1 of 1 ✔
+ _______________
+< Hello Summit! >
+ ---------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+#+end_example
+
+** Wave and conda containers
+
+#+begin_src nextflow
+process BOWTIE_ALIGN {
+    conda "${moduleDir}/environment.yml"
+    //...
+}
+#+end_src
+
+#+begin_src yaml
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bowtie=1.3.0
+  - samtools=1.16.1
+#+end_src
+
+** One step further
+
+#+begin_src nextflow
+docker {
+  enabled = true
+  runOptions = '-u $(id -u):$(id -g)'
+}
+
+wave {
+  strategy = 'conda'
+}
+#+end_src
+
+#+begin_src nextflow
+nextflow run rnaseq-nf -with-wave
+#+end_src
+
+** Wave Summary
+
+- Containers on demand
+- Builds for Multiple architectures(Apple Silicon, AWS Graviton)
+- Tower handles authentication with container registries
+
+** nf-core modules containers
+
+- When making a new module you have to go find the mulled container you want
+- It's painful for module maintainers, it's near impossible for new contributors
+- I waited for a year to swap wave in somehow...
+#+beamer: \pause
+  - Enter _wave-cli_
+
+** wave-cli
+
+#+begin_src bash
+container=$(wave --conda-file ./environment.yaml)
+docker run --platform linux/arm64 $container sh -c 'samtools --version'
+#+end_src
+
+~quay.io/nf-core/modules/bowtie:bowtie-1.3.0_samtools-1.16.1--82705d624eee2198~
+** wave-cli
+
+[[file:img/wave-ci.png]]
+
+** wave-cli
+
+- Allows us to build images straight from conda packages with less hurdles
+  - Which allows us to keep images and package version in sync
+    - Easier for new users, easier for maintainers
+
+** Renovate
+
+[[file:img/renovate.png]]
+
+#+begin_quote
+Universal dependency update tool that fits into your workflows.
+#+end_quote
+
+** Renovate
+
+[[file:img/renovate.png]]
+
+** Renovate
+
+[[file:img/samtools-renovate.png]]
+
+** Renovate Summary
+
+- Automatic version updates
+- Automatically pings the right people(through CODEOWNERS)
+- Containers will get automatically built and pushed with wave
+
+** nf-core/ops
+
+[[https://www.north-47.com/wp-content/uploads/2020/12/viber_image_2020-12-10_00-17-28-1536x582.jpg]]
+#+begin_quote
+Automate infrastructure on any cloud with Terraform
+
+Infrastructure automation to provision and manage resources in any cloud or data center.
+#+end_quote
+
+- Apparently GitHub is a cloud
+
+** nf-core/ops
+#+begin_src terraform
+import {
+  to = github_repository.methylseq
+  id = "methylseq"
+}
+(imported from "methylseq")
+#+end_src
+
+** nf-core/ops
+
+#+begin_src terraform
+resource "github_repository" "methylseq" {
+  name                 = "methylseq"
+  default_branch       = "master"
+  description          = "Methylation (Bisulfite-Sequencing) analysis pipeline using Bismark or bwa-meth + MethylDackel"
+  homepage_url         = "https://nf-co.re/methylseq"
+  topics = [
+    "bisulfite-sequencing",
+    "dna-methylation",
+    "epigenomics",
+  ]
+  # ...
+}
+#+end_src
+
+** nf-core/ops Summary
+
+- Just *exporting* current settings into code
+- In the near future
+  - Better unify settings(Old nf-core webpage)
+  - Users can PR changes for settings
+  - We can expand into the AWS infrastructure
+
+* Container for scRNA-seq
+
+** The problem
+
+- Built a conda environment with all of the R packages necessary
+- It runs on Won's Laptop but not on the cluster...
+- *renv* saves the day
+#+beamer: \pause
+- Kinda
+
+** renv
+
+[[https://rstudio.github.io/renv/articles/renv.png]]
+
+** renv
+
+\small
+#+begin_src json
+{
+  "R": {
+      "Version": "4.3.1",
+      "Repositories": [
+        {
+          "Name": "CRAN",
+          "URL": "https://cloud.r-project.org"
+        }
+      ]
+    },
+    "Packages": {
+      "markdown": {
+        "Package": "markdown",
+        "Version": "1.0",
+        "Source": "Repository",
+        "Repository": "CRAN",
+        "Hash": "4584a57f565dd7987d59dda3a02cfb41"
+      },
+      "mime": {
+        "Package": "mime",
+        "Version": "0.12.1",
+        "Source": "GitHub",
+        "RemoteType": "github",
+        "RemoteHost": "api.github.com",
+        "RemoteUsername": "yihui",
+        "RemoteRepo": "mime",
+        "RemoteRef": "main",
+        "RemoteSha": "1763e0dcb72fb58d97bab97bb834fc71f1e012bc",
+        "Requirements": [
+          "tools"
+        ],
+        "Hash": "c2772b6269924dad6784aaa1d99dbb86"
+      }
+    }
+  }
+#+end_src
+
+** renv and containers
+
+- Searched and searched for others using renv in containers
+- Eventually got it to build in GitHub Actions
+- The problem is the image doesn't activate the environment
+
+** Back to the drawing board
+
+- Used Wave for building quickly
+- Hand copied the versions over to environment.yml
+- Think I found our issue
+#+beamer: \pause
+- Monocle3 stopped publishing to conda multiple releases ago
+#+beamer: \pause
+- r-seuratwrappers did as well
+#+beamer: \pause
+- About the time I'd usually send Alyssa a melting face emoji \emoji{melting-face}
+#+beamer: \pause
+- Future Plans: Build conda packages for the two problem packages
+  - Install from GitHub didn't work
+
+* DeepLoop
+
+** DeepLoop
+
+[[file:img/deeploop-summary.png]]
+
+** DeepLoop - A Bioinformatics Murder Mystery
+
+- It's a Nature Genetics paper.
+#+beamer: \pause
+- No pypi package, no conda, nothing.
+#+beamer: \pause
+- "Tested" with _Python 3.5_ (End of life: 2020-09-30)
+#+beamer: \pause
+- chmod our scripts, please.
+#+beamer: \pause
+- Who's writing perl in 2021???
+
+** HiCorr Setup
+
+#+begin_src bash
+git clone https://github.com/shanshan950/HiCorr.git
+cd HiCorr/
+chmod 755 HiCorr
+chmod -R 755 bin/*
+#+end_src
+
+** DeepLoop - Dockerfile
+
+\small
+#+begin_src dockerfile
+FROM python:3.6
+
+RUN apt update && apt install -y liblist-moreutils-perl r-base r-base-dev
+
+RUN wget -q https://github.com/JinLabBioinfo/DeepLoop/archive/refs/heads/master.zip
+RUN unzip master.zip
+
+WORKDIR /DeepLoop-master
+RUN pip3 install -r requirements.txt
+
+ENV PATH /DeepLoop-master/prediction:$PATH
+
+RUN wget --no-check-certificate https://hiview.case.edu/ssz20/tmp.HiCorr.ref/DeepLoop_models.tar.gz
+RUN tar -xvf DeepLoop_models.tar.gz
+
+RUN chmod +x lib/*.pl lib/*.r
+#+end_src
+
+** DeepLoop - Nextflow module
+
+\small
+#+begin_src nextflow
+    script:
+    """
+    tar -xvf $tar_file
+    HiCorr_path=HiCorr_output
+    chr=chr11
+    python3 /DeepLoop-master/prediction/predict_chromosome.py --full_matrix_dir \$HiCorr_path/ \\
+                                                --input_name anchor_2_anchor.loop.\$chr.p_val \\
+                                                --h5_file /DeepLoop-master/DeepLoop_models/CPGZ_trained/LoopDenoise.h5 \\
+                                                --json_file /DeepLoop-master/DeepLoop_models/CPGZ_trained/LoopDenoise.json \\
+                                                --out_dir output/ \\
+                                                --anchor_dir /DeepLoop-master/DeepLoop_models/ref/hg19_HindIII_anchor_bed/ \\
+                                                --chromosome \$chr \\
+                                                --small_matrix_size 128 \\
+                                                --step_size 128 \\
+                                                --dummy 5 \\
+                                                --val_cols obs exp pval
+
+    python3 /DeepLoop-master/utils/convert_to_cooler.py --anchor_dir /DeepLoop-master/training_data/anchor_bed/ \
+                                        --loop_dir output/H9_denoised/ \
+                                        --out_file coolers/H9_denoise_chr11.cool \
+                                        --col_names a1 a2 denoise \
+                                        --cooler_col denoise \
+                                        --single_chrom chr11;
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        python: \$(echo \$(python --version 2>&1) | sed 's/Python //')
+    END_VERSIONS
+    """
+#+end_src
