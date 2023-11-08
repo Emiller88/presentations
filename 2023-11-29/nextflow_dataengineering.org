@@ -8,3 +8,16 @@ Play on the modern datastack
 :PROPERTIES:
 :CREATED:  [2023-10-20 Fri 12:16]
 :END:
+* Notes
+- Load in CSV of rnaseq runs
+- Run rnaseq
+- Run multiqc
+- Load up some multiqc parquet files and make a "data lake"
+
+* Columnar Data storage
+https://www.youtube.com/watch?v=2i2nyodhGkk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_q3K&index=8
+
+[[file:img/why-columnar.png]]
+
+TLDR only get the columns you want so faster
+compression speeds things up even more!
