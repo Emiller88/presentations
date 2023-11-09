@@ -2,7 +2,12 @@
 
 * Loved the modern biotech stack
 Play on the modern datastack
+* I was born in the year the term big data was invented
+* thought the dagster tutorial was cool
+But it's just plain python. Which is fine, but I take for granet that Nextflow isn't groovy it's a "DSL" written specifically for data pipelining
 
+
+Imagining we'll pull from s3 from the nf-core megatests, do some stuff, push to motherduck
 
 * TODO Querying data lake with trino to kick off a workflow
 :PROPERTIES:
@@ -21,3 +26,7 @@ https://www.youtube.com/watch?v=2i2nyodhGkk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_
 
 TLDR only get the columns you want so faster
 compression speeds things up even more!
+* Duckdb is smart enough to not download the whole parquet file
+https://www.youtube.com/watch?v=33sxkrt6eYk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_q3K&index=4
+
+What about Fusion? Instead of httpfs
