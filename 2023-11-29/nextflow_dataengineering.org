@@ -30,3 +30,4 @@ compression speeds things up even more!
 https://www.youtube.com/watch?v=33sxkrt6eYk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_q3K&index=4
 
 What about Fusion? Instead of httpfs
+* Show Nextflow chunking a huge file and then making calls on it.
