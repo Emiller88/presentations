@@ -31,3 +31,22 @@ https://www.youtube.com/watch?v=33sxkrt6eYk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_
 
 What about Fusion? Instead of httpfs
 * Show Nextflow chunking a huge file and then making calls on it.
+* Notes from showing Moni
+
+** Topics
+*** Antipatterns
+*** Intro to parquet
+*** Intro to DuckDB
+- Half the presentation is why parquet is going to be cool
+  - Might touch on, oh yeah if you slap iceberg on it in s3 it's even faster
+
+*** MultiQC data files
+
+- Not enough people use it
+- Convert multiQC results to parquet
+*** Note: Could also use Seqera platform and Jupyter/Rstudio
+But this is Nextflow Summit, not Jupytercon
+*** Snowflake is the _wrong_ choice
+- Bioinformatics loves files
+  - We're already outputting them, and we've built a datalake
+    - We just gotta start using it.
