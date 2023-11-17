@@ -55,3 +55,12 @@ But this is Nextflow Summit, not Jupytercon
 - Bioinformatics loves files
   - We're already outputting them, and we've built a datalake
     - We just gotta start using it.
+
+
+* https://duckdb.org/2023/08/23/even-friendlier-sql.html
+* Everyone will tell you the problem with duckdb is that it only runs on one computer
+:PROPERTIES:
+:CREATED:  [2023-11-17 Fri 15:47]
+:END:
+
+Y'all see where I'm going with this right?
