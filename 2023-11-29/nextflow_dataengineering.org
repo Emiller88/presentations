@@ -34,17 +34,19 @@ What about Fusion? Instead of httpfs
 * Notes from showing Moni
 
 ** Topics
-*** Antipatterns
+*** Intro to DuckDB
+- Half the presentation is why parquet is going to be cool
+  - Might touch on, oh yeah if you slap iceberg on it in s3 it's even faster
+
 *** Intro to parquet
 #+begin_quote
 Mark Schreiber
   7 days ago
 parquet will give you some benefits from usually having better and faster compression than CSV due to column based compression. Where it really sings is the ability to only read specific columns or pages required to get only the data it needs for your analysis, potentially in parallel across nodes. Getting this benefit might depend a lot on how you implement a plugin. As others have said, it might be easier to query a DB or service that already knows how to get the most out of parquet and let it do all the heavy lifting.
 #+end_quote
-*** Intro to DuckDB
-- Half the presentation is why parquet is going to be cool
-  - Might touch on, oh yeah if you slap iceberg on it in s3 it's even faster
-
+*** 1000 ducks
+*** Antipatterns
+**** Pressure of Nextflow headjob
 *** MultiQC data files
 
 - Not enough people use it
