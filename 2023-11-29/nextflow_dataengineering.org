@@ -66,3 +66,7 @@ But this is Nextflow Summit, not Jupytercon
 :END:
 
 Y'all see where I'm going with this right?
+* Simple query of Multiqc
+#+begin_src sql
+CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("https://nf-core-awsmegatests.s3-eu-west-1.amazonaws.com/rnaseq/results-964425e3fd8bfc3dc7bce43279a98d17a874d3f7/aligner_star_rsem/multiqc/star_rsem/multiqc_data/multiqc_sam
+#+end_src
