@@ -119,3 +119,15 @@ You don't have to run one. They're all just files.
 - Generating samplesheets on the fly
 
 ** Aside: Talked about ad-hoc distributed clusters
+** Talk with Moni after
+*** DONE Medalion data structure
+CLOSED: [2023-11-22 Wed 13:42]
+- Organizing your datalake
+- Broze is covered by all of the bioinformatics software
+- MultiQC already covers silver
+- Now we just need Gold
+*** Perk of Galaxy over just Trino is the data discovery
+
+Motherduck will be building this
+*** We never needed MegaQC
+- We can have this today. Do we really need something fancier?
