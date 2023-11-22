@@ -73,3 +73,49 @@ CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("
 #+end_src
 
 https://duckdb.org/docs/extensions/httpfs#s3
+* Notes from Talking with Abhinav
+** When I say data engineering what does it make you think of?
+
+ETL
+** Bioinfo = data engineering
+Compbio = Data science
+** Could Query public dataservices
+** [#A] Aggregate across multiple MultiQC runs
+** Why not Athena(Trino)/BigQuery?
+- We just don't need the overhead
+*** TODO Follow up
+Why not just R?
+** We need to query
+- During pre-launch
+- In a providince way (nf-prov)
+
+
+** Downside of using DuckDB is there's no data catalog
+** nf-core use cases
+
+- nf-co2 querying
+- Finding a Module in multiple pipelines?
+
+*** TODO Query https://github.com/nf-core/website/blob/main/.cache.tar.xz
+
+For most used module
+
+** TODO Samtools stats
+
+- Pull the files in a make aquery
+- Can update the names in a ~DDB~ fuction
+- How many reads have been processed in nf-core mega tests?
+** [#A] _It's a database with the headache_
+
+**One sentence take-away**
+
+You don't have to run one. They're all just files.
+** TODO Move slides to google slides for Abhinav to review
+
+** Outline
+- Using DuckDB as a parquet reader
+- Using it in processes as a Pandas replacement
+- Starting to think in aggregates
+- Generating samplesheets on the fly
+
+** Aside: Talked about ad-hoc distributed clusters
