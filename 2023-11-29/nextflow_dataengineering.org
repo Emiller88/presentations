@@ -19,18 +19,6 @@ Imagining we'll pull from s3 from the nf-core megatests, do some stuff, push to 
 - Run multiqc
 - Load up some multiqc parquet files and make a "data lake"
 
-* Columnar Data storage
-https://www.youtube.com/watch?v=2i2nyodhGkk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_q3K&index=8
-
-[[file:img/why-columnar.png]]
-
-TLDR only get the columns you want so faster
-compression speeds things up even more!
-* Duckdb is smart enough to not download the whole parquet file
-https://www.youtube.com/watch?v=33sxkrt6eYk&list=PLIYcNkSjh-0ztvwoAp3GeW8HNSUSk_q3K&index=4
-
-What about Fusion? Instead of httpfs
-* Show Nextflow chunking a huge file and then making calls on it.
 * Notes from showing Moni
 
 ** Topics
@@ -44,7 +32,6 @@ Mark Schreiber
   7 days ago
 parquet will give you some benefits from usually having better and faster compression than CSV due to column based compression. Where it really sings is the ability to only read specific columns or pages required to get only the data it needs for your analysis, potentially in parallel across nodes. Getting this benefit might depend a lot on how you implement a plugin. As others have said, it might be easier to query a DB or service that already knows how to get the most out of parquet and let it do all the heavy lifting.
 #+end_quote
-*** 1000 ducks
 *** Antipatterns
 **** Pressure of Nextflow headjob
 *** MultiQC data files
@@ -60,28 +47,6 @@ But this is Nextflow Summit, not Jupytercon
 
 
 * https://duckdb.org/2023/08/23/even-friendlier-sql.html
-* Everyone will tell you the problem with duckdb is that it only runs on one computer
-:PROPERTIES:
-:CREATED:  [2023-11-17 Fri 15:47]
-:END:
-
-Y'all see where I'm going with this right?
-* Simple query of Multiqc
-s3://nf-core-awsmegatests.s3-eu-west-1.amazonaws.com/rnaseq/results-964425e3fd8bfc3dc7bce43279a98d17a874d3f7/aligner_star_rsem/multiqc/star_rsem/multiqc_data/multiqc_samtools_stats.txt
-#+begin_src sql
-CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("s3://nf-core-awsmegatests/rnaseq/**/**/multiqc/star_rsem/multiqc_data/multiqc_samtools_stats.txt");
-#+end_src
-#+begin_src sql
-CREATE TABLE reads
-AS SELECT
-    Sample,reads_mapped_and_paired
-FROM read_csv_auto(
-    "s3://nf-core-awsmegatests/sarek/*/test_full/multiqc/multiqc_data/multiqc_samtools_stats.txt",
-    filename=true
-);
-#+end_src
-
-https://duckdb.org/docs/extensions/httpfs#s3
 * Notes from Talking with Abhinav
 ** When I say data engineering what does it make you think of?
 
@@ -111,10 +76,7 @@ For most used module
 
 ** TODO Samtools stats
 
-- Pull the files in a make aquery
-- Can update the names in a ~DDB~ fuction
-- How many reads have been processed in nf-core mega tests?
-** [#A] _It's a database with the headache_
+** [#A] _It's a database without the headache_
 
 **One sentence take-away**
 
