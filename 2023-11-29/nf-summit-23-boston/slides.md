@@ -15,8 +15,6 @@ drawings:
 transition: slide-left
 title: Nextflow and Database Uses
 mdc: true
-addons:
-  - slidev-addon-asciinema
 ---
 
 # Nextflow and Database Uses
