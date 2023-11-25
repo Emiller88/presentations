@@ -52,5 +52,6 @@ channel
     db: 'flights'
   ) | view
 ```
+<!-- FIXME -->
+<Asciinema src="/casts/parquet_reader.cast" :playerProps="{speed: 2, rows: 15}" />
 
-<Asciinema src="/casts/parquet_reader.cast" :playerProps="{speed: 2, rows: 15}"/>
