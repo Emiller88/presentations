@@ -55,11 +55,4 @@ channel
   ) | view
 ```
 
----
-transition: slide-up
----
-
-## Output
-
-```console
-```
+<Asciinema src="/casts/parquet_reader.cast" :playerProps="{speed: 2, rows: 15}"/>
