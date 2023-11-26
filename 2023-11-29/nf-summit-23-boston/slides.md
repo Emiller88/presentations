@@ -26,9 +26,11 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
+
+```yaml
 transition: fade-out
 layout: default
----
+```
 
 # Table of contents
 
@@ -37,9 +39,11 @@ layout: default
 
 
 ---
+
+```yaml
 transition: slide-up
 level: 2
----
+```
 
 # Intro
 
