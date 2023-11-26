@@ -35,7 +35,7 @@ layout: default
 # Table of contents
 
 
-<Toc minDepth="2"></Toc>
+<Toc></Toc>
 
 
 ---
