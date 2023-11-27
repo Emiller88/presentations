@@ -21,6 +21,8 @@
 
 ![Remote Image](https://imgopt.infoq.com/articles/analytical-data-management-duckdb/en/resources/21figure-2-1686238750825.jpg)
 
+<!-- https://mermaid.js.org/syntax/quadrantChart.html -->
+
 ---
 
 # L1 cache optimized
@@ -51,9 +53,9 @@
 
 ---
 
-## R/Python/SQL/C
+## R/Python/C/Rust/Julia
 
-- You name it, there's a plugin
+<!-- You name it, there's a plugin -->
 
 ---
 

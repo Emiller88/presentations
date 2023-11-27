@@ -42,7 +42,41 @@ transition: slide-up
 level: 2
 ```
 
-# Intro
+---
+
+## layout: two-cols
+
+<template v-slot:default>
+
+# Left
+
+This shows on the left
+
+</template>
+<template v-slot:right>
+
+# Right
+
+This shows on the right
+
+</template>
+
+# Data Engineering and Data Science
+
+- Data Engineering
+
+  - ETL
+    - Databases
+  - Building pipelines that transform this data into formats that are more useful for Data Scientists.
+
+- Data Science
+  - Statistics
+  - Create Models(Machine Learning)
+  - Create Reports
+
+<!--
+My Niave take:
+-->
 
 ---
 

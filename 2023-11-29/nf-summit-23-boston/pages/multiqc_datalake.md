@@ -2,6 +2,12 @@
 
 ---
 
+> I just thought MultiQC was a pretty HTML report
+
+- MultiQC also cleans your data!
+
+---
+
 ## Simple query of Multiqc
 
 ```sql
