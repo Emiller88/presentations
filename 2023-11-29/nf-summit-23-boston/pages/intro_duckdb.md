@@ -1,4 +1,6 @@
-# Intro to DuckDB
+<!-- TODO Make sure this Yellow is right -->
+
+# Intro to DuckDB <simple-icons-duckdb class="text-4xl text-yellow-400"/>
 
 ---
 
