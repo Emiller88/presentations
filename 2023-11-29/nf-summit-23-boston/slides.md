@@ -46,24 +46,36 @@ level: 2
 
 ---
 
+```yaml
 src: ./pages/bioinformatics_dataengineering.md
+```
 
 ---
 
+```yaml
 src: ./pages/intro_duckdb.md
+```
 
 ---
 
+```yaml
 src: ./pages/nextflow_examples.md
+```
 
 ---
 
+```yaml
 src: ./pages/but_why_nextflow.md
+```
 
 ---
 
+```yaml
 src: ./pages/nfcore_use_cases.md
+```
 
 ---
 
+```yaml
 src: ./pages/multiqc_datalake.md
+```
