@@ -68,4 +68,3 @@ Use Queries from DuckDB meet-up
 ---
 
 ### HTTPFS vs Fusion
-
