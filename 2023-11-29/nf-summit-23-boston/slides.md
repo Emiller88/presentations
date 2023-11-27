@@ -6,10 +6,9 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  A deep dive into the powerful combination of Nextflow and database technologies. We’ll discuss the evolving landscape of data engineering in after era of big data. We’ll explore how a Nextflow plugin can rival popular tools, opening up new possibilities for data transformations and pipelining. Next, we’ll delve into the historical use of files over databases in bioinformatics and learn about the paradigm-shifting potential of DuckDB and Apache Arrow through biobear. Lastly, we’ll explore the complimentary pairing of DuckDB and Nextflow, bridging the gap between file-based and database approaches for big data processing.
 
-  Learn more at [Sli.dev](https://sli.dev)
+  Learn more at [https://summit.nextflow.io/boston/agenda/summit/nov-29-database-uses/](https://summit.nextflow.io/boston/agenda/summit/nov-29-database-uses/).
 drawings:
   persist: false
 transition: slide-left
