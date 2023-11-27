@@ -1,15 +1,25 @@
-# Data Engineering and Data Science
+```yaml
+layout: two-cols
+```
 
-- Data Engineering
+<template v-slot:default>
 
-  - ETL
-    - Databases
-  - Building pipelines that transform this data into formats that are more useful for Data Scientists.
+# Data Engineering
 
-- Data Science
-  - Statistics
-  - Create Models(Machine Learning)
-  - Create Reports
+- ETL
+- Databases
+- Building pipelines that transform this data into formats that are more useful for Data Scientists.
+
+</template>
+<template v-slot:right>
+
+# Data Science
+
+- Statistics
+- Create Models(Machine Learning)
+- Create Reports
+
+</template>
 
 <!--
 My Niave take:
@@ -17,28 +27,31 @@ My Niave take:
 
 ---
 
-## title: Bioinformatics as data engineering
+```yaml
+layout: two-cols
+```
 
-# Bioinformatics and Computational Biology
+<!-- TODO Add clicks -->
+<template v-slot:default>
 
-TODO Add clicks
+# Bioinformatics
 
-- Bioinformatics
+- Running Tools
+- Files
+- Building pipelines that transform this data into formats that are more useful for Computational Biologists.
 
-  - Running Tools
-    - Files
-  - Building pipelines that transform this data into formats that are more useful for Computational Biologists.
+</template>
+<template v-slot:right>
 
-- Computational Biology
-  - Statistics
-  - Create Models(Machine Learning)
-  - Create Reports
-  - Create algorithms
+# Computational Biology
+
+- Statistics
+- Create Models(Machine Learning)
+- Create Reports
+- Create algorithms
+
+</template>
 
 <!--
 My second naive take:
-
-Turn this into a venn diagram?
-
-https://mermaid.js.org/syntax/quadrantChart.html
 -->
