@@ -34,9 +34,7 @@ layout: default
 
 # Table of contents
 
-
 <Toc></Toc>
-
 
 ---
 
@@ -48,22 +46,21 @@ level: 2
 # Intro
 
 ---
-src: ./sections/bioinformatics_dataengineering.md
----
+
+## src: ./sections/bioinformatics_dataengineering.md
 
 ---
-src: ./sections/intro_duckdb.md
----
+
+## src: ./sections/intro_duckdb.md
 
 ---
-src: ./sections/nextflow_examples.md
----
+
+## src: ./sections/nextflow_examples.md
 
 ---
-src: ./sections/nfcore_use_cases.md
----
+
+## src: ./sections/nfcore_use_cases.md
 
 ---
-src: ./sections/multiqc_datalake.md
----
 
+## src: ./sections/multiqc_datalake.md
