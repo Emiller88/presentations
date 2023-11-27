@@ -8,12 +8,17 @@
     "export": "slidev export"
   },
   "slidev": {
-    "addons": ["slidev-addon-asciinema"]
+    "addons": [
+      "slidev-addon-asciinema"
+    ]
   },
   "dependencies": {
     "@slidev/cli": "^0.44.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "slidev-addon-asciinema": "^0.1.10"
+  },
+  "devDependencies": {
+    "@iconify-json/simple-icons": "^1.1.80"
   }
 }
