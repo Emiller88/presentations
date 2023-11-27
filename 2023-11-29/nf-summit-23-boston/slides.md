@@ -58,6 +58,10 @@ src: ./pages/nextflow_examples.md
 
 ---
 
+src: ./pages/but_why_nextflow.md
+
+---
+
 src: ./pages/nfcore_use_cases.md
 
 ---

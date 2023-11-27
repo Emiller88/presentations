@@ -84,7 +84,27 @@ workflow {
 }
 ```
 
+<!-- <v-clicks> -->
+
+```nextflow
+process DUCKDB {
+    input:
+    val query
+
+    script:
+    """
+    duckdb :memory: "$query"
+    """
+}
+```
+
+<!-- TODO Add result -->
+
 ---
+
+<!-- Why would you ever want to do that? -->
+<!-- TODO # Hook passing a query into SQLbot -->
+<!-- --- -->
 
 # Use it with a template file
 
@@ -130,29 +150,26 @@ customer_orders as (
 "
 ```
 
-<!-- <v-clicks> -->
-
-```nextflow
-process DUCKDB {
-    input:
-    val query
-
-    script:
-    """
-    duckdb :memory: "$query"
-    """
-}
-```
-
-<!-- TODO Add result -->
-
 ---
 
-<!-- Why would you ever want to do that? -->
-<!-- TODO # Hook passing a query into SQLbot -->
-<!-- --- -->
-
 # Using a sql file
+
+<!-- TODO Test this -->
+<!-- TODO Sync up the order of this with passing a query -->
+
+```
+process DUCKDB_SQL_FILE {
+  input:
+  file query_file
+
+  script:
+  """
+  duckdb -c $query_file
+  # This file is in bin/!
+  duckdb -c bin_example.sql
+  """
+}
+```
 
 ---
 
@@ -160,24 +177,3 @@ process DUCKDB {
 
 <!-- TODO Find dbt example and show it in a Nextflow process -->
 <!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
-
----
-
-### Everyone will tell you the problem with duckdb is that it only runs on one computer
-
-<!-- 1000 ducks Picture -->
-
----
-
-## DuckDB for Writing a samplesheet
-
----
-
-### Nextflow chunking a huge file and then making smaller DuckDB calls on it.
-
----
-
-## DuckDB and Nextflow anti-patterns
-
-- Pressure on the head node
-- Circle back around in a minute
