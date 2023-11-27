@@ -47,20 +47,20 @@ level: 2
 
 ---
 
-## src: ./sections/bioinformatics_dataengineering.md
+## src: ./pages/bioinformatics_dataengineering.md
 
 ---
 
-## src: ./sections/intro_duckdb.md
+## src: ./pages/intro_duckdb.md
 
 ---
 
-## src: ./sections/nextflow_examples.md
+## src: ./pages/nextflow_examples.md
 
 ---
 
-## src: ./sections/nfcore_use_cases.md
+## src: ./pages/nfcore_use_cases.md
 
 ---
 
-## src: ./sections/multiqc_datalake.md
+## src: ./pages/multiqc_datalake.md
