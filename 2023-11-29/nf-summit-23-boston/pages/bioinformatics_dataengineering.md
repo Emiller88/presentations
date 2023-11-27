@@ -4,6 +4,12 @@
 
 ## Bioinformaticians love files
 
+- From a time where the data was bigger than the memory in the computer
+<!-- TODO Check spelling -->
+- Mor's law caught up
+  - Tools are starting to take advantage of widely available compute
+  <!-- TODO Confirm it loads the whole reference into memory -->
+
 ---
 
 ## Medalion architecture
@@ -14,8 +20,8 @@
 
 ---
 
-## We never needed MegaQC
+## Perks
 
-- What if we could get 90% of the value from 10% of the work
-- We can have this today. Do we really need something fancier?
-- Maybe we could just add DuckDB-WASM to MultiQC and you can query in the browser?
+- We can have our files, and do our analysis too
+<!-- Maybe? -->
+- We can skip over the part where we pay a vendor tons of money to keep our data "hot"

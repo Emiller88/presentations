@@ -4,17 +4,20 @@
 
 # Power of Databases without the headache
 
-- MIT licensed
 - Think sqlite for analytics
-<!-- - You can dodge some of the pandas syntax madness -->
 
 ---
 
 # Overview of features
 
+- MIT licensed
+- SQL on files directly
+- Speed
+<!-- - You can dodge some of the pandas syntax madness -->
+
 ---
 
-# Comparison
+# Database Alignment
 
 ![Remote Image](https://imgopt.infoq.com/articles/analytical-data-management-duckdb/en/resources/21figure-2-1686238750825.jpg)
 
@@ -22,19 +25,29 @@
 
 # L1 cache optimized
 
+- Optimized to keep everything close to the CPU
+<!-- Avoids memory and disk -->
+- Even faster on compressed files
+
 ---
 
 ## Query Execution Engine
 
 - SQLite - One tuple at a time
-<!-- TODO Find this graphic -->
+<!-- TODO Find this graphic in a high quality-->
 
 ---
 
 ## The Modern Data Struggle
 
+- Very few people making a _huge_ queries everyday
+  <!-- - Big data is dead -->
+  - Most of the work is done on the most recent data
+  <!-- Think samples that you've run in the past month -->
+  - But what if we needed it in the future?
+  <!-- Data hoarders -->
 - Files are in object stores(s3, apache iceberg)
-<!-- - Big data is dead -->
+<!-- Bioinformaticians love files -->
 
 ---
 
@@ -56,5 +69,9 @@ https://www.wheretrue.dev/docs/exon/exondb/
 
 ## What's the catch?
 
-- It's great... as long as it all runs on one machine.
+<v-clicks>
+
+- It's great... <div v-click>as long as it all runs on one machine.</div>
 - If only there was a tool for orchestrating single machine processes...
+
+</v-clicks>

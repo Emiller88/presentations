@@ -10,6 +10,22 @@ CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("
 
 ---
 
+# MegaQC
+
+- MultiQC for your MultiQC
+  <!-- - Phil's always looking into the future -->
+  <!-- TODO Add a picture -->
+
+---
+
+## We never needed MegaQC
+
+- What if we could get 90% of the value from 10% of the work
+- We can have this today. Do we really need something fancier?
+- Maybe we could just add DuckDB-WASM to MultiQC and you can query in the browser?
+
+---
+
 ## Starting to think in Aggregates
 
 ```sql
