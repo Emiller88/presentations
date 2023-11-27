@@ -35,7 +35,7 @@
               pre-commit.hooks = {
                 alejandra.enable = true;
                 editorconfig-checker.enable = true;
-                mdsh.enable = true;
+                # FIXME mdsh.enable = true;
                 prettier.enable = true;
                 shfmt.enable = true;
               };
