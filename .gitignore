@@ -1,4 +1,6 @@
+# Devenv
 .devenv
+.pre-commit-config.yaml
 *.bbl
 *.tex
 *.pdf
