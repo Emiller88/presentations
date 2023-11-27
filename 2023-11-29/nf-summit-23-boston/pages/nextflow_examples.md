@@ -171,9 +171,30 @@ process DUCKDB_SQL_FILE {
 }
 ```
 
+- Problem is this doesn't like Nextflow's variable insertions
+
 ---
 
 # Templating baked in
 
 <!-- TODO Find dbt example and show it in a Nextflow process -->
 <!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
+
+---
+
+# SQL helper function
+
+```
+process DUCKDB_SQL_FILE {
+  input:
+  file query_file
+
+  script:
+  sql
+  """
+  SELECT * from $file
+  """
+  //or
+  sql example.sql
+}
+```
