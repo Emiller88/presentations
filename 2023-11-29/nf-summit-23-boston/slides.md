@@ -48,11 +48,11 @@ level: 2
 # Intro
 
 ---
-src: ./sections/intro_duckdb.md
+src: ./sections/bioinformatics_dataengineering.md
 ---
 
 ---
-src: ./sections/bioinformatics_dataengineering.md
+src: ./sections/intro_duckdb.md
 ---
 
 ---
