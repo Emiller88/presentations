@@ -112,7 +112,18 @@ else:
     from pyspark.sql import SparkSession
 ```
 
-<!-- Apparently running -->
+<!-- TODO Add Clicks -->
+
+|      | duckspark | pyspark   |
+| ---- | --------- | --------- |
+| real | 0m1.225s  | 0m5.411s  |
+| user | 0m1.970s  | 0m12.700s |
+| sys  | 0m0.160s  | 0m1.221s  |
+
+<!--
+Apparently running pyspark locally is a real pain.
+I don't know I've never used spark
+-->
 
 ---
 
