@@ -1,21 +1,18 @@
+# First, What is DuckDB?
+
 <!-- TODO Make sure this Yellow is right -->
+<simple-icons-duckdb class="text-4xl text-yellow-400"/>
 
-# Intro to DuckDB <simple-icons-duckdb class="text-4xl text-yellow-400"/>
-
----
-
-# Power of Databases without the headache
-
-- Think sqlite for analytics
-
----
-
-# Overview of features
-
-- MIT licensed
-- SQL on files directly
-- Speed
 <!-- - You can dodge some of the pandas syntax madness -->
+
+- Open source(MIT licensed) in-process SQL OLAP database management system
+- Power of Databases without the headache
+  - SQL on files directly
+  - "SQLite for analytics"
+- Speed
+- Runs Anywhere
+
+<!-- If those phrases mean anything to you -->
 
 ---
 
@@ -23,7 +20,15 @@
 
 ![Remote Image](https://imgopt.infoq.com/articles/analytical-data-management-duckdb/en/resources/21figure-2-1686238750825.jpg)
 
-<!-- https://mermaid.js.org/syntax/quadrantChart.html -->
+<!-- TODO Maybe just make my own? https://mermaid.js.org/syntax/quadrantChart.html -->
+
+<!--
+OLAP: Online analytical processing
+Focus is on *analysis*
+
+OLTP: Online transaction processing
+Focus is on responding to user requests
+-->
 
 ---
 
@@ -55,13 +60,59 @@
 
 ---
 
-## R/Python/C/Rust/Julia
+# Simplified Data Access
 
-<!-- You name it, there's a plugin -->
+```sql
+SELECT AVG(trip_distance) FROM 's3://yellow_tripdata_20[12]*.parquet'
+
+SELECT * FROM '~/local/files/file.parquet'
+
+SELECT * FROM dataframe
+
+SELECT * FROM 'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet'
+```
+
+<!-- These are all valid SQL statements in DuckDB -->
 
 ---
 
-## PySpark compatible API
+# Use with Popular Tools and Frameworks
+
+```python {all|7}
+import pandas as pd
+
+import duckdb
+
+mydf = pd.DataFrame({'a' : [1, 2, 3]})
+
+print(duckdb.query("SELECT sum(a) FROM mydf;").fetchall())
+
+```
+
+<!--
+R/Python/C/Rust/Julia
+You name it, there's a plugin
+-->
+
+---
+
+# PySpark compatible API
+
+```python
+import os
+
+# Read the environment variable
+use_duckdb = os.getenv("USE_DUCKDB", "false").lower() == "true"
+
+if use_duckdb:
+    from duckdb.experimental.spark.sql.functions import avg, col, count
+    from duckdb.experimental.spark.sql import SparkSession
+else:
+    from pyspark.sql.functions import avg, col, count
+    from pyspark.sql import SparkSession
+```
+
+<!-- Apparently running -->
 
 ---
 
