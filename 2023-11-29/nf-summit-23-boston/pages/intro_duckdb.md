@@ -6,9 +6,9 @@
 <!-- - You can dodge some of the pandas syntax madness -->
 
 - Open source(MIT licensed) in-process SQL OLAP database management system
-- Power of Databases without the headache
+- **"SQLite for analytics"**
   - SQL on files directly
-  - "SQLite for analytics"
+  - Power of Databases without the headache
 - Speed
 - Runs Anywhere
 
@@ -123,6 +123,7 @@ else:
 <!--
 Apparently running pyspark locally is a real pain.
 I don't know I've never used spark
+Probably great for local testing for now
 -->
 
 ---
