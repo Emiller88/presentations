@@ -217,7 +217,14 @@ process DUCKDB {
 <!-- TODO Test this -->
 <!-- TODO Sync up the order of this with passing a query -->
 
-```nextflow
+```nextflow{all|3,10,15|4,11,15}
+workflow {
+    DUCKDB_SQL_FILE(
+        file("$projectDir/models/example.sql"),
+        nextflix_top_10
+    )
+}
+
 process DUCKDB_SQL_FILE {
     input:
     file query_file
@@ -228,23 +235,23 @@ process DUCKDB_SQL_FILE {
     cat $csv | duckdb -c ".read $query_file"
     """
 }
-
-
-workflow {
-    DUCKDB_SQL_FILE(
-        file("$projectDir/models/example.sql"),
-        nextflix_top_10
-    )
-}
 ```
 
-- Problem is this doesn't like Nextflow's variable insertions
+<v-click>
+
+- Problem is this DuckDB doesn't like Nextflow's variable replacements
+
+</v-click>
 
 ---
 
+```yml
+layout: two-cols
+```
+
 # SQL helper function
 
-```nextflow
+```nextflow{all|7}
 process DUCKDB_SHEBANG {
   input:
   file csv
@@ -257,11 +264,23 @@ process DUCKDB_SHEBANG {
   """
 ```
 
+<v-click>
+
+- DuckDB doesn't support it (yet)
+
+</v-click>
+
 ::right::
 
 <v-click>
 
-```nextflow
+# `sql` Template
+
+</v-click>
+
+<v-click>
+
+```nextflow {all|6|6-9|11-13}
 process DUCKDB_SQL_FILE {
   input:
   file csv
