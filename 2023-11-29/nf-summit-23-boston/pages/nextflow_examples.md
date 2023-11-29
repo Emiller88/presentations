@@ -14,8 +14,24 @@ channel
   ) | view
 ```
 
-<!-- FIXME -->
-<Asciinema src="/casts/parquet_reader.cast" :playerProps="{speed: 2, rows: 15}" />
+<v-click>
+
+```console
+$ nextflow run main.nf
+N E X T F L O W  ~  version 23.10.0
+Launching `main.nf` [berserk_franklin] DSL2 - revision: a1cfea5d71
+[11]
+[20]
+[33]
+[-18]
+...
+[-20]
+[-16]
+[1]
+[-25]
+```
+
+</v-click>
 
 ---
 
