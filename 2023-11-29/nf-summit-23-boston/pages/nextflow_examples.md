@@ -2,7 +2,7 @@
 
 ---
 
-## DuckDB as a Parquet Reader for Nextflow
+# DuckDB as a Parquet Reader for Nextflow
 
 ```nextflow{all|5}
 include { fromQuery } from 'plugin/nf-sqldb'
@@ -33,7 +33,7 @@ channel
 
 <!-- --- -->
 
-## DuckDB in a process
+# DuckDB in a process
 
 ```nextflow {all,4,9,5,10}
 process DUCKDB_NATIVE {
@@ -50,7 +50,7 @@ process DUCKDB_NATIVE {
 }
 ```
 
-## DuckDB in a process
+# DuckDB in a process
 
 ```nextflow {all,4,8}
 process DUCKDB_S3 {
@@ -68,6 +68,51 @@ process DUCKDB_S3 {
 - Let DuckDB Read from s3 using the `HTTPFS` plugin
 
 <!-- This is powerful because DuckDB can pull only the parts it needs in the parquet files -->
+
+---
+
+# Use it with a template file
+
+```nextflow
+process CUSTOMERS_TABLE {
+
+    input:
+    file query
+    file stg_customers
+    file stg_orders
+    file stg_payments
+
+    script:
+    template "create_customers_table.bash"
+}
+```
+
+`create_customers_table.bash`
+
+```bash
+#!/usr/bin/env bash
+duckdb -c "
+WITH customers AS (
+    select * from $stg_customers,
+),
+orders as (
+    select * from $stg_orders
+),
+payments as (
+    select * from $stg_payments
+),
+customer_orders as (
+    select
+        customer_id,
+        min(order_date) as first_order,
+        max(order_date) as most_recent_order,
+        count(order_id) as number_of_orders
+    from orders
+    group by customer_id
+),
+# ...
+"
+```
 
 ---
 
@@ -106,52 +151,6 @@ process DUCKDB {
 <!-- TODO # Hook passing a query into SQLbot -->
 <!-- --- -->
 
-# Use it with a template file
-
-```nextflow
-process CUSTOMERS_TABLE {
-
-    input:
-    file query
-    file stg_customers
-    file stg_orders
-    file stg_payments
-
-    script:
-    template "create_customers_table.bash"
-}
-```
-
-`create_customers_table.bash`
-
-```bash
-#!/usr/bin/env bash
-
-duckdb -c "
-WITH customers AS (
-    select * from $stg_customers,
-),
-orders as (
-    select * from $stg_orders
-),
-payments as (
-    select * from $stg_payments
-),
-customer_orders as (
-    select
-        customer_id,
-        min(order_date) as first_order,
-        max(order_date) as most_recent_order,
-        count(order_id) as number_of_orders
-    from orders
-    group by customer_id
-),
-# ...
-"
-```
-
----
-
 # Using a sql file
 
 <!-- TODO Test this -->
@@ -159,15 +158,22 @@ customer_orders as (
 
 ```nextflow
 process DUCKDB_SQL_FILE {
-  input:
-  file query_file
+    input:
+    file query_file
+    file csv
 
-  script:
-  """
-  duckdb -c $query_file
-  # This file is in bin/!
-  duckdb -c bin_example.sql
-  """
+    script:
+    """
+    cat $csv | duckdb -c ".read $query_file"
+    """
+}
+
+
+workflow {
+    DUCKDB_SQL_FILE(
+        file("$projectDir/models/example.sql"),
+        nextflix_top_10
+    )
 }
 ```
 
