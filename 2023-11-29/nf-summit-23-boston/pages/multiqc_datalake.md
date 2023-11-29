@@ -6,25 +6,23 @@
 
 ---
 
-# DuckDB for querying the MultiQC Data Lake
+```yml
+layout: quote
+```
+
+# ""I just thought MultiQC was a pretty HTML report"
+
+Graham Wright"
 
 <v-click>
 
-> ""I just thought MultiQC was a pretty HTML report"
-> -- Graham Wright"
-
-</v-click>
-<v-click>
-
-> -- Edmund Miller
+-- Edmund Miller
 
 </v-click>
 
-<v-click>
+---
 
-- MultiQC also cleans your data!
-
-</v-click>
+# MultiQC also cleans your data!
 
 <v-click>
 
