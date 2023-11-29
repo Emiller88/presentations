@@ -17,6 +17,20 @@
 
 ---
 
+# L1 cache optimized
+
+- Optimized to keep everything close to the CPU
+<!-- Avoids memory and disk -->
+- Even faster on compressed files
+
+---
+
+## Query Execution Engine
+
+<!-- TODO Find this graphic in a high quality-->
+
+---
+
 # Database Alignment
 
 ![Remote Image](https://imgopt.infoq.com/articles/analytical-data-management-duckdb/en/resources/21figure-2-1686238750825.jpg)
@@ -33,20 +47,6 @@ Focus is on responding to user requests
 - SQLite - One tuple at a time (my understanding one row at a time)
 - DuckDB - One column at a time
 -->
-
----
-
-# L1 cache optimized
-
-- Optimized to keep everything close to the CPU
-<!-- Avoids memory and disk -->
-- Even faster on compressed files
-
----
-
-## Query Execution Engine
-
-<!-- TODO Find this graphic in a high quality-->
 
 ---
 
