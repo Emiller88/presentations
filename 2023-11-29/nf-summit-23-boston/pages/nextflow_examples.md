@@ -157,7 +157,7 @@ customer_orders as (
 <!-- TODO Test this -->
 <!-- TODO Sync up the order of this with passing a query -->
 
-```
+```nextflow
 process DUCKDB_SQL_FILE {
   input:
   file query_file
@@ -177,7 +177,38 @@ process DUCKDB_SQL_FILE {
 
 # Templating baked in
 
-<!-- TODO Find dbt example and show it in a Nextflow process -->
+DBT
+
+```sql
+with customers as (
+
+    select * from {{ ref('stg_customers') }}
+
+),
+-- ...
+```
+
+<!-- TODO Add click -->
+
+```nextflow
+// ...
+
+process DUCKDB_SQL_FILE {
+  input:
+  file query_file
+
+  script:
+  """
+  duckdb -c $query_file
+  with customers as (
+
+    select * from $stg_customers_file
+
+  ),
+  """
+}
+```
+
 <!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
 
 ---
