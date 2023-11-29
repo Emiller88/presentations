@@ -19,20 +19,6 @@ channel
 
 ---
 
-# MotherDuck connection
-
----
-
-<!-- I just don't like this slide feels like I'm draggin them through the mud when it was really me not reaching out -->
-<!-- ## State of the nf-sqldb -->
-
-<!-- - Need to update the JDBC to 0.9.2 for Motherduck support -->
-<!-- - Batch woes -->
-<!--   - DuckDB itself supports batch insertions -->
-<!--   - DuckDB JDBC package hasn't implemented the `BatchInsert` function -->
-
-<!-- --- -->
-
 # DuckDB in a process
 
 ```nextflow {all,4,9,5,10}
