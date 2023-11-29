@@ -60,6 +60,10 @@ src: ./pages/multiqc_datalake.md
 
 ---
 
+```yaml
+layout: end
+```
+
 # Conclusion
 
 <v-clicks>
@@ -69,6 +73,8 @@ src: ./pages/multiqc_datalake.md
 
 </v-clicks>
 
-![Nextflow](https://github.com/nextflow-io/trademark/raw/master/nextflow-logo-bg-light.png)
-
 <simple-icons-duckdb class="text-4xl text-yellow-400"/>
+
+![Nextflow](https://github.com/nextflow-io/trademark/raw/master/nextflow-icon.png)
+
+<!-- FIXME Add MultiQC -->
