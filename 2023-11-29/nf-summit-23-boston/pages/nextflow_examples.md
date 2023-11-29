@@ -19,10 +19,46 @@ channel
 
 ---
 
-# DuckDB in a process
+# Templating baked in
+
+DBT
+
+```sql
+with customers as (
+    select * from {{ ref('stg_customers') }}
+),
+-- ...
+```
+
+<!-- TODO Add click -->
+
+```nextflow
+// ...
+
+process DUCKDB_SQL_FILE {
+  input:
+  file stg_customers_file
+
+  script:
+  """
+  duckdb -c "
+  with customers as (
+    select * from ${stg_customers_file}
+  ),
+  -- ...
+  "
+  """
+}
+```
+
+<!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
+
+---
+
+# Staging Files
 
 ```nextflow {all,4,9,5,10}
-process DUCKDB_NATIVE {
+process DUCKDB_NEXTFLOW_STAGING {
 
     input:
     path csv
@@ -30,23 +66,23 @@ process DUCKDB_NATIVE {
 
     script:
     """
-    duckdb "SELECT * FROM read_csv('$csv', filename=true);
-    SELECT region FROM sales GROUP BY region HAVING sum(amount) > $greaterthan;"
+    duckdb "SELECT * FROM read_csv('${csv}', filename=true);
+    SELECT region FROM sales GROUP BY region HAVING sum(amount) > ${greaterthan};"
     """
 }
 ```
 
-# DuckDB in a process
+# HTTPFS Plugin
 
 ```nextflow {all,4,8}
-process DUCKDB_S3 {
+process DUCKDB_HTTPFS {
 
     input:
     val link // s3://blah/blah.csv
 
     script:
     """
-    duckdb "SELECT * FROM read_csv('$link', filename=true);"
+    duckdb "SELECT * FROM read_csv('${link}', filename=true);"
     """
 }
 ```
@@ -107,7 +143,7 @@ customer_orders as (
 ```nextflow
 workflow {
     DUCKDB("""
-           SELECT * FROM read_csv('$link', filename=true);
+           SELECT * FROM read_csv('${link}', filename=true);
            -- display tables
            SHOW tables;
            """
@@ -167,55 +203,35 @@ workflow {
 
 ---
 
-# Templating baked in
-
-DBT
-
-```sql
-with customers as (
-    select * from {{ ref('stg_customers') }}
-),
--- ...
-```
-
-<!-- TODO Add click -->
-
-```nextflow
-// ...
-
-process DUCKDB_SQL_FILE {
-  input:
-  file stg_customers_file
-
-  script:
-  """
-  duckdb -c "
-  with customers as (
-    select * from $stg_customers_file
-  ),
-  -- ...
-  "
-  """
-}
-```
-
-<!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
-
----
-
 # SQL helper function
 
 ```nextflow
+process DUCKDB_SHEBANG {
+  input:
+  file csv
+
+  script:
+  """
+  #!/usr/bin/env duckdb :memory:
+
+  SELECT * from ${csv}
+  """
+```
+
+```nextflow
 process DUCKDB_SQL_FILE {
   input:
-  file query_file
+  file csv
 
   script:
   sql
   """
-  SELECT * from $file
+  SELECT * from ${csv}
   """
-  //or
+
+  // OR
+
+  script:
   sql example.sql
 }
 ```
