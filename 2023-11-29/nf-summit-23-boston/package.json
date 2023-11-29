@@ -19,6 +19,7 @@
     "slidev-addon-asciinema": "^0.1.10"
   },
   "devDependencies": {
+    "@iconify-json/logos": "^1.1.40",
     "@iconify-json/simple-icons": "^1.1.80"
   }
 }

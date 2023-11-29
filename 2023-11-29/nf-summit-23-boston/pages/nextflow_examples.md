@@ -2,7 +2,7 @@
 layout: center
 ```
 
-# Nextflow Examples
+# Nextflow and DuckDB Examples
 
 ---
 
@@ -47,23 +47,21 @@ layout: two-cols
 
 <template v-slot:default>
 
-## dbt
+<logos-dbt class="text-8xl mx-2" />
 
-```sql
+```sql{all|2}
 with customers as (
     select * from {{ ref('stg_customers') }}
 ),
 -- ...
 ```
 
-<!-- FIXME Add dbt logo -->
-
 </template>
 <template v-slot:right>
 
-## Nextflow
+![Nextflow](https://raw.githubusercontent.com/nextflow-io/trademark/master/nextflow-logo-bg-light.svg)
 
-```nextflow
+```nextflow{all|8-10|9}
 process DUCKDB_SQL_FILE {
   input:
   path stg_customers_file
@@ -86,13 +84,9 @@ process DUCKDB_SQL_FILE {
 
 ---
 
-```yml
-layout: two-cols
-```
-
 # Staging Files
 
-```nextflow {all,4,9,5,10}
+```nextflow {all|4|9|5|10}
 process DUCKDB_NEXTFLOW_STAGING {
 
     input:
@@ -107,15 +101,19 @@ process DUCKDB_NEXTFLOW_STAGING {
 }
 ```
 
-::right::
+<v-click>
 
 # HTTPFS Plugin
 
-```nextflow {all,4,8}
+</v-click>
+
+<v-click>
+
+```nextflow {all|4|8}
 process DUCKDB_HTTPFS {
 
     input:
-    val link // s3://blah/blah.csv
+    val link // s3://mybucket/results.csv
 
     script:
     """
@@ -124,7 +122,12 @@ process DUCKDB_HTTPFS {
 }
 ```
 
+</v-click>
+<v-click>
+
 - Let DuckDB Read from s3 using the `HTTPFS` plugin
+
+</v-click>
 
 <!-- This is powerful because DuckDB can pull only the parts it needs in the parquet files -->
 
