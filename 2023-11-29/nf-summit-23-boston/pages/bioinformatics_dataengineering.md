@@ -1,5 +1,6 @@
 ```yaml
 layout: two-cols
+transition: fade
 ```
 
 <template v-slot:default>
