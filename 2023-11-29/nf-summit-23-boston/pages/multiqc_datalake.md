@@ -104,14 +104,14 @@ CREATE TABLE reads
 AS SELECT
     Sample,reads_mapped_and_paired
 FROM read_csv_auto(
-    "s3://nf-core-awsmegatests/sarek/*/test_full/multiqc/multiqc_data/multiqc_samtools_stats.txt",
+    "s3://nf-core-awsmegatests/sarek/results-*/test_full/multiqc/multiqc_data/multiqc_samtools_stats.txt",
     filename=true
 );
 ```
 
-- Pull the files in a make aquery
-- Can update the names in a `DDB` fuction
-- How many reads have been processed in nf-core mega tests?
+<!-- - Pull the files in a make a query -->
+<!-- - Can update the names in a `DDB` fuction -->
+<!-- - How many reads have been processed in nf-core mega tests? -->
 
 ---
 
