@@ -112,6 +112,25 @@ FROM read_csv_auto(
 );
 ```
 
+<v-click>
+
+| Sample              | reads_mapped_and_paired |
+| ------------------- | ----------------------- |
+| HCC1395N.md.cram    | 171478718.0             |
+| HCC1395N.recal.cram | 154057323.0             |
+| HCC1395T.md.cram    | 203557262.0             |
+| HCC1395T.recal.cram | 182566982.0             |
+| HCC1395N.md.cram    | 171478718.0             |
+| HCC1395N.recal.cram | 154057323.0             |
+| HCC1395T.md.cram    | 203557262.0             |
+| HCC1395T.recal.cram | 182566982.0             |
+| HCC1395N.md.cram    | 171478718.0             |
+| HCC1395N.recal.cram | 154057323.0             |
+| HCC1395T.md.cram    | 203557262.0             |
+| HCC1395T.recal.cram | 182566982.0             |
+
+</v-click>
+
 <!-- - Pull the files in a make a query -->
 <!-- - Can update the names in a `DDB` fuction -->
 <!-- - How many reads have been processed in nf-core mega tests? -->
