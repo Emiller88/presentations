@@ -74,18 +74,22 @@ My second naive take:
 
 ---
 
-# The Modern Data Struggle
+# Big Data is Dead - The Modern Data Struggle
 
-<v-clicks>
+<v-clicks depth="2">
 
 - Very few people making a _huge_ queries everyday
-  - Most of the work is done on the most recent data
-  - But what if we needed it in the future?
-- Files are in object stores(s3, apache iceberg)
+  - Most of the work is done on the most _recent_ data
+  - "But what if we needed it in the future?"
+- Files are in object stores (S3)
 
 </v-clicks>
 
-<!-- - Big data is dead
+<!-- ![Most data is rarely queried](https://motherduck.com/_next/image/?url=https%3A%2F%2Fweb-assets-prod.motherduck.com%2Fassets%2Fimg%2Fimage_7_c4ff57600f.jpg) -->
+<!-- cite: https://motherduck.com/blog/big-data-is-dead/ -->
+
+<!--
+- Big data is dead
 - Think samples that you've run in the past month
 - Data hoarders
 - Bioinformaticians love files

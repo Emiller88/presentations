@@ -1,33 +1,28 @@
 # First, What is DuckDB?
 
-<!-- TODO Make sure this Yellow is right -->
-<simple-icons-duckdb class="text-4xl text-yellow-400"/>
-
 <!-- - You can dodge some of the pandas syntax madness -->
 
-- Open source(MIT licensed) in-process SQL OLAP database management system
+<v-clicks depth=2>
+
+- Open source (MIT licensed) in-process SQL OLAP database management system
 - **"SQLite for analytics"**
   - SQL on files directly
   - Power of Databases without the headache
 - Speed
   - L1 cache optimized
+  - Query Execution Engine
 - Runs Anywhere
+  - Cloud
+  - HPC
+  - Laptop
+  - That old Mac in your lab that won't die
 
+</v-clicks>
+
+<!-- TODO Make sure this Yellow is right -->
+<!-- TODO Move to lower right side of screen -->
+<!-- <simple-icons-duckdb class="text-4xl text-yellow-400"/> -->
 <!-- If those phrases mean anything to you -->
-
----
-
-# L1 cache optimized
-
-- Optimized to keep everything close to the CPU
-<!-- Avoids memory and disk -->
-- Even faster on compressed files
-
----
-
-## Query Execution Engine
-
-<!-- TODO Find this graphic in a high quality-->
 
 ---
 
@@ -52,7 +47,9 @@ Focus is on responding to user requests
 
 # Simplified Data Access
 
-```sql
+<!-- FIXME Make the font bigger -->
+
+```sql {1|3|5|7}
 SELECT AVG(trip_distance) FROM 's3://yellow_tripdata_20[12]*.parquet'
 
 SELECT * FROM '~/local/files/file.parquet'
@@ -81,9 +78,11 @@ print(duckdb.query("SELECT sum(a) FROM mydf;").fetchall())
 ```
 
 <!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
+
 <!--
 R/Python/C/Rust/Julia
 You name it, there's a plugin
+Uses APACHE arrow under the hood
 -->
 
 ---
@@ -118,7 +117,8 @@ else:
 <!--
 Apparently running pyspark locally is a real pain.
 I don't know I've never used spark
-Probably great for local testing for now
+Great for local testing
+Small workloads where you had a spark script for it
 -->
 
 ---

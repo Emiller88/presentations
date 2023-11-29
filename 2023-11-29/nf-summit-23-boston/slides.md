@@ -20,20 +20,7 @@ mdc: true
 
 Powering data engineering, exploring DuckDB, and beyond
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
----
-
-```yaml
-transition: fade-out
-layout: default
-```
-
-# Table of contents
-
-<Toc maxDepth=1></Toc>
+<!-- TODO Do the oar for datalakehouse -->
 
 ---
 
