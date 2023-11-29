@@ -137,14 +137,3 @@ Probably great for local testing for now
 # TODO Biobear
 
 https://www.wheretrue.dev/docs/exon/exondb/
-
----
-
-## What's the catch?
-
-<v-clicks>
-
-- It's great... <div v-click>as long as it all runs on one machine.</div>
-- If only there was a tool for orchestrating single machine processes...
-
-</v-clicks>
