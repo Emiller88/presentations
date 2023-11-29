@@ -173,9 +173,7 @@ DBT
 
 ```sql
 with customers as (
-
     select * from {{ ref('stg_customers') }}
-
 ),
 -- ...
 ```
@@ -187,16 +185,16 @@ with customers as (
 
 process DUCKDB_SQL_FILE {
   input:
-  file query_file
+  file stg_customers_file
 
   script:
   """
-  duckdb -c $query_file
+  duckdb -c "
   with customers as (
-
     select * from $stg_customers_file
-
   ),
+  -- ...
+  "
   """
 }
 ```
@@ -207,7 +205,7 @@ process DUCKDB_SQL_FILE {
 
 # SQL helper function
 
-```
+```nextflow
 process DUCKDB_SQL_FILE {
   input:
   file query_file
