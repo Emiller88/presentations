@@ -73,8 +73,4 @@ layout: end
 
 </v-clicks>
 
-<simple-icons-duckdb class="text-4xl text-yellow-400"/>
-
-![Nextflow](https://github.com/nextflow-io/trademark/raw/master/nextflow-icon.png)
-
-<!-- FIXME Add MultiQC -->
+<Logos/>
