@@ -127,6 +127,12 @@ Small workloads where you had a spark script for it
 
 ![BioBear](https://github.com/wheretrue/biobear/blob/main/.github/biobear.svg)
 
+<v-click>
+
+> Exon is an OLAP query engine specifically for biology and life science applications.
+
+</v-click>
+
 ```python {all|7|11}
 import biobear as bb
 import duckdb
@@ -143,11 +149,5 @@ result = session.sql("""
 ```
 
 <!-- TODO Add table: https://github.com/wheretrue/biobear?tab=readme-ov-file#using-a-session-w-exon -->
-
-<v-click>
-
-> Exon is an OLAP query engine specifically for biology and life science applications.
-
-</v-click>
 
 <!-- FASTA, FASTQ, VCF, BAM, and GFF -->

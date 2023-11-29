@@ -19,9 +19,15 @@ channel
 
 ---
 
-# Templating baked in
+```yaml
+layout: two-cols
+```
 
-DBT
+<!-- # Templating baked in -->
+
+<template v-slot:default>
+
+## dbt
 
 ```sql
 with customers as (
@@ -30,11 +36,14 @@ with customers as (
 -- ...
 ```
 
-<!-- TODO Add click -->
+<!-- FIXME Add dbt logo -->
+
+</template>
+<template v-slot:right>
+
+## Nextflow
 
 ```nextflow
-// ...
-
 process DUCKDB_SQL_FILE {
   input:
   file stg_customers_file
@@ -50,6 +59,8 @@ process DUCKDB_SQL_FILE {
   """
 }
 ```
+
+</template>
 
 <!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
 
