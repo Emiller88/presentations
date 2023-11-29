@@ -10,6 +10,7 @@
   - SQL on files directly
   - Power of Databases without the headache
 - Speed
+  - L1 cache optimized
 - Runs Anywhere
 
 <!-- If those phrases mean anything to you -->
@@ -28,6 +29,9 @@ Focus is on *analysis*
 
 OLTP: Online transaction processing
 Focus is on responding to user requests
+
+- SQLite - One tuple at a time (my understanding one row at a time)
+- DuckDB - One column at a time
 -->
 
 ---
@@ -42,7 +46,6 @@ Focus is on responding to user requests
 
 ## Query Execution Engine
 
-- SQLite - One tuple at a time
 <!-- TODO Find this graphic in a high quality-->
 
 ---
@@ -72,6 +75,7 @@ SELECT * FROM dataframe
 SELECT * FROM 'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet'
 ```
 
+<!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
 <!-- These are all valid SQL statements in DuckDB -->
 
 ---
@@ -89,6 +93,7 @@ print(duckdb.query("SELECT sum(a) FROM mydf;").fetchall())
 
 ```
 
+<!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
 <!--
 R/Python/C/Rust/Julia
 You name it, there's a plugin
@@ -120,6 +125,7 @@ else:
 | user | 0m1.970s  | 0m12.700s |
 | sys  | 0m0.160s  | 0m1.221s  |
 
+<!-- cite: https://motherduck.com/blog/making-pyspark-code-faster-with-duckdb/ -->
 <!--
 Apparently running pyspark locally is a real pain.
 I don't know I've never used spark
