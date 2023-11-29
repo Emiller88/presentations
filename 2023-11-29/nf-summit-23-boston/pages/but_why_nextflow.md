@@ -2,7 +2,7 @@
 
 <v-clicks>
 
-- It's great... 
+- It's great...
 <div v-click>as long as it all runs on one machine.</div>
 
 - If only there was a tool for orchestrating single machine processes...
@@ -22,4 +22,6 @@
 # DuckDB and Nextflow anti-patterns
 
 - Running it with nf-sqldb
+  - Designed to be a "client"
   - Could put pressure on the head node job
+  - Motherduck is a managed DuckDB service that could alleviate this

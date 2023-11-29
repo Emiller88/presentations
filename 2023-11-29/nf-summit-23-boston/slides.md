@@ -57,3 +57,12 @@ src: ./pages/nfcore_use_cases.md
 ```yaml
 src: ./pages/multiqc_datalake.md
 ```
+
+---
+
+# Conclusion
+
+<!-- FIXME -->
+
+- We've already built data lakehouses unknowningly
+- With DuckDB and Nextflow in combination we can capitalize on them

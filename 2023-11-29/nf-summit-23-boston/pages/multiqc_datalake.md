@@ -1,4 +1,4 @@
-# Medalion Architecture
+# Medallion Architecture
 
 ![Medalion Architecture](https://images.squarespace-cdn.com/content/v1/5bce4071ab1a620db382773e/c7b8783d-ac78-4e96-acd5-e29940c6e7d3/audit-logs-quality-diagram-v1-052920.png)
 
@@ -55,9 +55,13 @@
 
 </v-click>
 
+<!--
+- Coming to a python registry near you: Parquet output planned for MultiQC!
+-->
+
 ---
 
-## Simple query of Multiqc Outputs
+## Simple query of MultiQC Outputs
 
 ```sql
 CREATE TABLE reads AS
@@ -67,10 +71,6 @@ SELECT
 FROM
     read_csv_auto("s3://nf-core-awsmegatests/rnaseq/multiqc/star_rsem/multiqc_data/multiqc_samtools_stats.txt");
 ```
-
-<v-click>
-- Parquet output planned for MultiQC!
-</v-click>
 
 ---
 
@@ -88,16 +88,7 @@ FROM
 
 ---
 
-# What if we never needed MegaQC?
-
-- We can have this today. Do we really need something fancier?
-- Maybe we could just add DuckDB-WASM to MultiQC and you can query in the browser?
-
-<!-- - What if we could get 90% of the value from 10% of the work -->
-
----
-
-## Starting to think in Aggregates
+# Starting to think in Aggregates
 
 ```sql {all|5}
 CREATE TABLE reads

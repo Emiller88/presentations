@@ -46,7 +46,7 @@ with customers as (
 ```nextflow
 process DUCKDB_SQL_FILE {
   input:
-  file stg_customers_file
+  path stg_customers_file
 
   script:
   """
@@ -65,6 +65,8 @@ process DUCKDB_SQL_FILE {
 <!-- Seeing all of the dbt stuff and thinking: Nextflow can do that -->
 
 ---
+
+<!-- FIXME split -->
 
 # Staging Files
 
@@ -103,6 +105,8 @@ process DUCKDB_HTTPFS {
 <!-- This is powerful because DuckDB can pull only the parts it needs in the parquet files -->
 
 ---
+
+<!-- FIXME split -->
 
 # Use it with a template file
 
@@ -239,10 +243,9 @@ process DUCKDB_SQL_FILE {
   """
   SELECT * from ${csv}
   """
-
-  // OR
-
-  script:
-  sql example.sql
+  // Equals
+  """
+  duckdb -c "SELECT * from ${csv}"
+  """
 }
 ```
