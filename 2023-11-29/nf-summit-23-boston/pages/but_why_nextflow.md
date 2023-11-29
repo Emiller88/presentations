@@ -18,7 +18,20 @@ layout: center
 
 ---
 
-# TODO Nextflow chunking a huge file and then making smaller DuckDB calls on it.
+```yml
+layout: center
+```
+
+```nextflow
+ch_split = Channel
+    .of( 'alpha,beta,gamma\n10,20,30\n70,80,90' )
+    .splitCsv()
+
+
+workflow {
+  DUCKDB (ch_split)
+}
+```
 
 ---
 
