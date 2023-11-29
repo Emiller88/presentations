@@ -1,10 +1,30 @@
-# DuckDB for querying the MultiQC Data Lake
+# Medalion Architecture
+
+![Medalion Architecture](https://images.squarespace-cdn.com/content/v1/5bce4071ab1a620db382773e/c7b8783d-ac78-4e96-acd5-e29940c6e7d3/audit-logs-quality-diagram-v1-052920.png)
+
+<!-- - Coined by Databricks -->
 
 ---
 
-> I just thought MultiQC was a pretty HTML report
+# DuckDB for querying the MultiQC Data Lake
+
+<v-click>
+
+> ""I just thought MultiQC was a pretty HTML report"
+> -- Graham Wright"
+
+</v-click>
+<v-click>
+
+> -- Edmund Miller
+
+</v-click>
+
+<v-click>
 
 - MultiQC also cleans your data!
+
+</v-click>
 
 ---
 
@@ -16,11 +36,17 @@ CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("
 
 ---
 
-# MegaQC
+![MegaQC logo](https://megaqc.info/_static/images/MegaQC_logo_darkbg.svg)
+
+> MegaQC stores MultiQC results in a database for long term analysis
+
+![MultiQC example](https://raw.githubusercontent.com/ewels/MegaQC/master/docs/source/images/megaqc_homepage.png)
 
 - MultiQC for your MultiQC
-  <!-- - Phil's always looking into the future -->
-  <!-- TODO Add a picture -->
+
+<!-- TODO Add a picture -->
+<!-- TODO Add a Yo Dawg I heard you like MultiQC meme -->
+<!-- - Phil's always looking into the future -->
 
 ---
 
