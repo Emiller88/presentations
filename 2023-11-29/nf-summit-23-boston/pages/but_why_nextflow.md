@@ -11,7 +11,9 @@
 
 ---
 
-![Horse Size Duck](https://i.kym-cdn.com/entries/icons/original/000/011/895/horsesizedduck.jpg)
+```yml
+image: https://i.kym-cdn.com/entries/icons/original/000/011/895/horsesizedduck.jpg
+```
 
 ---
 

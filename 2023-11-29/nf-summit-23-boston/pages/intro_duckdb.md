@@ -28,7 +28,7 @@
 
 # Database Alignment
 
-![Remote Image](https://imgopt.infoq.com/articles/analytical-data-management-duckdb/en/resources/21figure-2-1686238750825.jpg)
+![DB alignment chart](https://imgopt.infoq.com/articles/analytical-data-management-duckdb/en/resources/21figure-2-1686238750825.jpg)
 
 <!-- TODO Maybe just make my own? https://mermaid.js.org/syntax/quadrantChart.html -->
 
@@ -125,13 +125,7 @@ Small workloads where you had a spark script for it
 
 # DuckDB and Biological data
 
-![BioBear](https://github.com/wheretrue/biobear/blob/main/.github/biobear.svg)
-
-<v-click>
-
 > Exon is an OLAP query engine specifically for biology and life science applications.
-
-</v-click>
 
 ```python {all|7|11}
 import biobear as bb
@@ -147,6 +141,8 @@ result = session.sql("""
     SELECT * FROM gene_annotations
 """)
 ```
+
+![BioBear](https://github.com/wheretrue/biobear/raw/main/.github/biobear.svg)
 
 <!-- TODO Add table: https://github.com/wheretrue/biobear?tab=readme-ov-file#using-a-session-w-exon -->
 

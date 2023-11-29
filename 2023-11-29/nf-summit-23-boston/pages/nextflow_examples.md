@@ -1,3 +1,7 @@
+```yml
+layout: center
+```
+
 # Nextflow Examples
 
 ---
@@ -82,7 +86,9 @@ process DUCKDB_SQL_FILE {
 
 ---
 
-<!-- FIXME split -->
+```yml
+layout: two-cols
+```
 
 # Staging Files
 
@@ -100,6 +106,8 @@ process DUCKDB_NEXTFLOW_STAGING {
     """
 }
 ```
+
+::right::
 
 # HTTPFS Plugin
 
@@ -122,7 +130,9 @@ process DUCKDB_HTTPFS {
 
 ---
 
-<!-- FIXME split -->
+```yml
+layout: two-cols
+```
 
 # Use it with a template file
 
@@ -139,6 +149,8 @@ process CUSTOMERS_TABLE {
     template "create_customers_table.bash"
 }
 ```
+
+::right::
 
 `create_customers_table.bash`
 
@@ -171,7 +183,7 @@ customer_orders as (
 
 # Pass a Query to DuckDB
 
-```nextflow
+```nextflow{all|3-5,12,16}
 workflow {
     DUCKDB("""
            SELECT * FROM read_csv('${link}', filename=true);
@@ -180,11 +192,7 @@ workflow {
            """
     )
 }
-```
 
-<!-- <v-clicks> -->
-
-```nextflow
 process DUCKDB {
     input:
     val query
@@ -249,6 +257,10 @@ process DUCKDB_SHEBANG {
   """
 ```
 
+::right::
+
+<v-click>
+
 ```nextflow
 process DUCKDB_SQL_FILE {
   input:
@@ -265,3 +277,5 @@ process DUCKDB_SQL_FILE {
   """
 }
 ```
+
+</v-click>
