@@ -1,4 +1,4 @@
-# nf-core use cases
+# ![nf-core](https://github.com/nf-core/logos/raw/master/nf-core-logos/nf-core-logo-lightbg.svg) use cases
 
 - **nf-co2footprint** querying
 - What's the most used module in all the pipelines?

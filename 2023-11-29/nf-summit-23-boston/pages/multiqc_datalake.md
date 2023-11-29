@@ -26,23 +26,61 @@
 
 </v-click>
 
----
+<v-click>
 
-## Simple query of Multiqc
+`multiqc_data/multiqc_data.json`
 
-```sql
-CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("s3://nf-core-awsmegatests/rnaseq/*/multiqc/star_rsem/multiqc_data/multiqc_samtools_stats.txt");
+```json
+{
+    "report_data_sources": { [...] },
+    "report_general_stats_data": [
+        {
+            "GM12878_REP1": {
+                "percent_rRNA": 0.0009636926399566243
+            },
+            "K562_REP1": {
+                "percent_rRNA": 0.0006633349954509511
+            },
+            "H1_REP2": {
+                "percent_rRNA": 0.00020859186814645343
+            },
+            "GM12878_REP2": {
+                "percent_rRNA": 0.0020656724793101633
+            // ..
+        }
+    ],
+    // ...
+}
 ```
 
+</v-click>
+
 ---
 
-![MegaQC logo](https://megaqc.info/_static/images/MegaQC_logo_darkbg.svg)
+## Simple query of Multiqc Outputs
 
-> MegaQC stores MultiQC results in a database for long term analysis
+```sql
+CREATE TABLE reads AS
+SELECT
+    sample,
+    reads_mapped_and_paired
+FROM
+    read_csv_auto("s3://nf-core-awsmegatests/rnaseq/multiqc/star_rsem/multiqc_data/multiqc_samtools_stats.txt");
+```
+
+<v-click>
+- Parquet output planned for MultiQC!
+</v-click>
+
+---
+
+<v-click>
+
+# MultiQC for your MultiQC
+
+</v-click>
 
 ![MultiQC example](https://raw.githubusercontent.com/ewels/MegaQC/master/docs/source/images/megaqc_homepage.png)
-
-- MultiQC for your MultiQC
 
 <!-- TODO Add a picture -->
 <!-- TODO Add a Yo Dawg I heard you like MultiQC meme -->
@@ -50,17 +88,18 @@ CREATE TABLE reads AS SELECT Sample,reads_mapped_and_paired FROM read_csv_auto("
 
 ---
 
-## We never needed MegaQC
+# What if we never needed MegaQC?
 
-- What if we could get 90% of the value from 10% of the work
 - We can have this today. Do we really need something fancier?
 - Maybe we could just add DuckDB-WASM to MultiQC and you can query in the browser?
+
+<!-- - What if we could get 90% of the value from 10% of the work -->
 
 ---
 
 ## Starting to think in Aggregates
 
-```sql
+```sql {all|5}
 CREATE TABLE reads
 AS SELECT
     Sample,reads_mapped_and_paired

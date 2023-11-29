@@ -2,12 +2,12 @@
 
 <v-clicks>
 
-- It's great... <div v-click>as long as it all runs on one machine.</div>
+- It's great... 
+<div v-click>as long as it all runs on one machine.</div>
+
 - If only there was a tool for orchestrating single machine processes...
 
 </v-clicks>
-
-# Why Nextflow though?
 
 ---
 
@@ -15,7 +15,7 @@
 
 ---
 
-# Nextflow chunking a huge file and then making smaller DuckDB calls on it.
+# TODO Nextflow chunking a huge file and then making smaller DuckDB calls on it.
 
 ---
 
@@ -23,4 +23,3 @@
 
 - Running it with nf-sqldb
   - Could put pressure on the head node job
-- Circle back around in a minute
