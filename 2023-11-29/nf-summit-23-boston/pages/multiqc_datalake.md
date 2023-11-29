@@ -62,13 +62,27 @@ Graham Wright"
 ## Simple query of MultiQC Outputs
 
 ```sql
-CREATE TABLE reads AS
 SELECT
     sample,
     reads_mapped_and_paired
 FROM
-    read_csv_auto("s3://nf-core-awsmegatests/rnaseq/multiqc/star_rsem/multiqc_data/multiqc_samtools_stats.txt");
+    read_csv_auto("s3://nf-core-awsmegatests/rnaseq/results-a10f41afa204538d5dcc89a5910c299d68f94f41/aligner_star_rsem/multiqc/star_rsem/multiqc_report_data/multiqc_samtools_stats.txt");
 ```
+
+<v-click>
+
+| Sample       | reads_mapped_and_paired |
+| ------------ | ----------------------- |
+| GM12878_REP1 | 173557764.0             |
+| GM12878_REP2 | 176544818.0             |
+| H1_REP1      | 234427440.0             |
+| H1_REP2      | 194698638.0             |
+| K562_REP1    | 164319940.0             |
+| K562_REP2    | 204204402.0             |
+| MCF7_REP1    | 233173580.0             |
+| MCF7_REP2    | 238661562.0             |
+
+</v-click>
 
 ---
 
