@@ -1,7 +1,5 @@
 # First, What is DuckDB?
 
-<!-- - You can dodge some of the pandas syntax madness -->
-
 <v-clicks depth=2>
 
 - Open source (MIT licensed) in-process SQL OLAP database management system
@@ -19,9 +17,11 @@
 
 </v-clicks>
 
-<!-- TODO Make sure this Yellow is right -->
-<!-- TODO Move to lower right side of screen -->
-<!-- <simple-icons-duckdb class="text-4xl text-yellow-400"/> -->
+<div class="absolute right-30px bottom-30px">
+  <!-- TODO Make sure this Yellow is right -->
+  <simple-icons-duckdb class="text-4xl text-yellow-400"/>
+</div>
+
 <!-- If those phrases mean anything to you -->
 
 ---
