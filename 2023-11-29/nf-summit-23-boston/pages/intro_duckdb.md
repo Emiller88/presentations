@@ -17,10 +17,7 @@
 
 </v-clicks>
 
-<div class="absolute right-30px bottom-30px">
-  <!-- TODO Make sure this Yellow is right -->
-  <simple-icons-duckdb class="text-4xl text-yellow-400"/>
-</div>
+<watermark/>
 
 <!-- If those phrases mean anything to you -->
 
@@ -60,6 +57,9 @@ SELECT * FROM 'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet'
 ```
 
 <!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
+
+<watermark/>
+
 <!-- These are all valid SQL statements in DuckDB -->
 
 ---
@@ -78,6 +78,8 @@ print(duckdb.query("SELECT sum(a) FROM mydf;").fetchall())
 ```
 
 <!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
+
+<watermark/>
 
 <!--
 R/Python/C/Rust/Julia
@@ -113,6 +115,7 @@ else:
 
 </v-click>
 
+<watermark/>
 <!-- cite: https://motherduck.com/blog/making-pyspark-code-faster-with-duckdb/ -->
 <!--
 Apparently running pyspark locally is a real pain.
@@ -142,8 +145,7 @@ result = session.sql("""
 """)
 ```
 
-![BioBear](https://github.com/wheretrue/biobear/raw/main/.github/biobear.svg)
-
 <!-- TODO Add table: https://github.com/wheretrue/biobear?tab=readme-ov-file#using-a-session-w-exon -->
-
+<watermark/>
+<img src="https://github.com/wheretrue/biobear/raw/main/.github/biobear.svg" class="absolute right-100px bottom-30px" />
 <!-- FASTA, FASTQ, VCF, BAM, and GFF -->
