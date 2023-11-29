@@ -76,7 +76,7 @@ FROM
 
 <v-click>
 
-# MultiQC for your MultiQC
+# "MultiQC for your MultiQC"
 
 </v-click>
 

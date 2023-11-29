@@ -1,9 +1,8 @@
 # What's the catch?
 
-<v-clicks>
+<v-clicks depth=2>
 
-- It's great...
-<div v-click>as long as it all runs on one machine.</div>
+- It's great... as long as it all runs on one machine.
 
 - If only there was a tool for orchestrating single machine processes...
 
@@ -12,8 +11,10 @@
 ---
 
 ```yml
-image: https://i.kym-cdn.com/entries/icons/original/000/011/895/horsesizedduck.jpg
+layout: center
 ```
+
+![Horse Size Duck](https://i.kym-cdn.com/entries/icons/original/000/011/895/horsesizedduck.jpg)
 
 ---
 
