@@ -1,3 +1,5 @@
+<!-- FIXME Add <LightOrDark> -->
+
 # ![nf-core](https://github.com/nf-core/logos/raw/master/nf-core-logos/nf-core-logo-lightbg.svg) use cases
 
 - **nf-co2footprint** querying

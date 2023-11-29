@@ -33,7 +33,7 @@ layout: default
 
 # Table of contents
 
-<Toc></Toc>
+<Toc maxDepth=1></Toc>
 
 ---
 

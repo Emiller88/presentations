@@ -90,7 +90,7 @@ You name it, there's a plugin
 
 # PySpark compatible API
 
-```python
+```python {all|3-4|6-8|9-11}
 import os
 
 # Read the environment variable
@@ -104,13 +104,15 @@ else:
     from pyspark.sql import SparkSession
 ```
 
-<!-- TODO Add Clicks -->
+<v-click>
 
 |      | duckspark | pyspark   |
 | ---- | --------- | --------- |
 | real | 0m1.225s  | 0m5.411s  |
 | user | 0m1.970s  | 0m12.700s |
 | sys  | 0m0.160s  | 0m1.221s  |
+
+</v-click>
 
 <!-- cite: https://motherduck.com/blog/making-pyspark-code-faster-with-duckdb/ -->
 <!--
@@ -125,7 +127,7 @@ Probably great for local testing for now
 
 ![BioBear](https://github.com/wheretrue/biobear/blob/main/.github/biobear.svg)
 
-```python
+```python {all|7|11}
 import biobear as bb
 import duckdb
 
@@ -140,6 +142,12 @@ result = session.sql("""
 """)
 ```
 
+<!-- TODO Add table: https://github.com/wheretrue/biobear?tab=readme-ov-file#using-a-session-w-exon -->
+
+<v-click>
+
 > Exon is an OLAP query engine specifically for biology and life science applications.
+
+</v-click>
 
 <!-- FASTA, FASTQ, VCF, BAM, and GFF -->
