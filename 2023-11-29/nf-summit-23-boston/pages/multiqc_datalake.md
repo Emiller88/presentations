@@ -103,12 +103,12 @@ FROM
 # Starting to think in Aggregates
 
 ```sql {all|5}
-CREATE TABLE reads
-AS SELECT
+SELECT
     Sample,reads_mapped_and_paired
 FROM read_csv_auto(
     "s3://nf-core-awsmegatests/sarek/results-*/test_full/multiqc/multiqc_data/multiqc_samtools_stats.txt",
-    filename=true
+    filename=true,
+    union_by_name = true
 );
 ```
 
