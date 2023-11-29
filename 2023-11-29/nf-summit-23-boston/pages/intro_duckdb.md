@@ -121,6 +121,25 @@ Probably great for local testing for now
 
 ---
 
-# TODO Biobear
+# DuckDB and Biological data
 
-https://www.wheretrue.dev/docs/exon/exondb/
+![BioBear](https://github.com/wheretrue/biobear/blob/main/.github/biobear.svg)
+
+```python
+import biobear as bb
+import duckdb
+
+session = bb.connect()
+
+session.sql("""
+    CREATE EXTERNAL TABLE gene_annotations STORED AS GFF LOCATION 'python/tests/data/test.gff'
+""")
+
+result = session.sql("""
+    SELECT * FROM gene_annotations
+""")
+```
+
+> Exon is an OLAP query engine specifically for biology and life science applications.
+
+<!-- FASTA, FASTQ, VCF, BAM, and GFF -->
