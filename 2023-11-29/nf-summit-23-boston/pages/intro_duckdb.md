@@ -50,19 +50,6 @@ Focus is on responding to user requests
 
 ---
 
-## The Modern Data Struggle
-
-- Very few people making a _huge_ queries everyday
-  <!-- - Big data is dead -->
-  - Most of the work is done on the most recent data
-  <!-- Think samples that you've run in the past month -->
-  - But what if we needed it in the future?
-  <!-- Data hoarders -->
-- Files are in object stores(s3, apache iceberg)
-<!-- Bioinformaticians love files -->
-
----
-
 # Simplified Data Access
 
 ```sql

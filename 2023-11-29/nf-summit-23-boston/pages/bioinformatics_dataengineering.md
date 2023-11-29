@@ -55,3 +55,18 @@ layout: two-cols
 <!--
 My second naive take:
 -->
+
+---
+
+# The Modern Data Struggle
+
+- Very few people making a _huge_ queries everyday
+  - Most of the work is done on the most recent data
+  - But what if we needed it in the future?
+- Files are in object stores(s3, apache iceberg)
+
+<!-- - Big data is dead
+- Think samples that you've run in the past month
+- Data hoarders
+- Bioinformaticians love files
+-->
