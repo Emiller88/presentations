@@ -17,7 +17,7 @@
 
 </v-clicks>
 
-<watermark/>
+<Watermark/>
 
 <!-- If those phrases mean anything to you -->
 
@@ -58,7 +58,7 @@ SELECT * FROM 'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet'
 
 <!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
 
-<watermark/>
+<Watermark/>
 
 <!-- These are all valid SQL statements in DuckDB -->
 
@@ -79,7 +79,7 @@ print(duckdb.query("SELECT sum(a) FROM mydf;").fetchall())
 
 <!-- cite: https://motherduck.com/blog/six-reasons-duckdb-slaps/ -->
 
-<watermark/>
+<Watermark/>
 
 <!--
 R/Python/C/Rust/Julia
@@ -115,7 +115,7 @@ else:
 
 </v-click>
 
-<watermark/>
+<Watermark/>
 <!-- cite: https://motherduck.com/blog/making-pyspark-code-faster-with-duckdb/ -->
 <!--
 Apparently running pyspark locally is a real pain.
@@ -146,6 +146,6 @@ result = session.sql("""
 ```
 
 <!-- TODO Add table: https://github.com/wheretrue/biobear?tab=readme-ov-file#using-a-session-w-exon -->
-<watermark/>
+<Watermark/>
 <img src="https://github.com/wheretrue/biobear/raw/main/.github/biobear.svg" class="absolute right-100px bottom-30px" />
 <!-- FASTA, FASTQ, VCF, BAM, and GFF -->
