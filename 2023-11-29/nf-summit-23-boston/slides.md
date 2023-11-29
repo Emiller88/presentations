@@ -62,7 +62,13 @@ src: ./pages/multiqc_datalake.md
 
 # Conclusion
 
-<!-- FIXME -->
+<v-clicks>
 
 - We've already built data lakehouses unknowningly
 - With DuckDB and Nextflow in combination we can capitalize on them
+
+</v-clicks>
+
+![Nextflow](https://github.com/nextflow-io/trademark/blob/master/nextflow-logo-bg-light.svg)
+
+<simple-icons-duckdb class="text-4xl text-yellow-400"/>
