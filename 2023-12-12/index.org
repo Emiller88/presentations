@@ -17,3 +17,13 @@ Talk about gh cli and making issues quickly
 :END:
 
 Let's talk about the rebase ranger
+* Topics
+** Co-authoring commits
+** git bisect
+** rebasing
+** amending commits
+** Worktrees
+** gh cli things
+- Forking a repo
+- Making an issue
+- Make a PR
