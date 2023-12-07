@@ -20,6 +20,7 @@ Let's talk about the rebase ranger
 * Topics
 ** Co-authoring commits
 ** git bisect
+https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
 ** rebasing
 ** amending commits
 ** Worktrees
