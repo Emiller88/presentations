@@ -19,6 +19,31 @@ Talk about gh cli and making issues quickly
 Let's talk about the rebase ranger
 * Topics
 ** Co-authoring commits
+
+*** Introduction to Co-authoring Commits
+- Paired programming, collaborative contributions to a single commit
+- Visibility in a project's history. (~git blame~)
+
+- ~Co-authored-by: name <name@example.com>~
+- Pro tip: Use GitHub forwarding email
+  ~Co-authored-by: github-user <github-user@users.noreply.github.com>~
+
+
+
+*** Example commit
+
+#+begin_src txt
+This is a summary of the changes in this commit.
+
+- More detailed explanation of the commit.
+- List of changes or improvements made.
+
+Co-authored-by: Jane Doe <jane.doe@example.com>
+Co-authored-by: John Smith <john.smith@example.com>
+
+#+end_src
+*** TODO VSCode and GitHub Desktop screenshots
+
 ** git bisect
 https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
 ** rebasing
@@ -28,3 +53,6 @@ https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
 - Forking a repo
 - Making an issue
 - Make a PR
+
+** Direnv
+https://www.youtube.com/watch?v=1joZLTgYLxY
