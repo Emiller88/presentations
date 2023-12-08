@@ -18,6 +18,37 @@ Talk about gh cli and making issues quickly
 
 Let's talk about the rebase ranger
 * Topics
+** What is a commit?
+
+#+begin_quote
+What are some basics of commits people should understand
+
+#+end_quote
+
+Understanding the basics of commits in Git is essential. Here are the key concepts to grasp:
+
+1. **Atomic Commit Principle**:
+   - Each commit should represent a single logical change.
+   - This makes it easier to understand the history and revert changes if needed.
+
+2. **Commit Messages**:
+   - Should be clear and descriptive.
+   - The first line is a summary, followed by a blank line, then a detailed description.
+
+3. **Uniqueness of Commits**:
+   - Each commit has a unique SHA-1 hash identifier.
+   - The hash reflects the commit's entire history.
+
+4. **Immutability**:
+   - Commits are considered immutable.
+   - Altering a commit creates a new commit with a different hash.
+
+5. **Commit History**:
+   - Commits form a directed acyclic graph (DAG), showcasing the history and sequence of changes.
+   - One might call it a *B****Chain*
+
+A solid understanding of these principles will set a strong foundation for mastering advanced Git features.
+
 ** Co-authoring commits
 
 *** Introduction to Co-authoring Commits
@@ -40,14 +71,26 @@ This is a summary of the changes in this commit.
 
 Co-authored-by: Jane Doe <jane.doe@example.com>
 Co-authored-by: John Smith <john.smith@example.com>
-
 #+end_src
+
 *** TODO VSCode and GitHub Desktop screenshots
 
 ** git bisect
 https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
-** rebasing
-** amending commits
+** Rewriting history
+*** Amending commits
+
+~git commit --amend~
+- Amending a message ~git commit --amend -m "New commit message"~
+  - ~git commit --amend --no-edit~
+- Changes the commit hash
+
+- For commits that have *not* been pushed to shared repositories(GitHub).
+
+# - Mention that it's primarily used to correct the last commit but can be used with interactive rebase for earlier commits.
+**** TODO Add GH Desktop screenshots
+*** rebasing
+**** interactive rebasing
 ** Worktrees
 ** gh cli things
 - Forking a repo
