@@ -16,6 +16,13 @@ favicon: "https://raw.githubusercontent.com/nf-core/logos/master/nf-core-logos/n
 mdc: true
 themeConfig:
   primary: "#24B064"
+fonts:
+  sans: "Roboto"
+  mono: "Fira Code"
+  # default
+  weights: "300,400,600"
+  # import italic fonts, default `false`
+  italic: true
 ---
 
 <a href="https://www.nf-co.re"><img src="https://raw.githubusercontent.com/nf-core/logos/master/byte-size-logos/bytesize-darkbg.svg" width="65%"><img></a>
