@@ -24,6 +24,12 @@ mdc: true
 
 ---
 
+# Obligatory XKCD
+
+![https://imgs.xkcd.com/comics/git.png]
+
+---
+
 ```yaml
 src: ./pages/rebase.md
 hide: false
