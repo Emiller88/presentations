@@ -7,6 +7,12 @@ https://docs.github.com/en/get-started/using-git/about-git-rebase Some great fur
 
 Talk about gh cli and making issues quickly
 
+* Theme
+
+Unknown git features that you may not know are out there
+
+Not an exhaustive tutorial
+
 * GitHub is the daunting thing keeping people from contributing
 :PROPERTIES:
 :CREATED:  [2023-10-20 Fri 21:49]
@@ -25,33 +31,12 @@ Let's talk about the rebase ranger
 [[http://devhumor.com/content/uploads/images/June2019/git-comic-4.png]]
 [[https://miro.medium.com/v2/resize:fit:1200/0*tmfbLDU_hIeg0B3B.jpg]]
 * Topics
-** What is a commit?
+** Why commits matter
+*** Why you should keep them small
+*** Why should you take the time to write them often
 
-
-Understanding the basics of commits in Git is essential. Here are the key concepts to grasp:
-
-1. **Atomic Commit Principle**:
-   - Each commit should represent a single logical change.
-   - This makes it easier to understand the history and revert changes if needed.
-
-2. **Commit Messages**:
-   - Should be clear and descriptive.
-   - The first line is a summary, followed by a blank line, then a detailed description.
-
-3. **Uniqueness of Commits**:
-   - Each commit has a unique SHA-1 hash identifier.
-   - The hash reflects the commit's entire history.
-
-4. **Immutability**:
-   - Commits are considered immutable.
-   - Altering a commit creates a new commit with a different hash.
-
-5. **Commit History**:
-   - Commits form a directed acyclic graph (DAG), showcasing the history and sequence of changes.
-   - One might call it a *B****Chain*
-
-A solid understanding of these principles will set a strong foundation for mastering advanced Git features.
 ** What makes a good commit message
+- Not interesting
 
 ** Co-authoring commits
 
@@ -77,7 +62,7 @@ Co-authored-by: Jane Doe <jane.doe@example.com>
 Co-authored-by: John Smith <john.smith@example.com>
 #+end_src
 
-*** TODO VSCode and GitHub Desktop screenshots
+*** TODO GitHub Desktop screenshots
 
 ** git bisect
 https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
@@ -98,15 +83,18 @@ https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
 https://wizardzines.com/comics/rules-for-rebasing/
 **** interactive rebasing
 ** Worktrees
+https://www.gitkraken.com/wp-content/uploads/2022/03/Worktrees-01-2048x919.png.webp
 ** gh cli things
+
 - Forking a repo
 - Making an issue
 - Make a PR
 
-** Direnv
-https://www.youtube.com/watch?v=1joZLTgYLxY
 * Git flow vs trunk based?
 
+Interest
 
 * Links
 https://missing.csail.mit.edu/2020/version-control/
+** Direnv
+https://www.youtube.com/watch?v=1joZLTgYLxY
