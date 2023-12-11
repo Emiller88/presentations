@@ -16,6 +16,10 @@ title: Welcome to Slidev
 mdc: true
 ---
 
+```yaml
+layout: intro
+```
+
 <a href="https://www.nf-co.re"><img src="https://raw.githubusercontent.com/nf-core/logos/master/byte-size-logos/bytesize-darkbg.svg" width="65%"><img></a>
 
 # git concepts
@@ -24,9 +28,9 @@ mdc: true
 
 ---
 
-# Obligatory XKCD
-
-![https://imgs.xkcd.com/comics/git.png]
+```yaml
+src: ./pages/scope.md
+```
 
 ---
 
