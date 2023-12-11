@@ -13,9 +13,9 @@ gitGraph
    commit id: "Test aligner dragmap"
 ```
 
-<video controls>
-  <source src="/lance-loong.mp4" type="video/mp4">
-</video>
+<!-- TODO <video controls> -->
+<!--   <source src="/lance-loong.mp4" type="video/mp4"> -->
+<!-- </video> -->
 
 <!-- Let's say you're going to convert all of the sarek workflow tests to nf-test -->
 
