@@ -42,3 +42,7 @@ src: ./pages/bisect.md
 ```
 
 ---
+
+```yaml
+src: ./pages/worktrees.md
+```
