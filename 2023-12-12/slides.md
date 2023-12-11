@@ -23,3 +23,10 @@ mdc: true
 <Affiliation/>
 
 ---
+
+```yaml
+src: ./pages/rebase.md
+hide: false
+```
+
+---
