@@ -5,20 +5,18 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  Ever wondered what else git can do? Wonder no more! Edmund (@Emiller88) is going to present you some git concepts like re-base, magit and Git Lens. Join this bytesize and advance you git-game!
 
-  Learn more at [Sli.dev](https://sli.dev)
+  Learn more at [nf-co.re](https://nf-co.re/events/2023/bytesize_git_concepts)
 drawings:
   persist: false
 transition: slide-left
-title: Welcome to Slidev
+title: "Bytesize: git concepts"
+favicon: "https://raw.githubusercontent.com/nf-core/logos/master/nf-core-logos/nf-core-logo-square.png"
 mdc: true
+themeConfig:
+  primary: "#24B064"
 ---
-
-```yaml
-layout: intro
-```
 
 <a href="https://www.nf-co.re"><img src="https://raw.githubusercontent.com/nf-core/logos/master/byte-size-logos/bytesize-darkbg.svg" width="65%"><img></a>
 
