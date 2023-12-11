@@ -1,8 +1,0 @@
-#+title: Todo
-
-* DONE Git worktree research
-CLOSED: [2023-10-25 Wed 13:17]
-:LOGBOOK:
-CLOCK: [2023-10-25 Wed 13:12]--[2023-10-25 Wed 13:17] =>  0:05
-:END:
-~*~ or ~%~
