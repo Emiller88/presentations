@@ -22,7 +22,7 @@ image: https://www.gitkraken.com/wp-content/uploads/2022/03/Worktrees-01-2048x91
 ```yaml
 title: Worktrees with GitLens+
 layout: image
-image: https://www.gitkraken.com/wp-content/uploads/2022/03/Worktrees-01-2048x919.png.webp
+image: https://www.gitkraken.com/wp-content/uploads/2022/03/gl-worktree-add-new-step-1-2048x1280.png.webp
 ```
 
 ---
