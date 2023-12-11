@@ -8,5 +8,5 @@ CLOSED: [2023-12-11 Mon 15:38]
 * TODO Git Flow vs trunk based
 * DONE git bisect
 CLOSED: [2023-12-11 Mon 16:01]
-* TODO Worktrees
+* STRT Worktrees
 * TODO Amending commits

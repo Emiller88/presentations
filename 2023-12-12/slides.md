@@ -40,6 +40,12 @@ src: ./pages/scope.md
 ---
 
 ```yaml
+src: ./pages/amend.md
+```
+
+---
+
+```yaml
 src: ./pages/rebase.md
 ```
 
