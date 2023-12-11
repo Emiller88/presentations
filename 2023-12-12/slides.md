@@ -50,3 +50,9 @@ src: ./pages/bisect.md
 ```yaml
 src: ./pages/worktrees.md
 ```
+
+---
+
+```yaml
+src: ./pages/gh.md
+```
