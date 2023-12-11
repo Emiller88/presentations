@@ -1,0 +1,96 @@
+<style>
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+body {
+  background-image: url(https://raw.githubusercontent.com/nf-core/logos/master/nf-core-logos/nf-core-logo-square.svg);
+  background-size: 7.5%;
+  background-repeat: no-repeat;
+  background-position: 3% 96%;
+  background-color: #181a1b;
+}
+
+.reveal body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.reveal p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.reveal h1 {
+  font-family: 'Roboto', sans-serif;
+  font-style: bold;
+  font-weight: 400;
+  color: white;
+  font-size: 62px;
+}
+
+.reveal h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.reveal h3 {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  color: white;
+}
+
+.reveal p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.reveal li {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.reveal pre {
+  background-color: #272822 !important;
+  display: inline-block;
+  border-radius: 7px;
+  color: #aaaba9;
+}
+
+.reveal pre code {
+  color: #eeeeee;
+  background-color: #272822;
+  font-size: 100%;
+}
+
+.reveal code {
+  background-color: #272822;
+  font-size: 75%;
+}
+
+.reveal .progress {
+  color: #24b064;
+}
+
+.reveal .controls button {
+  color: #24b064;
+}
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgb(0 0 0 / 20%);
+}
+</style>
