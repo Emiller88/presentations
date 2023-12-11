@@ -41,7 +41,6 @@ src: ./pages/scope.md
 
 ```yaml
 src: ./pages/rebase.md
-hide: false
 ```
 
 ---
