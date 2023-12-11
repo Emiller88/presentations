@@ -17,13 +17,16 @@ Talk about gh cli and making issues quickly
 :END:
 
 Let's talk about the rebase ranger
+* How it all started
+[[https://imgflip.com/i/43dox0]]
+* Obligatory XKCD
+[[https://imgs.xkcd.com/comics/git.png]]
+* Other Memes
+[[http://devhumor.com/content/uploads/images/June2019/git-comic-4.png]]
+[[https://miro.medium.com/v2/resize:fit:1200/0*tmfbLDU_hIeg0B3B.jpg]]
 * Topics
 ** What is a commit?
 
-#+begin_quote
-What are some basics of commits people should understand
-
-#+end_quote
 
 Understanding the basics of commits in Git is essential. Here are the key concepts to grasp:
 
@@ -48,6 +51,7 @@ Understanding the basics of commits in Git is essential. Here are the key concep
    - One might call it a *B****Chain*
 
 A solid understanding of these principles will set a strong foundation for mastering advanced Git features.
+** What makes a good commit message
 
 ** Co-authoring commits
 
@@ -101,3 +105,8 @@ https://wizardzines.com/comics/rules-for-rebasing/
 
 ** Direnv
 https://www.youtube.com/watch?v=1joZLTgYLxY
+* Git flow vs trunk based?
+
+
+* Links
+https://missing.csail.mit.edu/2020/version-control/
