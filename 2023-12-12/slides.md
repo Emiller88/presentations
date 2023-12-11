@@ -30,3 +30,9 @@ hide: false
 ```
 
 ---
+
+```yaml
+src: ./pages/bisect.md
+```
+
+---
