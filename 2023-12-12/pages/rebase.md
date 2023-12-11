@@ -251,3 +251,13 @@ gitGraph
    commit id: "..."
    commit id: "Test UMI"
 ```
+
+---
+
+```yaml
+title: Simple Rebase Rules
+layout: image
+image: https://wizardzines.com/images/uploads/46d480e3f5029644.png
+```
+
+<!-- cite: https://wizardzines.com/comics/rules-for-rebasing/ -->
