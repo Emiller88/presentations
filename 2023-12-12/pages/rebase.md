@@ -1,3 +1,7 @@
+```yaml
+template: section
+```
+
 # `git rebase`
 
 - The concept

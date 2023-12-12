@@ -30,14 +30,16 @@ $ git commit --amend --no-edit
 
 ---
 
-```yaml
-layout: two-cols
-```
-
 ## `git commit --amend` with GitHub Desktop
+
+<div v-click-hide>
 
 ![Amend GitHub Desktop History](https://docs.github.com/assets/cb-130307/mw-1440/images/help/desktop/history-tab-in-commit-sidebar.webp)
 
-::right::
+</div>
 
-<img src="https://docs.github.com/assets/cb-151890/mw-1440/images/help/desktop/amend-commit-context-menu.webp" alt="Amend GitHub Desktop" />
+<v-click>
+
+![Amend GitHub Desktop](https://docs.github.com/assets/cb-151890/mw-1440/images/help/desktop/amend-commit-context-menu.webp)
+
+</v-click>
