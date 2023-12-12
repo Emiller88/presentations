@@ -65,17 +65,6 @@ src: ./pages/bisect.md
 ---
 
 ```yaml
-title: Obligatory XKCD
-layout: image
-image: https://imgs.xkcd.com/comics/git.png
-backgroundSize: contain
-```
-
-<!-- Halftime show -->
-
----
-
-```yaml
 src: ./pages/worktrees.md
 ```
 
@@ -84,3 +73,14 @@ src: ./pages/worktrees.md
 ```yaml
 src: ./pages/gh.md
 ```
+
+---
+
+```yaml
+title: Obligatory XKCD
+layout: image
+image: https://imgs.xkcd.com/comics/git.png
+backgroundSize: contain
+```
+
+<!-- Obligatory XKCD -->
