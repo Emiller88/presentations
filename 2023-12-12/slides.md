@@ -11,16 +11,16 @@ info: |
 drawings:
   persist: false
 transition: slide-left
-title: "Bytesize: git concepts"
-favicon: "https://raw.githubusercontent.com/nf-core/logos/master/nf-core-logos/nf-core-logo-square.png"
+title: 'Bytesize: git concepts'
+favicon: 'https://raw.githubusercontent.com/nf-core/logos/master/nf-core-logos/nf-core-logo-square.png'
 mdc: true
 themeConfig:
-  primary: "#24B064"
+  primary: '#24B064'
 fonts:
-  sans: "Roboto"
-  mono: "Fira Code"
+  sans: 'Roboto'
+  mono: 'Fira Code'
   # default
-  weights: "300,400,600"
+  weights: '300,400,600'
   # import italic fonts, default `false`
   italic: true
 ---
@@ -48,6 +48,17 @@ src: ./pages/amend.md
 ```yaml
 src: ./pages/rebase.md
 ```
+
+---
+
+```yaml
+title: Obligatory XKCD
+layout: image
+image: https://imgs.xkcd.com/comics/git.png
+backgroundSize: contain
+```
+
+<!-- Halftime show -->
 
 ---
 

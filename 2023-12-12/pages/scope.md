@@ -14,12 +14,5 @@
 title: How it all started
 layout: image
 image: https://i.imgflip.com/43dox0.jpg
-```
-
----
-
-```yaml
-title: Obligatory XKCD
-layout: image
-image: https://imgs.xkcd.com/comics/git.png
+backgroundSize: contain
 ```
