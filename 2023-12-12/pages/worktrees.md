@@ -28,5 +28,7 @@ image: https://www.gitkraken.com/wp-content/uploads/2022/03/gl-worktree-add-new-
 ---
 
 ```yaml
-https://www.gitkraken.com/wp-content/uploads/2022/03/gitlens-worktree-list-e1646441544109.png
+title: Worktrees with GitLens+
+layout: image
+image: https://www.gitkraken.com/wp-content/uploads/2022/03/gitlens-worktree-list-e1646441544109.png
 ```
