@@ -59,6 +59,12 @@ src: ./pages/rebase.md
 ---
 
 ```yaml
+src: ./pages/bisect.md
+```
+
+---
+
+```yaml
 title: Obligatory XKCD
 layout: image
 image: https://imgs.xkcd.com/comics/git.png
@@ -66,12 +72,6 @@ backgroundSize: contain
 ```
 
 <!-- Halftime show -->
-
----
-
-```yaml
-src: ./pages/bisect.md
-```
 
 ---
 
