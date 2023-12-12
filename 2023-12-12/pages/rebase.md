@@ -261,3 +261,13 @@ image: https://wizardzines.com/images/uploads/46d480e3f5029644.png
 ```
 
 <!-- cite: https://wizardzines.com/comics/rules-for-rebasing/ -->
+
+---
+
+```yaml
+title: Simple Rebase Rules
+layout: image
+image: https://blog.mralx.com/d47851d6ea6094c1eaf433e8da6d6656/rebase.gif
+```
+
+<!-- https://blog.mralx.com/git-rebase/ -->
