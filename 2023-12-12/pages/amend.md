@@ -7,3 +7,37 @@
 - For commits that have _not_ been pushed to shared repositories (GitHub).
 
 <!-- - Mention that it's primarily used to correct the last commit but can be used with interactive rebase for earlier commits. -->
+
+---
+
+# `git commit --amend` Example
+
+```bash
+$ git add nf_core/__main__.py
+$ git commit -m "Add new func"
+
+$ git commit --amend -m "Add new function"
+
+$ ruff format nf_core/__main__.py
+$ git commit --amend --no-edit
+```
+
+---
+
+# `git commit --amend` with GitLens
+
+<img src="/amend_gitlens.png" />
+
+---
+
+```yaml
+layout: two-cols
+```
+
+## `git commit --amend` with GitHub Desktop
+
+![Amend GitHub Desktop History](https://docs.github.com/assets/cb-130307/mw-1440/images/help/desktop/history-tab-in-commit-sidebar.webp)
+
+::right::
+
+![Amend GitHub Desktop](https://docs.github.com/assets/cb-151890/mw-1440/images/help/desktop/amend-commit-context-menu.webp)
