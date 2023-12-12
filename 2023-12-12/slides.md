@@ -8,6 +8,7 @@ info: |
   Ever wondered what else git can do? Wonder no more! Edmund (@Emiller88) is going to present you some git concepts like re-base, magit and Git Lens. Join this bytesize and advance you git-game!
 
   Learn more at [nf-co.re](https://nf-co.re/events/2023/bytesize_git_concepts)
+keywords: nf-core,git
 drawings:
   persist: false
 transition: slide-left
