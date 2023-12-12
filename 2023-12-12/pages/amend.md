@@ -4,11 +4,15 @@ template: section
 
 # `git commit --amend`
 
+<v-clicks depth="2">
+
 - Amending a message `git commit --amend -m "New commit message"`
   - `git commit --amend --no-edit`
 - Changes the commit hash
 
-- For commits that have _not_ been pushed to shared repositories (GitHub).
+- For commits that have **_not_** been pushed to shared branches (main/master/dev).
+
+</v-clicks >
 
 <!-- - Mention that it's primarily used to correct the last commit but can be used with interactive rebase for earlier commits. -->
 
@@ -16,7 +20,7 @@ template: section
 
 # `git commit --amend` Example
 
-```bash
+```bash {all|1,2|4|6,7}
 $ git add nf_core/__main__.py
 $ git commit -m "Add new func"
 

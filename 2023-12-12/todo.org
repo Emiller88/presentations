@@ -10,7 +10,8 @@ CLOSED: [2023-12-11 Mon 15:38]
 * DONE git bisect
 CLOSED: [2023-12-11 Mon 16:01]
 * STRT Worktrees
-* TODO Amending commits
+* DONE Amending commits
+CLOSED: [2023-12-11 Mon 22:08]
 :LOGBOOK:
 CLOCK: [2023-12-11 Mon 18:36]--[2023-12-11 Mon 18:58] =>  0:22
 :END:
