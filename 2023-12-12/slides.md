@@ -86,7 +86,7 @@ layout: none
 
 Repository: [`nf-core/REPO`](https://github.com/nf-core/REPO)
 Tutorial: [`https://nf-co.re/usage/usage_tutorials`](https://nf-co.re/usage/usage_tutorials)
-Chat: [`https://nf-co.re/join`](https://nf-co.re/join) <img src="https://cdn.brandfolder.io/5H442O3W/at/pl546j-7le8zk-6gwiyo/Slack_Mark.svg" width=7.5%></img>`#channel`
+Chat: [`https://nf-co.re/join`](https://nf-co.re/join) <img src="https://cdn.brandfolder.io/5H442O3W/at/pl546j-7le8zk-6gwiyo/Slack_Mark.svg" width=7.5%> `#channel`
 
 <div style="margin-top:0.1em">&nbsp;</div>
 
