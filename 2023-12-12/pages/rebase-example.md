@@ -15,14 +15,7 @@ gitGraph
    commit id: "Test aligner dragmap"
 ```
 
-<div class="absolute right-100px bottom-30px">
-  <div class="w-40 flex items-center justify-center m-12">
-    <img
-      src="https://github.com/nf-core/sarek/raw/master/docs/images/logos/sarek/sarek_dark_color.svg"
-      class="h-full w-full object-cover"
-    />
-  </div>
-</div>
+<SarekWatermark/>
 
 <!-- Let's say you're going to convert all of the sarek workflow tests to nf-test -->
 
@@ -55,14 +48,7 @@ gitGraph
    checkout dev
 ```
 
-<div class="absolute right-100px bottom-30px">
-  <div class="w-40 flex items-center justify-center m-12">
-    <img
-      src="https://github.com/nf-core/sarek/raw/master/docs/images/logos/sarek/sarek_dark_color.svg"
-      class="h-full w-full object-cover"
-    />
-  </div>
-</div>
+<SarekWatermark/>
 
 ---
 
@@ -96,14 +82,7 @@ gitGraph
    commit id: "Merge pull request #1351"
 ```
 
-<div class="absolute right-100px bottom-30px">
-  <div class="w-40 flex items-center justify-center m-12">
-    <img
-      src="https://github.com/nf-core/sarek/raw/master/docs/images/logos/sarek/sarek_dark_color.svg"
-      class="h-full w-full object-cover"
-    />
-  </div>
-</div>
+<SarekWatermark/>
 
 ---
 
@@ -138,9 +117,14 @@ gitGraph
    commit id: "Update snapshots"
 ```
 
+<SarekWatermark/>
 <!-- "Merge dev" -->
 
 ---
+
+```yaml
+layout: center
+```
 
 ```mermaid
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
@@ -162,6 +146,7 @@ gitGraph
    merge "nf-test" id: "Merge pull request #1600"
 ```
 
+<SarekWatermark/>
 <!-- What we're trying to prevent -->
 
 ---
@@ -192,6 +177,8 @@ gitGraph
 ```
 
 `git rebase origin/dev`
+
+<SarekWatermark/>
 
 ---
 
@@ -232,6 +219,10 @@ gitGraph
    commit id: "..."
    commit id: "Test UMI"
 ```
+
+<!-- - Which one would you rather review? -->
+
+<SarekWatermark/>
 
 ---
 
