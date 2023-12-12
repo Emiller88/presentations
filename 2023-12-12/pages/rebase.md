@@ -56,6 +56,10 @@ gitGraph
 
 ---
 
+```yaml
+transition: slide-up
+```
+
 ```mermaid
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
@@ -71,10 +75,10 @@ gitGraph
 ---
 
 ```yaml
+title: A wild Maxime
 layout: image
-
-# A wild Maxime
-image: https://imgflip.com/i/88xfmj
+image: https://i.imgflip.com/88xfmj.jpg
+backgroundSize: contain
 ```
 
 <!-- Oh no! A wild Maxime appeared!  -->
