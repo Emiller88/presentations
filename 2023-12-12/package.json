@@ -13,6 +13,7 @@
     "@slidev/theme-seriph": "latest"
   },
   "devDependencies": {
-    "@iconify-json/noto": "^1.1.18"
+    "@iconify-json/noto": "^1.1.18",
+    "@iconify-json/openmoji": "^1.1.44"
   }
 }

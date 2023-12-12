@@ -24,7 +24,7 @@ fonts:
   italic: true
 ---
 
-<a href="https://www.nf-co.re"><img src="https://raw.githubusercontent.com/nf-core/logos/master/byte-size-logos/bytesize-darkbg.svg" class= "w-lg ma-a"><img></a>
+<a href="https://www.nf-co.re"><img src="https://raw.githubusercontent.com/nf-core/logos/master/byte-size-logos/bytesize-darkbg.svg" class= "w-md ma-a"><img></a>
 
 # git concepts
 
