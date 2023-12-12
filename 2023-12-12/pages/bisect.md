@@ -1,4 +1,12 @@
 ```yaml
+layout: section
+```
+
+# `git bisect`
+
+---
+
+```yaml
 title: Simple Rebase Rules
 layout: image
 image: https://www.git-tower.com/learn/media/pages/git/faq/git-bisect/0e1cea9cd5-1697824976/bisect-overview.png

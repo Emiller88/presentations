@@ -49,9 +49,9 @@ for pr in $(gh pr list | cut -f 1); do
 done;
 ```
 
-## Real world use:
-
 <v-click>
+
+## Real world use case:
 
 ```bash {1}
 for pr in $(gh pr list -l $label -A app/renovate | cut -f 1); do

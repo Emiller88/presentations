@@ -26,6 +26,8 @@ layout: fact
 
 # Be a Rebase Ranger
 
+<br>
+
 <v-click>
 
 ```bash
@@ -33,6 +35,7 @@ git config --global pull.rebase true
 ```
 
 </v-click> 
+<br>
 <v-click>
 
 <noto-cowboy-hat-face class="text-6xl"/>
