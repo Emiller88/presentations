@@ -6,7 +6,7 @@ ghf() {
 }
 ```
 
-```zsh
+```zsh {all | 1 | 2 | 13}
 $ ghf https://github.com/cli/cli
 ✓ Created fork Emiller88/cli
 Cloning into 'cli'...
@@ -22,6 +22,8 @@ From github.com:cli/cli
 ✓ Cloned fork
 ! Repository cli/cli set as the default repository. To learn more about the default repository, run: gh repo set-default --help
 ```
+
+---
 
 # Merge a bunch of PRs at once
 
