@@ -4,9 +4,9 @@ template: section
 
 # `git rebase`
 
-- The concept
-- With pull
+- Common Scenario
 - Interactive rebase
+- With pull
 
 ---
 
@@ -16,17 +16,7 @@ src: ./rebase-example.md
 
 ---
 
-```yaml
-title: Simple Rebase Rules
-layout: image
-image: https://wizardzines.com/images/uploads/46d480e3f5029644.png
-```
-
-<!-- cite: https://wizardzines.com/comics/rules-for-rebasing/ -->
-
----
-
-# `git rebase --interactive` GitLen
+# `git rebase --interactive` GitLens
 
 <video controls>
    <source src="/rebase_interactive_gitlens.webm" type="video/webm">
@@ -35,11 +25,31 @@ image: https://wizardzines.com/images/uploads/46d480e3f5029644.png
 ---
 
 ```yaml
-title: Perfect Rebase gif
-layout: image
-image: https://blog.mralx.com/d47851d6ea6094c1eaf433e8da6d6656/rebase.gif
+layout: fact
 ```
 
-<!-- https://blog.mralx.com/git-rebase/ -->
+# Be a Rebase Ranger
+
+<v-click>
+
+```bash
+git config --global pull.rebase true
+```
+
+</v-click> 
+<v-click>
+
+<noto-cowboy-hat-face class="text-6xl"/>
+
+</v-click>
 
 ---
+
+```yaml
+title: Simple Rebase Rules
+layout: image
+image: https://wizardzines.com/images/uploads/46d480e3f5029644.png
+backgroundSize: contain
+```
+
+<!-- cite: https://wizardzines.com/comics/rules-for-rebasing/ -->
