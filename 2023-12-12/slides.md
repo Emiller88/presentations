@@ -40,6 +40,14 @@ src: ./pages/scope.md
 ---
 
 ```yaml
+template: statement
+```
+
+# Rewriting History
+
+---
+
+```yaml
 src: ./pages/amend.md
 ```
 
