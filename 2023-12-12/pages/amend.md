@@ -1,7 +1,3 @@
-```yaml
-template: section
-```
-
 # `git commit --amend`
 
 <v-clicks depth="2">

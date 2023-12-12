@@ -1,7 +1,3 @@
-```yaml
-template: section
-```
-
 # `git rebase`
 
 - Common Scenario

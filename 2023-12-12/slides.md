@@ -39,7 +39,7 @@ src: ./pages/scope.md
 ---
 
 ```yaml
-template: statement
+layout: section
 ```
 
 # Rewriting History
