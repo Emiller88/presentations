@@ -1,3 +1,7 @@
+```yaml
+template: section
+```
+
 # `git commit --amend`
 
 - Amending a message `git commit --amend -m "New commit message"`
@@ -30,16 +34,16 @@ $ git commit --amend --no-edit
 
 ---
 
-## `git commit --amend` with GitHub Desktop
+```yaml
+transition: fade
+```
 
-<div v-click-hide>
+## `git commit --amend` with GitHub Desktop
 
 ![Amend GitHub Desktop History](https://docs.github.com/assets/cb-130307/mw-1440/images/help/desktop/history-tab-in-commit-sidebar.webp)
 
-</div>
+---
 
-<v-click>
+## `git commit --amend` with GitHub Desktop
 
 ![Amend GitHub Desktop](https://docs.github.com/assets/cb-151890/mw-1440/images/help/desktop/amend-commit-context-menu.webp)
-
-</v-click>
