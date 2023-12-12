@@ -77,6 +77,36 @@ src: ./pages/gh.md
 ---
 
 ```yaml
+layout: none
+```
+
+## Need help?
+
+<!-- .slide: data-background="https://raw.githubusercontent.com/maxulysse/maxulysse.github.io/main/assets/img/svg/green_white_bg.svg" -->
+
+Repository: [`nf-core/REPO`](https://github.com/nf-core/REPO)
+Tutorial: [`https://nf-co.re/usage/usage_tutorials`](https://nf-co.re/usage/usage_tutorials)
+Chat: [`https://nf-co.re/join`](https://nf-co.re/join) <img src="https://cdn.brandfolder.io/5H442O3W/at/pl546j-7le8zk-6gwiyo/Slack_Mark.svg" width=7.5%></img>`#channel`
+
+<div style="margin-top:0.1em">&nbsp;</div>
+
+<p align="center">
+Follow nf-core on
+<a href="https://www.twitter.com/nf_core"><img src="https://openmoji.org/data/color/svg/E040.svg" width=6%></a>
+<a href="https://mstdn.science/@nf_core"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Mastodon_Logotype_%28Simple%29.svg/216px-Mastodon_Logotype_%28Simple%29.svg.png" width=5%></a>
+<a href="https://github.com/nf-core"><img src="https://openmoji.org/data/color/svg/E045.svg"  width=6%></a>
+<a href="https://www.youtube.com/c/nf-core"><img src="https://openmoji.org/data/color/svg/E044.svg" width=6%></a>
+</p>
+
+<a href="https://nf-co.re/" style="color: #000000; font-family:Monaco, monospace; font-weight:bold;">https://nf-co.re/</a>
+
+<div style="display: flex; justify-content: space-evenly; align-items:center;">
+<img src="https://chanzuckerberg.com/wp-content/themes/czi/img/logo.svg" width=15%>
+<div style="font-style:italic; font-size: 0.5em; color: #666;">Icons:<br><a href="https://openmoji.org">openmoji.org</a></div></div>
+
+---
+
+```yaml
 title: Obligatory XKCD
 layout: image
 image: https://imgs.xkcd.com/comics/git.png
@@ -84,3 +114,9 @@ backgroundSize: contain
 ```
 
 <!-- Obligatory XKCD -->
+
+---
+
+```yaml
+layout: end
+```
