@@ -4,11 +4,25 @@ layout: section
 
 # Worktrees
 
+---
+
+```yaml
+layout: image-left
+image: /you_know_me.png
+backgroundSize: contain
+```
+
 <v-clicks>
 
-Have you ever had a lot of active branches going at once?
+## Have you ever had a lot of active branches going at once?
 
-Waiting on GitHub runners to pick up your nf-test job?
+<br>
+
+## Waiting on GitHub runners to pick up your nf-test job?
+
+<br>
+
+## Can't wait for your PR to merge to get started on the next one?
 
 </v-clicks>
 
@@ -20,6 +34,38 @@ layout: image
 image: https://i.imgflip.com/891vk0.jpg
 backgroundSize: contain
 ```
+
+---
+
+```yaml
+layout: image-left
+image: /you_know_me.png
+backgroundSize: contain
+```
+
+<v-clicks>
+
+## Multitasking in Git: A Comedy
+
+Who needs a stand-up routine when you can juggle 27 active branches?
+
+<br>
+
+## CI/CD or Waiting for Water to Boil?
+
+GitHub runners: The only race where you might lose your mind before the finish line.
+
+<br>
+
+## PR Merge Anticipation: A Developer's Cliffhanger
+
+Forget binge-watching your favorite series. The real suspense? The thrill of waiting for that sweet PR merge.
+
+<br>
+
+</v-clicks>
+
+<!-- Asked ChatGPT to make this funnier, did not disappoint -->
 
 ---
 
