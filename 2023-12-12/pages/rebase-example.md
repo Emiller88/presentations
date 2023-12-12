@@ -1,8 +1,6 @@
 ```yaml
-template: center
+layout: center
 ```
-
-# `git rebase`
 
 ```mermaid
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
@@ -17,9 +15,22 @@ gitGraph
    commit id: "Test aligner dragmap"
 ```
 
+<div class="absolute right-100px bottom-30px">
+  <div class="w-40 flex items-center justify-center m-12">
+    <img
+      src="https://github.com/nf-core/sarek/raw/master/docs/images/logos/sarek/sarek_dark_color.svg"
+      class="h-full w-full object-cover"
+    />
+  </div>
+</div>
+
 <!-- Let's say you're going to convert all of the sarek workflow tests to nf-test -->
 
 ---
+
+```yaml
+layout: center
+```
 
 # 100 subworkflows later...
 
@@ -27,23 +38,9 @@ gitGraph
 
 ---
 
-```mermaid
-%%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
-gitGraph
-   commit id: "Fix checksums after manual tests"
-   commit id: "Merge pull request #1344"
-   branch "nf-test"
-   commit id: "Test aligner bwamem"
-   commit id: "..."
-   commit id: "Test UMI"
-```
-
-- You did it!
-
----
-
 ```yaml
 transition: slide-up
+layout: center
 ```
 
 ```mermaid
@@ -58,6 +55,15 @@ gitGraph
    checkout dev
 ```
 
+<div class="absolute right-100px bottom-30px">
+  <div class="w-40 flex items-center justify-center m-12">
+    <img
+      src="https://github.com/nf-core/sarek/raw/master/docs/images/logos/sarek/sarek_dark_color.svg"
+      class="h-full w-full object-cover"
+    />
+  </div>
+</div>
+
 ---
 
 ```yaml
@@ -70,6 +76,10 @@ backgroundSize: contain
 <!-- Oh no! A wild Maxime appeared!  -->
 
 ---
+
+```yaml
+layout: center
+```
 
 ```mermaid
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
@@ -86,9 +96,29 @@ gitGraph
    commit id: "Merge pull request #1351"
 ```
 
+<div class="absolute right-100px bottom-30px">
+  <div class="w-40 flex items-center justify-center m-12">
+    <img
+      src="https://github.com/nf-core/sarek/raw/master/docs/images/logos/sarek/sarek_dark_color.svg"
+      class="h-full w-full object-cover"
+    />
+  </div>
+</div>
+
 ---
 
-# Swiper no merging!
+```yaml
+title: So you hit the update branch button...
+layout: image
+backgroundSize: contain
+image: https://github.blog/wp-content/uploads/2015/09/82df93f2-5030-11e5-84ec-ea15e16ed887.png
+```
+
+---
+
+```yaml
+layout: center
+```
 
 ```mermaid
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
@@ -112,8 +142,6 @@ gitGraph
 
 ---
 
-# What we're trying to prevent
-
 ```mermaid
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
@@ -134,27 +162,18 @@ gitGraph
    merge "nf-test" id: "Merge pull request #1600"
 ```
 
+<!-- What we're trying to prevent -->
+
 ---
 
-# Linear history
-
-```mermaid
-%%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
-gitGraph
-   commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
-   branch "nf-test"
-   commit id: "Test aligner bwamem"
-   commit id: "..."
-   commit id: "Test UMI"
-   checkout dev
-   commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351" type:HIGHLIGHT
-   checkout "nf-test"
+```yaml
+title: Perfect Rebase gif
+layout: image
+image: https://blog.mralx.com/d47851d6ea6094c1eaf433e8da6d6656/rebase.gif
+backgroundSize: contain
 ```
 
-<!-- Let's go back to before we merged dev -->
+<!-- https://blog.mralx.com/git-rebase/ -->
 
 ---
 
@@ -215,3 +234,13 @@ gitGraph
 ```
 
 ---
+
+```yaml
+title: So you hit the update branch button...
+layout: image
+backgroundSize: contain
+```
+
+<video controls autoplay="true">
+   <source src="https://user-images.githubusercontent.com/2503052/152357644-6484dc2b-4aae-4977-b76c-b284c5388d7b.mp4" type="video/mp4" alt="Update branch button" >
+</video>
