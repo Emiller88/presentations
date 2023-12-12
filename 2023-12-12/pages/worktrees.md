@@ -73,6 +73,7 @@ Forget binge-watching your favorite series. The real suspense? The thrill of wai
 title: Worktrees diagram
 layout: image
 image: https://www.gitkraken.com/wp-content/uploads/2022/03/Worktrees-01-2048x919.png.webp
+backgroundSize: contain
 ```
 
 <!-- cite: https://www.gitkraken.com/learn/git/git-worktree -->
@@ -83,6 +84,7 @@ image: https://www.gitkraken.com/wp-content/uploads/2022/03/Worktrees-01-2048x91
 title: Worktrees with GitLens+
 layout: image
 image: https://www.gitkraken.com/wp-content/uploads/2022/03/gl-worktree-add-new-step-1-2048x1280.png.webp
+backgroundSize: contain
 ```
 
 ---
@@ -91,4 +93,29 @@ image: https://www.gitkraken.com/wp-content/uploads/2022/03/gl-worktree-add-new-
 title: Worktrees with GitLens+
 layout: image
 image: https://www.gitkraken.com/wp-content/uploads/2022/03/gitlens-worktree-list-e1646441544109.png
+backgroundSize: contain
+```
+
+---
+
+# For the cli purists
+
+```bash {-4|6|8}
+$ git worktree add <PATH>
+
+# Create feature-x directory and branch with the same name.
+$ git worktree add ../feature-x
+
+$ git worktree remove feature-x
+
+$ git worktree add -b feature-zzz ../feature-x origin/feature-zzz
+```
+
+---
+
+```yaml
+title: Git worktree switcher
+layout: image
+image: https://camo.githubusercontent.com/45b4f483eb593ecafbee452f3c859c43fc6dd83f112f7d5af7a6917328aa833e/68747470733a2f2f692e696d6775722e636f6d2f6e50646e6544542e676966
+backgroundSize: contain
 ```
