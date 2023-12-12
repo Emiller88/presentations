@@ -1,11 +1,25 @@
+```yaml
+layout: section
+```
+
 # Worktrees
 
-- Have you ever had a bunch of PRs going at once?
-- Had multiple copies of the same repo on your computer?
+<v-clicks>
 
-<!-- TODO
-https://imgflip.com/memegenerator/166969924/Flex-Tape
--->
+Have you ever had a lot of active branches going at once?
+
+Waiting on GitHub runners to pick up your nf-test job?
+
+</v-clicks>
+
+---
+
+```yaml
+title: FlexTrees
+layout: image
+image: https://i.imgflip.com/891vk0.jpg
+backgroundSize: contain
+```
 
 ---
 
