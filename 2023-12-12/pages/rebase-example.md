@@ -40,7 +40,7 @@ layout: center
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    branch "nf-test"
    commit id: "Test aligner bwamem"
    commit id: "..."
@@ -71,14 +71,13 @@ layout: center
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    branch "nf-test"
    commit id: "Test aligner bwamem"
    commit id: "..."
    commit id: "Test UMI"
    checkout dev
-   commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
+   commit id: "fix test profiles"
    commit id: "Merge pull request #1351"
 ```
 
@@ -103,14 +102,13 @@ layout: center
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    branch "nf-test"
    commit id: "Test aligner bwamem"
    commit id: "..."
    commit id: "Test UMI"
    checkout dev
    commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
    commit id: "Merge pull request #1351"
    checkout "nf-test"
    merge dev id: "Merge branch 'dev' into nf-test"
@@ -130,14 +128,13 @@ layout: center
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    branch "nf-test"
    commit id: "Test aligner bwamem"
    commit id: "..."
    commit id: "Test UMI"
    checkout dev
    commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
    commit id: "Merge pull request #1351"
    checkout "nf-test"
    merge dev id: "Merge branch 'dev' into nf-test" type:REVERSE
@@ -166,9 +163,8 @@ backgroundSize: contain
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
    commit id: "Merge pull request #1351" type:HIGHLIGHT
    branch "nf-test"
    commit id: "Test aligner bwamem"
@@ -188,14 +184,13 @@ gitGraph
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    branch "nf-test"
    commit id: "Test aligner bwamem"
    commit id: "..."
    commit id: "Test UMI"
    checkout dev
    commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
    commit id: "Merge pull request #1351"
    checkout "nf-test"
    merge dev id: "Merge branch 'dev' into nf-test" type:REVERSE
@@ -210,9 +205,8 @@ gitGraph
 %%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'dev'}} }%%
 gitGraph
    commit id: "update CHANGELOG"
-   commit id: "Merge pull request #1351 from max..."
+   commit id: "Merge pull request #1344"
    commit id: "fix params in test profiles"
-   commit id: "update CHANGELOG"
    commit id: "Merge pull request #1351" type:HIGHLIGHT
    branch "nf-test"
    commit id: "Test aligner bwamem"
