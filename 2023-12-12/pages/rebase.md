@@ -8,6 +8,14 @@ template: section
 - With pull
 - Interactive rebase
 
+---
+
+# `git rebase`
+
+<video controls>
+   <source src="/rebase_interactive_gitlens.webm" type="video/webm">
+</video>
+
 # `git rebase`
 
 ```mermaid
@@ -22,10 +30,6 @@ gitGraph
    commit id: "Test aligner bwamem2"
    commit id: "Test aligner dragmap"
 ```
-
-<!-- TODO <video controls> -->
-<!--   <source src="/lance-loong.mp4" type="video/mp4"> -->
-<!-- </video> -->
 
 <!-- Let's say you're going to convert all of the sarek workflow tests to nf-test -->
 
@@ -275,3 +279,5 @@ image: https://blog.mralx.com/d47851d6ea6094c1eaf433e8da6d6656/rebase.gif
 ```
 
 <!-- https://blog.mralx.com/git-rebase/ -->
+
+---
