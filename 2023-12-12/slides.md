@@ -77,15 +77,6 @@ src: ./pages/gh.md
 ---
 
 ```yaml
-background: https://raw.githubusercontent.com/maxulysse/maxulysse.github.io/main/assets/img/svg/green_white_bg.svg
-layout: end
-```
-
-<Socials/>
-
----
-
-```yaml
 title: Obligatory XKCD
 layout: image
 image: https://imgs.xkcd.com/comics/git.png

@@ -224,6 +224,7 @@ gitGraph
 title: So you hit the update branch button...
 layout: image
 backgroundSize: contain
+preload: false
 ```
 
 <video controls autoplay="true">

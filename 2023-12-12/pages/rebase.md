@@ -12,9 +12,13 @@ src: ./rebase-example.md
 
 ---
 
+```yaml
+preload: false
+```
+
 # `git rebase --interactive` GitLens
 
-<video controls>
+<video controls autoplay="true">
    <source src="/rebase_interactive_gitlens.webm" type="video/webm">
 </video>
 
