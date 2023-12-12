@@ -20,7 +20,6 @@ themeConfig:
 fonts:
   sans: 'Roboto'
   mono: 'Fira Code'
-  # import italic fonts, default `false`
   italic: true
 ---
 
