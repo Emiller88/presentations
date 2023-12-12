@@ -65,13 +65,6 @@ https://stackoverflow.com/questions/4713088/how-to-use-git-bisect#4714297
 *** Amending commits
 
 ~git commit --amend~
-- Amending a message ~git commit --amend -m "New commit message"~
-  - ~git commit --amend --no-edit~
-- Changes the commit hash
-
-- For commits that have *not* been pushed to shared repositories(GitHub).
-
-# - Mention that it's primarily used to correct the last commit but can be used with interactive rebase for earlier commits.
 **** TODO Add GH Desktop screenshots
 *** rebasing
 [[https://wizardzines.com/images/uploads/46d480e3f5029644.png]]

@@ -1,6 +1,7 @@
 #+title: Todo
 
 
+* TODO Fix title slide
 * DONE Rebasing
 CLOSED: [2023-12-11 Mon 15:38]
 * TODO Come back around to git sim for rebase
@@ -11,5 +12,6 @@ CLOSED: [2023-12-11 Mon 16:01]
 * STRT Worktrees
 * TODO Amending commits
 :LOGBOOK:
-CLOCK: [2023-12-11 Mon 18:36]
+CLOCK: [2023-12-11 Mon 18:36]--[2023-12-11 Mon 18:58] =>  0:22
 :END:
+* TODO Squashing
