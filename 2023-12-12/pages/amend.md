@@ -40,4 +40,4 @@ layout: two-cols
 
 ::right::
 
-![Amend GitHub Desktop](https://docs.github.com/assets/cb-151890/mw-1440/images/help/desktop/amend-commit-context-menu.webp)
+<img src="https://docs.github.com/assets/cb-151890/mw-1440/images/help/desktop/amend-commit-context-menu.webp" alt="Amend GitHub Desktop" />
