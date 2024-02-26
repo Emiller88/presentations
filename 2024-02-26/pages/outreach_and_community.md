@@ -61,3 +61,7 @@ backgroundSize: 90%
 - Issue isn't that there's too many users
 - Not enough guidance for new community members to be lifted up
 - Disproportionate amount of work requested to work being picked up
+- Hoping to address through multiple initiatives:
+  - Improved training
+  - Mentorship program
+  - Office hours
