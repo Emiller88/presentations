@@ -21,7 +21,9 @@ mdc: true
 
 ---
 
-## layout: two-cols
+```yml
+layout: two-cols
+```
 
 # Overview
 
@@ -47,12 +49,18 @@ mdc: true
 
 ---
 
-## src: ./pages/structure_and_governance.md
+```yml
+src: ./pages/structure_and_governance.md
+```
 
 ---
 
-## src: ./pages/outreach_and_community.md
+```yml
+src: ./pages/outreach_and_community.md
+```
 
 ---
 
-## src: ./pages/technical_improvements.md
+```yml
+src: ./pages/technical_improvements.md
+```
