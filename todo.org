@@ -5,4 +5,5 @@ Note to self for the next time I have a presentation to give.
 - [ ] Add CI to build and publish to slides.edmundmiller.dev
 - [ ] Add init flake.nix with pnpm and other dev tools needed.
 - [ ] Add treefmt
-- [ ] Fix build errors
+- [X] Fix build errors
+- [X] Clean up CI building

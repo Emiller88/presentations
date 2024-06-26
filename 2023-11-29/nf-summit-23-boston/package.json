@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "slidev build -o ../../dist/nf-summit-23-boston --base /nf-summit-23-boston",
     "dev": "slidev --open",
     "export": "slidev export"
   },

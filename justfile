@@ -12,4 +12,5 @@ new SLIDE:
 
 build: install
     mkdir -p dist
-    ls | while read line ; do pnpm -F "$line" run build --base "/$line" -o "../../dist/$line" ; done
+    # ls | while read line ; do pnpm -F "$line" run build --base "/$line" -o "../../dist/$line" ; done
+    pnpm -r run build
