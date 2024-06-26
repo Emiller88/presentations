@@ -4,3 +4,6 @@
 *.bbl
 *.tex
 *.pdf
+
+# pnpm
+node_modules/
