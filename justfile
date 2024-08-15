@@ -8,7 +8,9 @@ format SLIDE: install
     pnpm -F {{SLIDE}} run format
 
 new SLIDE:
-    cp -r slides/template/ slides/{{SLIDE}}
+    pnpm create slidev {{SLIDE}}
+    cd {{SLIDE}}
+    pnpm i -D prettier prettier-plugin-slidev
 
 build: install
     mkdir -p dist
