@@ -1,0 +1,135 @@
+#+title: Research Update
+
+* Applied Genomics
+** Background
+
+- Reworking the Class
+- AI ate the quizzes
+  - Probably skills that aren't necessary to directly tested on anymore
+  - Can focus more on problem solving and applying the knowledge
+
+** Changes Overview
+
+- Got rid of quizzes
+- Got rid of 3 presentations for assignments, switched back to individual projects
+- Switched to individual assignments instead of group
+  # - ensured that everyone had to learn all the skills
+- Switched from Sysbio to GitHub codespaces
+- Students really liked Galaxy
+  # - Until we did the more in-depth ATAC-seq tutorial
+- Got rid of Make, and Nextflow and just used Snakemake throughout
+  # - Familiarity grew in-between weeks
+
+*** Codespaces
+
+- Common environment with a dev container
+  - 1-click and everyone had their own environment
+  - No laptop requirements
+  - Extensions, the right R version
+- Draw back was no HPC experience
+  - Ultimately we've had 1 student interested in HPC out of 30
+  - Most would be able to use it with the nf-core config or a Snakemake profile
+    # and not notice the difference
+- Free through GitHub Education!
+
+**** Using Codespaces
+
+[[img:https://docs.github.com/assets/cb-169907/mw-1440/images/help/codespaces/configure-dev-container.webp][Launching a codespace]]
+
+**** Using Codespaces
+
+[[img:https://docs.github.com/assets/cb-80257/mw-1440/images/help/codespaces/configuration-file-choice.webp][Configuring a codespace]]
+
+** Reflections
+
+- There's still value to be gotten with a tighter feedback loop with grading the coding assignments
+  # - As opposed to intro bio lab where you have to wait for results, grading, hand the lab reports back...
+  # - Maybe ditching GitHub classroom grading, and just writing a small grading script
+- Switch environments to pixi
+  - Conda/Mamba in GitHub codespaces was a nightmare
+- Had a lot of really interesting projects
+# I think the concept is a lot of fun to graduate level students
+# New skills + an excuse to go on a bit of a lark on whatever you want
+
+* Pixi
+
+** Pixi
+
+[[img:https://pixi.sh/dev/assets/pixi.webp][Pixi Logo]]
+
+** Footguns that are painful for collaboration and Students
+
+*** One way to install it just about everywhere
+
+- Problem: Which way should you install?
+  - Anaconda
+  - miniconda
+  - Mamba
+  - Micromamba
+  - mambaforge
+
+- Solution:
+#+begin_src bash
+curl -fsSL https://pixi.sh/install.sh | bash
+#+end_src
+
+
+*** Environment activation is automatic
+
+- Problem: ~conda activate applied-genomics~ the environment in every new terminal
+  - The env-name is really the issue
+
+- Solution: Every project has the same commands
+    Use the ~pixi shell~ command to open a shell with the environment activated.
+    Use the ~pixi shell-hook~ command to print the command to activate the environment in your current shell.
+    Use the ~pixi run~ command to run a command in the environment.
+
+*** Tasks built-in
+- Problem: ~snakemake --cores 4~
+
+- Solution:
+#+begin_src toml
+[tasks]
+run = "snakemake --cores 4"
+upload = { cmd = "rclone sync results/ box:THK_LAB_DATA/results/", depends-on = ["run"] }
+#+end_src
+
+
+*** Storing environment details is taken care of for you
+
+- Problem: ~conda install~ doesn't update the ~environment.yml~
+  - Which makes it really hard to reproduce research code as we've learned firsthand...
+
+- Solution ~pixi add~ updates the ~pixi.toml~ for you
+
+*** No built in lock file
+
+- Problem: Versions in the ~environment.yml~ are only half the battle...
+# - Going to avoid going off into the weeds here, there is conda-lock
+
+- Solution: ~pixi add~ updates the ~pixi.lock~ file as well behind the scenes
+
+** Set up on a server/locally
+
+#+begin_src bash
+curl -fsSL https://pixi.sh/install.sh | bash
+# source ~/.bashrc
+pixi config append default-channels conda-forge --global
+pixi config append default-channels bioconda --global
+
+pixi global install -c bioconda nextflow
+pixi g i rclone
+#+end_src
+
+** It's gotta be difficult to migrate to, right?
+
+With pixi you can import ~environment.yml~ files into a pixi project. (See import)
+
+#+begin_src bash
+pixi init --import environment.yml
+#+end_src
+
+This will create a new project with the dependencies from the ~environment.yml~ file.
+
+* Bioinformatics Orphanage
+* Nascent
