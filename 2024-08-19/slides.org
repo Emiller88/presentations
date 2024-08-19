@@ -1,5 +1,12 @@
 #+title: Research Update
 #+options: todo:nil
+#+options: num:nil
+#+options: timestamp:nil
+#+date: August 19th, 2024
+
+#+REVEAL_VERSION: 4
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_THEME: white
 
 * Applied Genomics
 ** Background
@@ -27,26 +34,29 @@
   - 1-click and everyone had their own environment
   - No laptop requirements
   - Extensions, the right R version
+
+*** Codespaces
 - Draw back was no HPC experience
   - Ultimately we've had 1 student interested in HPC out of 30
   - Most would be able to use it with the nf-core config or a Snakemake profile
     # and not notice the difference
 - Free through GitHub Education!
 
-**** Using Codespaces
+*** Using Codespaces
 
-[[img:https://docs.github.com/assets/cb-169907/mw-1440/images/help/codespaces/configure-dev-container.webp][Launching a codespace]]
+[[https://docs.github.com/assets/cb-169907/mw-1440/images/help/codespaces/configure-dev-container.webp]]
 
-**** Using Codespaces
+*** Using Codespaces
 
-[[img:https://docs.github.com/assets/cb-80257/mw-1440/images/help/codespaces/configuration-file-choice.webp][Configuring a codespace]]
+[[https://docs.github.com/assets/cb-80257/mw-1440/images/help/codespaces/configuration-file-choice.webp]]
 
 ** Reflections
 
+#+ATTR_REVEAL: :frag (appear)
 - There's still value to be gotten with a tighter feedback loop with grading the coding assignments
   # - As opposed to intro bio lab where you have to wait for results, grading, hand the lab reports back...
   # - Maybe ditching GitHub classroom grading, and just writing a small grading script
-- Switch environments to pixi
+- Switch environments to ~pixi~
   - Conda/Mamba in GitHub codespaces was a nightmare
 - Had a lot of really interesting projects
 # I think the concept is a lot of fun to graduate level students
@@ -54,14 +64,13 @@
 
 * Pixi
 
-** Pixi
+[[https://pixi.sh/dev/assets/pixi.webp]]
 
-[[img:https://pixi.sh/dev/assets/pixi.webp][Pixi Logo]]
-
-** Footguns that are painful for collaboration and Students
+** Conda issues for collaboration and Students
 
 *** One way to install it just about everywhere
 
+#+ATTR_REVEAL: :frag (appear)
 - Problem: Which way should you install?
   - Anaconda
   - miniconda
@@ -70,6 +79,8 @@
   - mambaforge
 
 - Solution:
+
+#+ATTR_REVEAL: :frag (appear)
 #+begin_src bash
 curl -fsSL https://pixi.sh/install.sh | bash
 #+end_src
@@ -77,18 +88,22 @@ curl -fsSL https://pixi.sh/install.sh | bash
 
 *** Environment activation is automatic
 
+#+ATTR_REVEAL: :frag (appear)
 - Problem: ~conda activate applied-genomics~ the environment in every new terminal
   - The env-name is really the issue
 
 - Solution: Every project has the same commands
-    Use the ~pixi shell~ command to open a shell with the environment activated.
-    Use the ~pixi shell-hook~ command to print the command to activate the environment in your current shell.
-    Use the ~pixi run~ command to run a command in the environment.
+    - ~pixi shell~
+    - ~pixi shell-hook~
+    - ~pixi run~
 
 *** Tasks built-in
+
+#+ATTR_REVEAL: :frag (appear)
 - Problem: ~snakemake --cores 4~
 
 - Solution:
+#+ATTR_REVEAL: :frag (appear)
 #+begin_src toml
 [tasks]
 run = "snakemake --cores 4"
@@ -98,6 +113,7 @@ upload = { cmd = "rclone sync results/ box:THK_LAB_DATA/results/", depends-on = 
 
 *** Storing environment details is taken care of for you
 
+#+ATTR_REVEAL: :frag (appear)
 - Problem: ~conda install~ doesn't update the ~environment.yml~
   - Which makes it really hard to reproduce research code as we've learned firsthand...
 
@@ -105,9 +121,11 @@ upload = { cmd = "rclone sync results/ box:THK_LAB_DATA/results/", depends-on = 
 
 *** No built in lock file
 
+#+ATTR_REVEAL: :frag (appear)
 - Problem: Versions in the ~environment.yml~ are only half the battle...
 # - Going to avoid going off into the weeds here, there is conda-lock
 
+#+ATTR_REVEAL: :frag (appear)
 - Solution: ~pixi add~ updates the ~pixi.lock~ file as well behind the scenes
 
 ** Set up on a server/locally
@@ -124,15 +142,17 @@ pixi g i rclone
 
 ** It's gotta be difficult to migrate to, right?
 
+#+ATTR_REVEAL: :frag (appear)
 With pixi you can import ~environment.yml~ files into a pixi project. (See import)
 
+#+ATTR_REVEAL: :frag (appear)
 #+begin_src bash
 pixi init --import environment.yml
 #+end_src
 
+#+ATTR_REVEAL: :frag (appear)
 This will create a new project with the dependencies from the ~environment.yml~ file.
 
-* TODO Adopt a Code
 * Nascent
 ** Overview
 
@@ -157,6 +177,8 @@ This will create a new project with the dependencies from the ~environment.yml~ 
 | HISAT2   |      |      |       |
 | STAR     |      |      |       |
 
+** Benchmarking
+
 - Using the dataset used in =Computational Approaches for Mining GRO-seq Data to Identify and Characterize Active Enhancers=
 - Reads aligned
 - Transcripts identified
@@ -167,7 +189,7 @@ This will create a new project with the dependencies from the ~environment.yml~ 
 - Results are ran, just need to find time to dig into them
   # Except for some issues with CHM13 and HISAT2/dragmap
 
-** TODO Reproduction of the 2018 Paper
+** Reproduction of the 2018 Paper
 
 - bowtie2 => HOMER => Drop the genes(1KB upstream, 10KB downstream) => Select for H3K4me1 and H3K27ac => Potential *eRNAs*
 - Three sets of potential eRNAs
@@ -175,7 +197,7 @@ This will create a new project with the dependencies from the ~environment.yml~ 
   - hg18 liftOver after HOMER
   - hg19
 
-Notes:
+** Notes:
 - Just using GM data(So we can release the IMR data later)
 - In Pengs case, _hg18_ was used until after homer, and then lift(ed)Over to _hg19_
   - Still not clear at what point that occurred and how much difference the before and after would have
@@ -208,7 +230,7 @@ HISAT2 => dREG, Tfit
   - Tried to build but it's dREG is their own custom software
   - Michael's GPU machines(Free) have CUDA 12
 
-Stuff I tried:
+*** Stuff I tried:
 
 - Building the image by hand.
 # Gave up when I got it all built and then dREG threw that it didn't have "Rgtsvm" and saw that was their custom in-house SVM package, and gave up
@@ -218,7 +240,8 @@ Stuff I tried:
 # It doesn't work properly with their web portal for submitting bigWigs
 - Packaged up Danko's lab pre-dREG pipeline in a Nextflow script and then submitting the bigWigs to their web portal.
 
-Options:
+*** Future Options:
+
 - *Pick up building Rgtsvm and see if it'll even work with CUDA 12*
 - Run dREG-nf on all of the samples and then submit them through the web browser.
 - Give up and try to compare with homer/groHMM/PINTS

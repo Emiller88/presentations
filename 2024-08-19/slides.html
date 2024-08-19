@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Research Update</title>
+    <meta name="author" content="Edmund Miller" />
+    <style type="text/css">
+      .underline {
+        text-decoration: underline;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css"
+      id="theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="sec-title-slide">
+          <h1 class="title">Research Update</h1>
+          <h2 class="author">Edmund Miller</h2>
+          <h2 class="date">August 19th, 2024</h2>
+        </section>
+        <section>
+          <section id="slide-org55e872f">
+            <h2 id="org55e872f">Applied Genomics</h2>
+            <div class="outline-text-2" id="text-org55e872f"></div>
+          </section>
+          <section id="slide-orgb6959e8">
+            <h3 id="orgb6959e8">Background</h3>
+            <ul>
+              <li>Reworking the Class</li>
+              <li>
+                AI ate the quizzes
+                <ul>
+                  <li>
+                    Probably skills that aren&rsquo;t necessary to directly
+                    tested on anymore
+                  </li>
+                  <li>
+                    Can focus more on problem solving and applying the knowledge
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org9623889">
+            <h3 id="org9623889">Changes Overview</h3>
+            <ul>
+              <li>Got rid of quizzes</li>
+              <li>
+                Got rid of 3 presentations for assignments, switched back to
+                individual projects
+              </li>
+              <li>Switched to individual assignments instead of group</li>
+              <li>Switched from Sysbio to GitHub codespaces</li>
+              <li>Students really liked Galaxy</li>
+              <li>
+                Got rid of Make, and Nextflow and just used Snakemake throughout
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org9c5de5f">
+            <h4 id="org9c5de5f">Codespaces</h4>
+            <ul>
+              <li>
+                Common environment with a dev container
+                <ul>
+                  <li>1-click and everyone had their own environment</li>
+                  <li>No laptop requirements</li>
+                  <li>Extensions, the right R version</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org717f15d">
+            <h4 id="org717f15d">Codespaces</h4>
+            <ul>
+              <li>
+                Draw back was no HPC experience
+                <ul>
+                  <li>
+                    Ultimately we&rsquo;ve had 1 student interested in HPC out
+                    of 30
+                  </li>
+                  <li>
+                    Most would be able to use it with the nf-core config or a
+                    Snakemake profile
+                  </li>
+                </ul>
+              </li>
+              <li>Free through GitHub Education!</li>
+            </ul>
+          </section>
+          <section id="slide-orgad13368">
+            <h4 id="orgad13368">Using Codespaces</h4>
+
+            <div id="orgb3b4ad0" class="figure">
+              <p>
+                <img
+                  src="https://docs.github.com/assets/cb-169907/mw-1440/images/help/codespaces/configure-dev-container.webp"
+                  alt="configure-dev-container.webp"
+                />
+              </p>
+            </div>
+          </section>
+          <section id="slide-orgd9ec03e">
+            <h4 id="orgd9ec03e">Using Codespaces</h4>
+
+            <div id="orgfbacde6" class="figure">
+              <p>
+                <img
+                  src="https://docs.github.com/assets/cb-80257/mw-1440/images/help/codespaces/configuration-file-choice.webp"
+                  alt="configuration-file-choice.webp"
+                />
+              </p>
+            </div>
+          </section>
+          <section id="slide-org63ee43c">
+            <h3 id="org63ee43c">Reflections</h3>
+            <ul>
+              <li class="fragment appear">
+                There&rsquo;s still value to be gotten with a tighter feedback
+                loop with grading the coding assignments
+              </li>
+              <li class="fragment appear">
+                Switch environments to <code>pixi</code>
+                <ul>
+                  <li>Conda/Mamba in GitHub codespaces was a nightmare</li>
+                </ul>
+              </li>
+              <li class="fragment appear">
+                Had a lot of really interesting projects
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org7d05e79">
+            <h2 id="org7d05e79">Pixi</h2>
+
+            <div id="orgb538aae" class="figure">
+              <p>
+                <img
+                  src="https://pixi.sh/dev/assets/pixi.webp"
+                  alt="pixi.webp"
+                />
+              </p>
+            </div>
+          </section>
+          <section id="slide-orgc3fb372">
+            <h3 id="orgc3fb372">Conda issues for collaboration and Students</h3>
+            <div class="outline-text-3" id="text-orgc3fb372"></div>
+          </section>
+          <section id="slide-org39e08cf">
+            <h4 id="org39e08cf">One way to install it just about everywhere</h4>
+            <ul>
+              <li class="fragment appear">
+                Problem: Which way should you install?
+                <ul>
+                  <li>Anaconda</li>
+                  <li>miniconda</li>
+                  <li>Mamba</li>
+                  <li>Micromamba</li>
+                  <li>mambaforge</li>
+                </ul>
+              </li>
+
+              <li class="fragment appear">Solution:</li>
+            </ul>
+
+            <div class="org-src-container">
+              <pre
+                class="fragment (appear)"
+              ><span style="color: #eed49f;">curl</span> -fsSL https://pixi.sh/install.sh | bash
+</pre>
+            </div>
+          </section>
+          <section id="slide-org088dacf">
+            <h4 id="org088dacf">Environment activation is automatic</h4>
+            <ul>
+              <li class="fragment appear">
+                Problem: <code>conda activate applied-genomics</code> the
+                environment in every new terminal
+                <ul>
+                  <li>The env-name is really the issue</li>
+                </ul>
+              </li>
+
+              <li class="fragment appear">
+                Solution: Every project has the same commands
+                <ul>
+                  <li><code>pixi shell</code></li>
+                  <li><code>pixi shell-hook</code></li>
+                  <li><code>pixi run</code></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org94f101a">
+            <h4 id="org94f101a">Tasks built-in</h4>
+            <ul>
+              <li class="fragment appear">
+                Problem: <code>snakemake --cores 4</code>
+              </li>
+
+              <li class="fragment appear">Solution:</li>
+            </ul>
+            <div class="org-src-container">
+              <pre
+                class="fragment (appear)"
+              >[<span style="color: #eed49f;">tasks</span>]
+<span style="color: #cad3f5;">run</span> = <span style="color: #a6da95;">"snakemake --cores 4"</span>
+<span style="color: #cad3f5;">upload</span> = { cmd = <span style="color: #a6da95;">"rclone sync results/ box:THK_LAB_DATA/results/"</span>, depends-on = [<span style="color: #a6da95;">"run"</span>] }
+</pre>
+            </div>
+          </section>
+          <section id="slide-org43fa760">
+            <h4 id="org43fa760">
+              Storing environment details is taken care of for you
+            </h4>
+            <ul>
+              <li class="fragment appear">
+                Problem: <code>conda install</code> doesn&rsquo;t update the
+                <code>environment.yml</code>
+                <ul>
+                  <li>
+                    Which makes it really hard to reproduce research code as
+                    we&rsquo;ve learned firsthand&#x2026;
+                  </li>
+                </ul>
+              </li>
+
+              <li class="fragment appear">
+                Solution <code>pixi add</code> updates the
+                <code>pixi.toml</code> for you
+              </li>
+            </ul>
+          </section>
+          <section id="slide-orgfc3e2b9">
+            <h4 id="orgfc3e2b9">No built in lock file</h4>
+            <ul>
+              <li class="fragment appear">
+                Problem: Versions in the <code>environment.yml</code> are only
+                half the battle&#x2026;
+              </li>
+            </ul>
+
+            <ul>
+              <li class="fragment appear">
+                Solution: <code>pixi add</code> updates the
+                <code>pixi.lock</code> file as well behind the scenes
+              </li>
+            </ul>
+          </section>
+          <section id="slide-orged72454">
+            <h3 id="orged72454">Set up on a server/locally</h3>
+            <div class="org-src-container">
+              <pre
+                class="src src-bash"
+              ><span style="color: #eed49f;">curl</span> -fsSL https://pixi.sh/install.sh | bash
+<span style="color: #6e738d;"># </span><span style="color: #6e738d;">source ~/.bashrc</span>
+pixi config append default-channels conda-forge --global
+pixi config append default-channels bioconda --global
+
+pixi global install -c bioconda nextflow
+pixi g i rclone
+</pre>
+            </div>
+          </section>
+          <section id="slide-org76fabbd">
+            <h3 id="org76fabbd">
+              It&rsquo;s gotta be difficult to migrate to, right?
+            </h3>
+            <p class="fragment (appear)">
+              With pixi you can import <code>environment.yml</code> files into a
+              pixi project. (See import)
+            </p>
+
+            <div class="org-src-container">
+              <pre class="fragment (appear)">
+pixi init --import environment.yml
+</pre
+              >
+            </div>
+
+            <p class="fragment (appear)">
+              This will create a new project with the dependencies from the
+              <code>environment.yml</code> file.
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org4132e58">
+            <h2 id="org4132e58">Nascent</h2>
+            <div class="outline-text-2" id="text-org4132e58"></div>
+          </section>
+          <section id="slide-org3e6e4b7">
+            <h3 id="org3e6e4b7">Overview</h3>
+            <ul>
+              <li>Benchmarking</li>
+              <li>Reproduction of the 2018 Paper</li>
+              <li>Comparison of DBNascent results</li>
+
+              <li>Expecting to see ~25% variance</li>
+            </ul>
+          </section>
+          <section id="slide-org34f8651">
+            <h3 id="org34f8651">Benchmarking</h3>
+            <table
+              id="org77f2a53"
+              border="2"
+              cellspacing="0"
+              cellpadding="6"
+              rules="groups"
+              frame="hsides"
+            >
+              <caption class="t-above">
+                <span class="table-number">Table 1:</span>
+                Aligner and Reference improvements
+              </caption>
+
+              <colgroup>
+                <col class="org-left" />
+              </colgroup>
+
+              <colgroup>
+                <col class="org-left" />
+              </colgroup>
+
+              <colgroup>
+                <col class="org-left" />
+              </colgroup>
+
+              <colgroup>
+                <col class="org-left" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col" class="org-left">&#xa0;</th>
+                  <th scope="col" class="org-left">hg19</th>
+                  <th scope="col" class="org-left">hg38</th>
+                  <th scope="col" class="org-left">CHM13</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="org-left">bowtie2</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                </tr>
+
+                <tr>
+                  <td class="org-left">bwa</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                </tr>
+
+                <tr>
+                  <td class="org-left">bwa-mem2</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                </tr>
+
+                <tr>
+                  <td class="org-left">dragmap</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                </tr>
+
+                <tr>
+                  <td class="org-left">HISAT2</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                </tr>
+
+                <tr>
+                  <td class="org-left">STAR</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                  <td class="org-left">&#xa0;</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="slide-org10efd04">
+            <h3 id="org10efd04">Benchmarking</h3>
+            <ul>
+              <li>
+                Using the dataset used in
+                <code
+                  >Computational Approaches for Mining GRO-seq Data to Identify
+                  and Characterize Active Enhancers</code
+                >
+              </li>
+              <li>Reads aligned</li>
+              <li>Transcripts identified</li>
+              <li>Potential eRNAs identified</li>
+              <li>Gene and eRNA counts</li>
+
+              <li>Results are ran, just need to find time to dig into them</li>
+            </ul>
+          </section>
+          <section id="slide-org1e909b5">
+            <h3 id="org1e909b5">Reproduction of the 2018 Paper</h3>
+            <ul>
+              <li>
+                bowtie2 =&gt; HOMER =&gt; Drop the genes(1KB upstream, 10KB
+                downstream) =&gt; Select for H3K4me1 and H3K27ac =&gt; Potential
+                <b>eRNAs</b>
+              </li>
+              <li>
+                Three sets of potential eRNAs
+                <ul>
+                  <li>Kim 2018 (the eRNAs the Peng gave me)</li>
+                  <li>hg18 liftOver after HOMER</li>
+                  <li>hg19</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org115c633">
+            <h3 id="org115c633">Notes:</h3>
+            <ul>
+              <li>Just using GM data(So we can release the IMR data later)</li>
+              <li>
+                In Pengs case, <span class="underline">hg18</span> was used
+                until after homer, and then lift(ed)Over to
+                <span class="underline">hg19</span>
+                <ul>
+                  <li>
+                    Still not clear at what point that occurred and how much
+                    difference the before and after would have
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org0879a94">
+            <h3 id="org0879a94">Reproduction of the 2018 Paper</h3>
+            <p>Goals:</p>
+            <ul>
+              <li>
+                How many of the potential eRNAs from Peng&rsquo;s set can we
+                recover
+              </li>
+              <li>How many of the inducible eRNAs can we recover</li>
+              <li>Stretch: Can we identify the inducible eRNAs ourselves</li>
+            </ul>
+          </section>
+          <section id="slide-orgf3851e6">
+            <h3 id="orgf3851e6">2018 Venn Diagram</h3>
+
+            <div id="orgee10127" class="figure">
+              <p><img src="eRNAs_overlap.png" alt="eRNAs_overlap.png" /></p>
+            </div>
+          </section>
+          <section id="slide-org134bbd7">
+            <h3 id="org134bbd7">Comparison of DBNascent results</h3>
+            <div class="outline-text-3" id="text-org134bbd7"></div>
+          </section>
+          <section id="slide-org3384168">
+            <h4 id="org3384168">DBNascent</h4>
+            <blockquote>
+              <p>
+                DBNascent is a database of nascent sequencing data created and
+                maintained by the Dowell and Allen Lab at the University of
+                Colorado Boulder.
+              </p>
+            </blockquote>
+
+            <p>HISAT2 =&gt; dREG, Tfit</p>
+
+            <p>
+              <a href="https://github.com/Dowell-Lab/DBNascent_Analysis"
+                >DBNascent Analysis</a
+              >
+            </p>
+          </section>
+          <section id="slide-org1319902">
+            <h4 id="org1319902">dREG Woes</h4>
+            <ul>
+              <li>
+                DBNascent used HISAT2 and then dREG
+                <ul>
+                  <li>
+                    Tried to build but it&rsquo;s dREG is their own custom
+                    software
+                  </li>
+                  <li>Michael&rsquo;s GPU machines(Free) have CUDA 12</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org4733616">
+            <h4 id="org4733616">Stuff I tried:</h4>
+            <ul>
+              <li>Building the image by hand.</li>
+            </ul>
+
+            <ul>
+              <li>
+                A docker image I stumbled on from Cornell&rsquo;s HPC admins
+                <ul>
+                  <li>only works with CUDA 11</li>
+                </ul>
+              </li>
+              <li>Adding a &ldquo;dREG&rdquo; prep process to Nascent.</li>
+            </ul>
+
+            <ul>
+              <li>
+                Packaged up Danko&rsquo;s lab pre-dREG pipeline in a Nextflow
+                script and then submitting the bigWigs to their web portal.
+              </li>
+            </ul>
+          </section>
+          <section id="slide-org03ab13c">
+            <h4 id="org03ab13c">Future Options:</h4>
+            <ul>
+              <li>
+                <b
+                  >Pick up building Rgtsvm and see if it&rsquo;ll even work with
+                  CUDA 12</b
+                >
+              </li>
+              <li>
+                Run dREG-nf on all of the samples and then submit them through
+                the web browser.
+              </li>
+              <li>Give up and try to compare with homer/groHMM/PINTS</li>
+              <li>Find a machine with CUDA 11</li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/search/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: false,
+        center: true,
+        slideNumber: "c",
+        rollingLinks: false,
+        keyboard: true,
+        mouseWheel: false,
+        fragmentInURL: false,
+        hashOneBasedIndex: false,
+        pdfSeparateFragments: true,
+        overview: true,
+
+        transition: "convex",
+        transitionSpeed: "default",
+
+        // Plugins with reveal.js 4.x
+        plugins: [RevealMarkdown, RevealNotes, RevealSearch, RevealZoom],
+
+        // Optional libraries used to extend reveal.js
+        dependencies: [],
+      });
+    </script>
+  </body>
+</html>
